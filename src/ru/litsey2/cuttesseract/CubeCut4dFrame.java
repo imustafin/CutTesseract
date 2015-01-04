@@ -73,6 +73,11 @@ public class CubeCut4dFrame {
 		int RrotY = 0;
 		
 		double rotK = 0.01;
+		
+		double dx = 0;
+		double dy = 0;
+		double dz = 0;
+		double dw = 0;
 
 		public MyPanel() {
 			setBorder(BorderFactory.createLineBorder(Color.black));
@@ -80,26 +85,28 @@ public class CubeCut4dFrame {
 			addMouseMotionListener(new MouseMotionAdapter() {
 
 				@Override
-				public void mouseDragged(MouseEvent arg0) {
-					if (SwingUtilities.isLeftMouseButton(arg0)) {
-						OX = OoldX + (arg0.getX() - OstartX);
-						OY = OoldY + (arg0.getY() - OstartY);
+				public void mouseDragged(MouseEvent e) {
+					if (SwingUtilities.isLeftMouseButton(e)) {
+						OX = OoldX + (e.getX() - OstartX);
+						OY = OoldY + (e.getY() - OstartY);
 						repaint();
 					}
-					if (SwingUtilities.isRightMouseButton(arg0)) {
-						double deltaX = (arg0.getX() - RrotX) * rotK;
-						double deltaY = (arg0.getY() - RrotY) * rotK;
-						RrotX = arg0.getX();
-						RrotY = arg0.getY();
-						rotateAll(0, 0, deltaY, deltaX);
+					if (SwingUtilities.isRightMouseButton(e)) {
+						double deltaX = (e.getX() - RrotX) * rotK;
+						double deltaY = (e.getY() - RrotY) * rotK;
+						RrotX = e.getX();
+						RrotY = e.getY();
+						dz += deltaY;
+						dw += deltaX;
 						repaint();
 					}
-					if (SwingUtilities.isMiddleMouseButton(arg0)) {
-						double deltaX = (arg0.getX() - MrotX) * rotK;
-						double deltaY = (arg0.getY() - MrotY) * rotK;
-						MrotX = arg0.getX();
-						MrotY = arg0.getY();
-						rotateAll(deltaX, deltaY, 0, 0);
+					if (SwingUtilities.isMiddleMouseButton(e)) {
+						double deltaX = (e.getX() - MrotX) * rotK;
+						double deltaY = (e.getY() - MrotY) * rotK;
+						MrotX = e.getX();
+						MrotY = e.getY();
+						dx += deltaX;
+						dy += deltaY;
 						repaint();
 					}
 				}
@@ -205,19 +212,14 @@ public class CubeCut4dFrame {
 
 		}
 
-		void rotateAll(double dx, double dy, double dz, double dw) {
-			for (Segment4d s : segments) {
-				s.a = getRotated(s.a, dx, dy, dz, dw);
-				s.b = getRotated(s.b, dx, dy, dz, dw);
-			}
-		}
 
 		void drawSegment4d(Segment4d s, Graphics g) {
 			Color oldColor = g.getColor();
 			g.setColor(s.getColor());
 
-			Point4d a = s.a;
-			Point4d b = s.b;
+			
+			Point4d a = getRotated(s.getA(), dx, dy, dz, dw);
+			Point4d b = getRotated(s.getB(), dx, dy, dz, dw);
 
 			int x1 = xc(a.getX());
 			int y1 = yc(a.getZ());
