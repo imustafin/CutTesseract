@@ -17,8 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import ru.litsey2.cuttesseract.MyGeom.Point4d;
-import ru.litsey2.cuttesseract.MyGeom.Segment4d;
+import ru.litsey2.cuttesseract.geometry.Point4d;
+import ru.litsey2.cuttesseract.geometry.Segment4d;
 
 public class CubeCut4dFrame {
 
@@ -164,41 +164,44 @@ public class CubeCut4dFrame {
 		}
 
 		Point4d getRotated(Point4d a, double dx, double dy, double dz, double dw) {
-			Point4d n = new Point4d(a);
+			double x = a.getX();
+			double y = a.getY();
+			double z = a.getZ();
+			double w = a.getW();
+			
+			double nx = x;
+			double ny = y;
+			double nz = z;
+			double nw = w;
 
-			double x = a.x;
-			double y = a.y;
-			double z = a.z;
-			double w = a.w;
+			nx = x * Math.cos(dx) - y * Math.sin(dx);
+			ny = x * Math.sin(dx) + y * Math.cos(dx);
 
-			n.x = x * Math.cos(dx) - y * Math.sin(dx);
-			n.y = x * Math.sin(dx) + y * Math.cos(dx);
+			x = nx;
+			y = ny;
+			z = nz;
+			w = nw;
 
-			x = n.x;
-			y = n.y;
-			z = n.z;
-			w = n.w;
+			ny = y * Math.cos(dy) - z * Math.sin(dy);
+			nz = y * Math.sin(dy) + z * Math.cos(dy);
 
-			n.y = y * Math.cos(dy) - z * Math.sin(dy);
-			n.z = y * Math.sin(dy) + z * Math.cos(dy);
+			x = nx;
+			y = ny;
+			z = nz;
+			w = nw;
 
-			x = n.x;
-			y = n.y;
-			z = n.z;
-			w = n.w;
+			nz = z * Math.cos(dz) - w * Math.sin(dz);
+			nw = z * Math.sin(dz) + w * Math.cos(dz);
 
-			n.z = z * Math.cos(dz) - w * Math.sin(dz);
-			n.w = z * Math.sin(dz) + w * Math.cos(dz);
+			x = nx;
+			y = ny;
+			z = nz;
+			w = nw;
 
-			x = n.x;
-			y = n.y;
-			z = n.z;
-			w = n.w;
+			nw = w * Math.cos(dw) - x * Math.sin(dw);
+			nx = w * Math.sin(dw) + x * Math.cos(dw);
 
-			n.w = w * Math.cos(dw) - x * Math.sin(dw);
-			n.x = w * Math.sin(dw) + x * Math.cos(dw);
-
-			return n;
+			return new Point4d(nx, ny, nz, nw);
 
 		}
 
@@ -211,15 +214,15 @@ public class CubeCut4dFrame {
 
 		void drawSegment4d(Segment4d s, Graphics g) {
 			Color oldColor = g.getColor();
-			g.setColor(s.color);
+			g.setColor(s.getColor());
 
 			Point4d a = s.a;
 			Point4d b = s.b;
 
-			int x1 = xc(a.x);
-			int y1 = yc(a.z);
-			int x2 = xc(b.x);
-			int y2 = yc(b.z);
+			int x1 = xc(a.getX());
+			int y1 = yc(a.getZ());
+			int x2 = xc(b.getX());
+			int y2 = yc(b.getZ());
 			g.drawLine(x1, y1, x2, y2);
 			int r = 2;
 			g.fillOval(x1 - r, y1 - r, 2 * r, 2 * r);
