@@ -98,7 +98,7 @@ public class CubeCut4d {
 				if(a.getW() == b.getW() && (a.getW() == 1 || a.getW() == -1)) {
 					sameness++;
 				}
-				if(sameness == 2) {
+				if(sameness >= 2) {
 					cutEdges.add(new Segment4d(a, b, CUT_COLOR));
 				}
 			}
