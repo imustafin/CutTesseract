@@ -167,26 +167,6 @@ public class CubeCut4dFrame {
 			return (int) (OY - y * MULT);
 		}
 
-		
-
-//		void drawSegment4d(Segment4d s, Graphics g) {
-//			Color oldColor = g.getColor();
-//			g.setColor(s.getColor());
-//
-//			Point4d a = PointRotator.getRotated(s.getA(), dx, dy, dz, dw);
-//			Point4d b = PointRotator.getRotated(s.getB(), dx, dy, dz, dw);
-//
-//			int x1 = xc(a.getX());
-//			int y1 = yc(a.getZ());
-//			int x2 = xc(b.getX());
-//			int y2 = yc(b.getZ());
-//			g.drawLine(x1, y1, x2, y2);
-//			int r = 2;
-//			g.fillOval(x1 - r, y1 - r, 2 * r, 2 * r);
-//			g.fillOval(x2 - r, y2 - r, 2 * r, 2 * r);
-//			g.setColor(oldColor);
-//		}
-
 		void drawSegment2d(Segment2d s, Graphics g) {
 			Color oldColor = g.getColor();
 			g.setColor(s.getColor());
