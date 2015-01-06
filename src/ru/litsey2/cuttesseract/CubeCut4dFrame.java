@@ -17,14 +17,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import ru.litsey2.cuttesseract.MyGeom.Point4d;
-import ru.litsey2.cuttesseract.MyGeom.Segment4d;
+import ru.litsey2.cuttesseract.geometry.Point2d;
+import ru.litsey2.cuttesseract.geometry.Point4d;
+import ru.litsey2.cuttesseract.geometry.Segment2d;
+import ru.litsey2.cuttesseract.geometry.Segment4d;
 
 public class CubeCut4dFrame {
 
 	JFrame frame;
 
-	Set<Segment4d> segments = new TreeSet<Segment4d>();
+	PointRotator pointRotator = new PointRotator();
 
 	Color X_COLOR = Color.RED;
 	Color Y_COLOR = Color.GREEN;
@@ -33,14 +35,16 @@ public class CubeCut4dFrame {
 
 	void createAndShowGUI() {
 
-		Point4d pointO = new Point4d(0, 0, 0, 0);
+		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(1, 0, 0, 0),
+				X_COLOR));
+		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(0, 1, 0, 0),
+				Y_COLOR));
+		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 1, 0),
+				Z_COLOR));
+		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 0, 1),
+				W_COLOR));
 
-		segments.add(new Segment4d(pointO, new Point4d(1, 0, 0, 0), X_COLOR));
-		segments.add(new Segment4d(pointO, new Point4d(0, 1, 0, 0), Y_COLOR));
-		segments.add(new Segment4d(pointO, new Point4d(0, 0, 1, 0), Z_COLOR));
-		segments.add(new Segment4d(pointO, new Point4d(0, 0, 0, 1), W_COLOR));
-
-		frame = new JFrame("CubeCut3d");
+		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		frame.add(new MyPanel());
@@ -68,10 +72,10 @@ public class CubeCut4dFrame {
 
 		int MrotX = 0;
 		int MrotY = 0;
-		
+
 		int RrotX = 0;
 		int RrotY = 0;
-		
+
 		double rotK = 0.01;
 
 		public MyPanel() {
@@ -80,26 +84,26 @@ public class CubeCut4dFrame {
 			addMouseMotionListener(new MouseMotionAdapter() {
 
 				@Override
-				public void mouseDragged(MouseEvent arg0) {
-					if (SwingUtilities.isLeftMouseButton(arg0)) {
-						OX = OoldX + (arg0.getX() - OstartX);
-						OY = OoldY + (arg0.getY() - OstartY);
+				public void mouseDragged(MouseEvent e) {
+					if (SwingUtilities.isLeftMouseButton(e)) {
+						OX = OoldX + (e.getX() - OstartX);
+						OY = OoldY + (e.getY() - OstartY);
 						repaint();
 					}
-					if (SwingUtilities.isRightMouseButton(arg0)) {
-						double deltaX = (arg0.getX() - RrotX) * rotK;
-						double deltaY = (arg0.getY() - RrotY) * rotK;
-						RrotX = arg0.getX();
-						RrotY = arg0.getY();
-						rotateAll(0, 0, deltaY, deltaX);
+					if (SwingUtilities.isRightMouseButton(e)) {
+						double deltaX = (e.getX() - RrotX) * rotK;
+						double deltaY = (e.getY() - RrotY) * rotK;
+						RrotX = e.getX();
+						RrotY = e.getY();
+						pointRotator.addAngles(0, 0, deltaY, deltaX);
 						repaint();
 					}
-					if (SwingUtilities.isMiddleMouseButton(arg0)) {
-						double deltaX = (arg0.getX() - MrotX) * rotK;
-						double deltaY = (arg0.getY() - MrotY) * rotK;
-						MrotX = arg0.getX();
-						MrotY = arg0.getY();
-						rotateAll(deltaX, deltaY, 0, 0);
+					if (SwingUtilities.isMiddleMouseButton(e)) {
+						double deltaX = (e.getX() - MrotX) * rotK;
+						double deltaY = (e.getY() - MrotY) * rotK;
+						MrotX = e.getX();
+						MrotY = e.getY();
+						pointRotator.addAngles(deltaX, deltaY, 0, 0);
 						repaint();
 					}
 				}
@@ -163,75 +167,32 @@ public class CubeCut4dFrame {
 			return (int) (OY - y * MULT);
 		}
 
-		Point4d getRotated(Point4d a, double dx, double dy, double dz, double dw) {
-			Point4d n = new Point4d(a);
-
-			double x = a.x;
-			double y = a.y;
-			double z = a.z;
-			double w = a.w;
-
-			n.x = x * Math.cos(dx) - y * Math.sin(dx);
-			n.y = x * Math.sin(dx) + y * Math.cos(dx);
-
-			x = n.x;
-			y = n.y;
-			z = n.z;
-			w = n.w;
-
-			n.y = y * Math.cos(dy) - z * Math.sin(dy);
-			n.z = y * Math.sin(dy) + z * Math.cos(dy);
-
-			x = n.x;
-			y = n.y;
-			z = n.z;
-			w = n.w;
-
-			n.z = z * Math.cos(dz) - w * Math.sin(dz);
-			n.w = z * Math.sin(dz) + w * Math.cos(dz);
-
-			x = n.x;
-			y = n.y;
-			z = n.z;
-			w = n.w;
-
-			n.w = w * Math.cos(dw) - x * Math.sin(dw);
-			n.x = w * Math.sin(dw) + x * Math.cos(dw);
-
-			return n;
-
-		}
-
-		void rotateAll(double dx, double dy, double dz, double dw) {
-			for (Segment4d s : segments) {
-				s.a = getRotated(s.a, dx, dy, dz, dw);
-				s.b = getRotated(s.b, dx, dy, dz, dw);
-			}
-		}
-
-		void drawSegment4d(Segment4d s, Graphics g) {
+		void drawSegment2d(Segment2d s, Graphics g) {
 			Color oldColor = g.getColor();
-			g.setColor(s.color);
-
-			Point4d a = s.a;
-			Point4d b = s.b;
-
-			int x1 = xc(a.x);
-			int y1 = yc(a.z);
-			int x2 = xc(b.x);
-			int y2 = yc(b.z);
+			g.setColor(s.getColor());
+			
+			Point2d a = s.getA();
+			Point2d b = s.getB();
+			
+			int x1 = xc(a.getX());
+			int y1 = yc(a.getY());
+			int x2 = xc(b.getX());
+			int y2 = yc(b.getY());
+			
 			g.drawLine(x1, y1, x2, y2);
-			int r = 2;
-			g.fillOval(x1 - r, y1 - r, 2 * r, 2 * r);
-			g.fillOval(x2 - r, y2 - r, 2 * r, 2 * r);
+			
 			g.setColor(oldColor);
+			
 		}
-
+		
+		
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 
-			for (Segment4d s : segments) {
-				drawSegment4d(s, g);
+			Set<Segment2d> segments = pointRotator.getSegments2d();
+			
+			for (Segment2d s : segments) {
+				drawSegment2d(s, g);
 			}
 		}
 

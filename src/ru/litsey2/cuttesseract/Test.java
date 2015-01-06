@@ -1,9 +1,7 @@
 package ru.litsey2.cuttesseract;
 
-import ru.litsey2.cuttesseract.MyGeom.Matrix;
-import ru.litsey2.cuttesseract.MyGeom.Plane4d;
-import ru.litsey2.cuttesseract.MyGeom.Point4d;
-import ru.litsey2.cuttesseract.MyGeom.Vector4d;
+import ru.litsey2.cuttesseract.geometry.Plane4d;
+import ru.litsey2.cuttesseract.geometry.Point4d;
 
 public class Test {
 	public static void main(String[] args) {
