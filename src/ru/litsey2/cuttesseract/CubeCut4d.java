@@ -49,9 +49,9 @@ public class CubeCut4d {
 			}
 			
 			Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
-			canvas.segments.add(new Segment4d(new Point4d(0, 0, 0, 0), plane.getNormal(), NORMAL_COLOR));
-			canvas.segments.addAll(makeCut(plane, cube));
-			canvas.segments.addAll(cube.getSegments());
+			canvas.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0), plane.getNormal(), NORMAL_COLOR));
+			canvas.pointRotator.addAll(makeCut(plane, cube));
+			canvas.pointRotator.addAll(cube.getSegments());
 			canvas.frame.repaint();
 
 		} finally {

@@ -24,7 +24,7 @@ public class CubeCut4dFrame {
 
 	JFrame frame;
 
-	Set<Segment4d> segments = new TreeSet<Segment4d>();
+	PointRotator pointRotator = new PointRotator();
 
 	Color X_COLOR = Color.RED;
 	Color Y_COLOR = Color.GREEN;
@@ -33,14 +33,16 @@ public class CubeCut4dFrame {
 
 	void createAndShowGUI() {
 
-		Point4d pointO = new Point4d(0, 0, 0, 0);
+		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(1, 0, 0, 0),
+				X_COLOR));
+		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(0, 1, 0, 0),
+				Y_COLOR));
+		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 1, 0),
+				Z_COLOR));
+		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 0, 1),
+				W_COLOR));
 
-		segments.add(new Segment4d(pointO, new Point4d(1, 0, 0, 0), X_COLOR));
-		segments.add(new Segment4d(pointO, new Point4d(0, 1, 0, 0), Y_COLOR));
-		segments.add(new Segment4d(pointO, new Point4d(0, 0, 1, 0), Z_COLOR));
-		segments.add(new Segment4d(pointO, new Point4d(0, 0, 0, 1), W_COLOR));
-
-		frame = new JFrame("CubeCut3d");
+		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		frame.add(new MyPanel());
@@ -68,16 +70,11 @@ public class CubeCut4dFrame {
 
 		int MrotX = 0;
 		int MrotY = 0;
-		
+
 		int RrotX = 0;
 		int RrotY = 0;
-		
+
 		double rotK = 0.01;
-		
-		double dx = 0;
-		double dy = 0;
-		double dz = 0;
-		double dw = 0;
 
 		public MyPanel() {
 			setBorder(BorderFactory.createLineBorder(Color.black));
@@ -96,8 +93,8 @@ public class CubeCut4dFrame {
 						double deltaY = (e.getY() - RrotY) * rotK;
 						RrotX = e.getX();
 						RrotY = e.getY();
-						dz += deltaY;
-						dw += deltaX;
+						pointRotator.addAngle(2, deltaY);
+						pointRotator.addAngle(3, deltaX);
 						repaint();
 					}
 					if (SwingUtilities.isMiddleMouseButton(e)) {
@@ -105,8 +102,8 @@ public class CubeCut4dFrame {
 						double deltaY = (e.getY() - MrotY) * rotK;
 						MrotX = e.getX();
 						MrotY = e.getY();
-						dx += deltaX;
-						dy += deltaY;
+						pointRotator.addAngle(0, deltaX);
+						pointRotator.addAngle(1, deltaY);
 						repaint();
 					}
 				}
@@ -170,56 +167,14 @@ public class CubeCut4dFrame {
 			return (int) (OY - y * MULT);
 		}
 
-		Point4d getRotated(Point4d a, double dx, double dy, double dz, double dw) {
-			double x = a.getX();
-			double y = a.getY();
-			double z = a.getZ();
-			double w = a.getW();
-			
-			double nx = x;
-			double ny = y;
-			double nz = z;
-			double nw = w;
-
-			nx = x * Math.cos(dx) - y * Math.sin(dx);
-			ny = x * Math.sin(dx) + y * Math.cos(dx);
-
-			x = nx;
-			y = ny;
-			z = nz;
-			w = nw;
-
-			ny = y * Math.cos(dy) - z * Math.sin(dy);
-			nz = y * Math.sin(dy) + z * Math.cos(dy);
-
-			x = nx;
-			y = ny;
-			z = nz;
-			w = nw;
-
-			nz = z * Math.cos(dz) - w * Math.sin(dz);
-			nw = z * Math.sin(dz) + w * Math.cos(dz);
-
-			x = nx;
-			y = ny;
-			z = nz;
-			w = nw;
-
-			nw = w * Math.cos(dw) - x * Math.sin(dw);
-			nx = w * Math.sin(dw) + x * Math.cos(dw);
-
-			return new Point4d(nx, ny, nz, nw);
-
-		}
-
+		
 
 		void drawSegment4d(Segment4d s, Graphics g) {
 			Color oldColor = g.getColor();
 			g.setColor(s.getColor());
 
-			
-			Point4d a = getRotated(s.getA(), dx, dy, dz, dw);
-			Point4d b = getRotated(s.getB(), dx, dy, dz, dw);
+			Point4d a = PointRotator.getRotated(s.getA(), dx, dy, dz, dw);
+			Point4d b = PointRotator.getRotated(s.getB(), dx, dy, dz, dw);
 
 			int x1 = xc(a.getX());
 			int y1 = yc(a.getZ());

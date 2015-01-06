@@ -7,7 +7,7 @@ public class Point4d implements Comparable<Point4d> {
 	protected final double z;
 	protected final double w;
 
-	static final Point4d ZERO = new Point4d(0, 0, 0, 0);
+	public static final Point4d ZERO = new Point4d(0, 0, 0, 0);
 
 	public Point4d(double x, double y, double z, double w) {
 		this.x = x;
