@@ -2,8 +2,8 @@ package ru.litsey2.cuttesseract.geometry;
 
 
 public class Point2d implements Comparable<Point2d> {
-	protected final double x;
-	protected final double y;
+	private final double x;
+	private final double y;
 
 	public Point2d(double x, double y) {
 		this.x = x;
@@ -12,15 +12,23 @@ public class Point2d implements Comparable<Point2d> {
 
 	@Override
 	public int compareTo(Point2d b) {
-		if (Geometry.compareEps(x, b.x) == 0) {
-			if (Geometry.compareEps(y, b.y) == 0) {
+		if (Geometry.compareEps(getX(), b.getX()) == 0) {
+			if (Geometry.compareEps(getY(), b.getY()) == 0) {
 				return 0;
 			} else {
-				return Double.compare(y, b.y);
+				return Double.compare(getY(), b.getY());
 			}
 		} else {
-			return Double.compare(x, b.x);
+			return Double.compare(getX(), b.getX());
 		}
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public double getY() {
+		return y;
 	}
 
 }

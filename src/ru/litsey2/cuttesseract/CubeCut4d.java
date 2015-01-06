@@ -18,7 +18,7 @@ public class CubeCut4d {
 	static final Color CUBE_COLOR = Color.BLACK;
 	static final Color CUT_COLOR = Color.MAGENTA;
 	static final Color NORMAL_COLOR = Color.GRAY;
-	
+
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		in.useLocale(Locale.US);
@@ -27,8 +27,7 @@ public class CubeCut4d {
 		canvas.createAndShowGUI();
 
 		Cube4d cube = new Cube4d(1, CUBE_COLOR);
-		
-		
+
 		try {
 
 			Point4d[] pts = new Point4d[4];
@@ -47,9 +46,10 @@ public class CubeCut4d {
 					out.println("Try again plz. Point #" + i);
 				}
 			}
-			
+
 			Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
-			canvas.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0), plane.getNormal(), NORMAL_COLOR));
+			canvas.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0),
+					plane.getNormal(), NORMAL_COLOR));
 			canvas.pointRotator.addAll(makeCut(plane, cube));
 			canvas.pointRotator.addAll(cube.getSegments());
 			canvas.frame.repaint();
@@ -67,7 +67,8 @@ public class CubeCut4d {
 				if (!cube.getHasEdge()[i][j]) {
 					continue;
 				}
-				Segment4d e = new Segment4d(cube.getVertices()[i], cube.getVertices()[j]);
+				Segment4d e = new Segment4d(cube.getVertices()[i],
+						cube.getVertices()[j]);
 				ArrayList<Point4d> inter = e.intersectWithPlane(cut);
 				cutPoints.addAll(inter);
 			}
@@ -86,19 +87,19 @@ public class CubeCut4d {
 					continue;
 				}
 				int sameness = 0;
-				if(a.getX() == b.getX() && (a.getX() == 1 || a.getX() == -1)){
+				if (a.getX() == b.getX() && (a.getX() == 1 || a.getX() == -1)) {
 					sameness++;
 				}
-				if(a.getY() == b.getY() && (a.getY() == 1 || a.getY() == -1)) {
+				if (a.getY() == b.getY() && (a.getY() == 1 || a.getY() == -1)) {
 					sameness++;
 				}
-				if(a.getZ() == b.getZ() && (a.getZ() == 1 || a.getZ() == -1)) {
+				if (a.getZ() == b.getZ() && (a.getZ() == 1 || a.getZ() == -1)) {
 					sameness++;
 				}
-				if(a.getW() == b.getW() && (a.getW() == 1 || a.getW() == -1)) {
+				if (a.getW() == b.getW() && (a.getW() == 1 || a.getW() == -1)) {
 					sameness++;
 				}
-				if(sameness == 2) {
+				if (sameness == 2) {
 					cutEdges.add(new Segment4d(a, b, CUT_COLOR));
 				}
 			}

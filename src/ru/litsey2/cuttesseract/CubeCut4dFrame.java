@@ -17,7 +17,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import ru.litsey2.cuttesseract.geometry.Point2d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
+import ru.litsey2.cuttesseract.geometry.Segment2d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
 
 public class CubeCut4dFrame {
@@ -93,8 +95,7 @@ public class CubeCut4dFrame {
 						double deltaY = (e.getY() - RrotY) * rotK;
 						RrotX = e.getX();
 						RrotY = e.getY();
-						pointRotator.addAngle(2, deltaY);
-						pointRotator.addAngle(3, deltaX);
+						pointRotator.addAngles(0, 0, deltaY, deltaX);
 						repaint();
 					}
 					if (SwingUtilities.isMiddleMouseButton(e)) {
@@ -102,8 +103,7 @@ public class CubeCut4dFrame {
 						double deltaY = (e.getY() - MrotY) * rotK;
 						MrotX = e.getX();
 						MrotY = e.getY();
-						pointRotator.addAngle(0, deltaX);
-						pointRotator.addAngle(1, deltaY);
+						pointRotator.addAngles(deltaX, deltaY, 0, 0);
 						repaint();
 					}
 				}
@@ -169,29 +169,50 @@ public class CubeCut4dFrame {
 
 		
 
-		void drawSegment4d(Segment4d s, Graphics g) {
+//		void drawSegment4d(Segment4d s, Graphics g) {
+//			Color oldColor = g.getColor();
+//			g.setColor(s.getColor());
+//
+//			Point4d a = PointRotator.getRotated(s.getA(), dx, dy, dz, dw);
+//			Point4d b = PointRotator.getRotated(s.getB(), dx, dy, dz, dw);
+//
+//			int x1 = xc(a.getX());
+//			int y1 = yc(a.getZ());
+//			int x2 = xc(b.getX());
+//			int y2 = yc(b.getZ());
+//			g.drawLine(x1, y1, x2, y2);
+//			int r = 2;
+//			g.fillOval(x1 - r, y1 - r, 2 * r, 2 * r);
+//			g.fillOval(x2 - r, y2 - r, 2 * r, 2 * r);
+//			g.setColor(oldColor);
+//		}
+
+		void drawSegment2d(Segment2d s, Graphics g) {
 			Color oldColor = g.getColor();
 			g.setColor(s.getColor());
-
-			Point4d a = PointRotator.getRotated(s.getA(), dx, dy, dz, dw);
-			Point4d b = PointRotator.getRotated(s.getB(), dx, dy, dz, dw);
-
+			
+			Point2d a = s.getA();
+			Point2d b = s.getB();
+			
 			int x1 = xc(a.getX());
-			int y1 = yc(a.getZ());
+			int y1 = yc(a.getY());
 			int x2 = xc(b.getX());
-			int y2 = yc(b.getZ());
+			int y2 = yc(b.getY());
+			
 			g.drawLine(x1, y1, x2, y2);
-			int r = 2;
-			g.fillOval(x1 - r, y1 - r, 2 * r, 2 * r);
-			g.fillOval(x2 - r, y2 - r, 2 * r, 2 * r);
+			
 			g.setColor(oldColor);
+			
 		}
-
+		
+		
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 
-			for (Segment4d s : segments) {
-				drawSegment4d(s, g);
+			Set<Segment2d> segments = pointRotator.getSegments2d();
+			
+			for (Segment2d s : segments) {
+				drawSegment2d(s, g);
 			}
 		}
 
