@@ -172,7 +172,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		double deg = 0.1;
+		double deg = Math.PI / 10;
 		char ch = e.getKeyChar();
 		double a = 0;
 		double b = 0;

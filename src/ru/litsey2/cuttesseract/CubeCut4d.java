@@ -1,6 +1,5 @@
 package ru.litsey2.cuttesseract;
 
-import java.awt.Color;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -15,10 +14,6 @@ import ru.litsey2.cuttesseract.geometry.Segment4d;
 
 public class CubeCut4d {
 
-	static final Color CUBE_COLOR = Color.BLACK;
-	static final Color CUT_COLOR = Color.MAGENTA;
-	static final Color NORMAL_COLOR = Color.GRAY;
-
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		in.useLocale(Locale.US);
@@ -26,7 +21,7 @@ public class CubeCut4d {
 		Panel4d canvas = new Panel4d();
 		canvas.createAndShowGUI();
 
-		Cube4d cube = new Cube4d(1, CUBE_COLOR);
+		Cube4d cube = new Cube4d(1, Constants.CUBE_COLOR);
 
 		try {
 
@@ -48,10 +43,9 @@ public class CubeCut4d {
 			}
 
 			Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
-			Set<Segment4d> segments = new TreeSet<Segment4d>();
-			
+
 			canvas.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0),
-					plane.getNormal(), NORMAL_COLOR));
+					plane.getNormal(), Constants.NORMAL_COLOR));
 			canvas.planeNormal = plane.getNormal();
 			canvas.pointRotator.addAll(makeCut(plane, cube));
 			canvas.pointRotator.addAll(cube.getSegments());
@@ -103,7 +97,7 @@ public class CubeCut4d {
 					sameness++;
 				}
 				if (sameness == 2) {
-					cutEdges.add(new Segment4d(a, b, CUT_COLOR));
+					cutEdges.add(new Segment4d(a, b, Constants.CUT_COLOR));
 				}
 			}
 		}
