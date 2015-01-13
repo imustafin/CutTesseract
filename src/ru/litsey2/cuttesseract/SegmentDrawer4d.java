@@ -16,8 +16,11 @@ import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import ru.litsey2.cuttesseract.geometry.Geometry;
 import ru.litsey2.cuttesseract.geometry.Point2d;
 import ru.litsey2.cuttesseract.geometry.Segment2d;
+import ru.litsey2.cuttesseract.geometry.Segment4d;
+import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 @SuppressWarnings("serial")
 class SegmentDrawer4d extends JPanel implements MouseMotionListener,
@@ -50,7 +53,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 	double rotK = 0.01;
 
 	PointRotator pointRotator;
-	
+
 	public SegmentDrawer4d(PointRotator pointRotator) {
 		this.pointRotator = pointRotator;
 		this.addMouseMotionListener(this);
@@ -59,6 +62,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		this.addKeyListener(this);
 		this.setFocusable(true);
 		setBackground(Color.gray);
+		repaint();
 	}
 
 	public Dimension getPreferredSize() {
@@ -167,12 +171,12 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 	@Override
 	public void keyTyped(KeyEvent e) {
 		System.err.println(e.getKeyChar());
-		
+
 	}
-	
+
 	@Override
 	public void keyPressed(KeyEvent e) {
-		double deg = Math.PI / 10;
+		double deg = 0.1248768;
 		char ch = e.getKeyChar();
 		double a = 0;
 		double b = 0;
@@ -202,8 +206,13 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 			break;
 		case 'f':
 			d += deg;
-//		case 'z':
-//			rotNormalToPlane();
+			break;
+		case 'z':
+			rotateNormal();
+			break;
+		case 'x':
+			System.err.println(new Vector4d(pointRotator.getNormalSegment()));
+			break;
 		default:
 			break;
 		}
@@ -211,12 +220,21 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		repaint();
 	}
 
-//	private void rotNormalToPlane() {
-//		double a0 = Math.atan(planeNormal.getY() / planeNormal.getX());
-//		pointRotator.addAngles(a0, 0, 0, 0);
-//		double a1 = Math.atan(a)
-//		tan( angles[1])= z/y'
-//	}
+	/**
+	 * Rotates all segments so that plane normal points to us
+	 */
+	void rotateNormal() {
+		Vector4d n = new Vector4d(pointRotator.getNormalSegment());
+		if (Geometry.compareEps(0, n.getY()) != 0) {
+			double a0 = Math.atan(n.getX() / n.getY());
+			pointRotator.addAngles(a0, 0, 0, 0);
+		}
+		n = new Vector4d(pointRotator.getNormalSegment());
+		if (Geometry.compareEps(0, n.getZ()) != 0) {
+			double a1 = Math.atan(n.getY() / n.getZ());
+			pointRotator.addAngles(0, a1, 0, 0);
+		}
+	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {

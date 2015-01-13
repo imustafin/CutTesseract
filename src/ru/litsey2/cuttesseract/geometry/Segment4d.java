@@ -23,6 +23,12 @@ public class Segment4d implements Comparable<Segment4d> {
 		this(a, b, Color.BLACK);
 	}
 
+	public Segment4d(Segment4d s) {
+		this.a = s.a;
+		this.b = s.b;
+		this.color = s.color;
+	}
+
 	@Override
 	public int compareTo(Segment4d z) {
 		if (getA().compareTo(z.getA()) == 0) {

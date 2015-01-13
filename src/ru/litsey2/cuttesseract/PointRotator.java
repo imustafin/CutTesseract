@@ -23,6 +23,15 @@ public class PointRotator {
 		angles = new double[4];
 		recalc();
 	}
+	
+	Segment4d getNormalSegment() {
+		for(Segment4d s : segments4d) {
+			if(s.getColor().equals(Constants.NORMAL_COLOR)) {
+				return new Segment4d(s);
+			}
+		}
+		return null;
+	}
 
 	public Point4d getRotated(Point4d a) {
 		double x = a.getX();
@@ -67,10 +76,12 @@ public class PointRotator {
 
 	void add(Segment4d e) {
 		segments4d.add(e);
+		recalc();
 	}
 
 	void addAll(Collection<? extends Segment4d> c) {
 		segments4d.addAll(c);
+		recalc();
 	}
 
 	void recalc() {

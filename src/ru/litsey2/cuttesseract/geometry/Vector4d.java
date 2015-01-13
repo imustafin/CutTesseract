@@ -10,6 +10,10 @@ public class Vector4d extends Point4d {
 	public Vector4d(Point4d p) {
 		super(p);
 	}
+	
+	public Vector4d(Segment4d s) {
+		this(s.getA(), s.getB());
+	}
 
 	public Vector4d(double x, double y, double z, double w) {
 		super(x, y, z, w);
