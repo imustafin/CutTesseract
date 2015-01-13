@@ -23,7 +23,7 @@ public class CubeCut4d {
 		Scanner in = new Scanner(System.in);
 		in.useLocale(Locale.US);
 		PrintStream out = new PrintStream(System.out);
-		CubeCut4dFrame canvas = new CubeCut4dFrame();
+		Panel4d canvas = new Panel4d();
 		canvas.createAndShowGUI();
 
 		Cube4d cube = new Cube4d(1, CUBE_COLOR);
@@ -48,8 +48,11 @@ public class CubeCut4d {
 			}
 
 			Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
+			Set<Segment4d> segments = new TreeSet<Segment4d>();
+			
 			canvas.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0),
 					plane.getNormal(), NORMAL_COLOR));
+			canvas.planeNormal = plane.getNormal();
 			canvas.pointRotator.addAll(makeCut(plane, cube));
 			canvas.pointRotator.addAll(cube.getSegments());
 			canvas.frame.repaint();

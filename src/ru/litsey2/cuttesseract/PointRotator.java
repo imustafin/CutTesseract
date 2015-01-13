@@ -8,6 +8,7 @@ import ru.litsey2.cuttesseract.geometry.Point2d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment2d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
+import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 public class PointRotator {
 
@@ -20,6 +21,7 @@ public class PointRotator {
 		segments4d = new TreeSet<Segment4d>();
 		segments2d = new TreeSet<Segment2d>();
 		angles = new double[4];
+		recalc();
 	}
 
 	public Point4d getRotated(Point4d a) {
@@ -63,29 +65,33 @@ public class PointRotator {
 		return new Point4d(nx, ny, nz, nw);
 	}
 
+	void add(Segment4d e) {
+		segments4d.add(e);
+	}
+
+	void addAll(Collection<? extends Segment4d> c) {
+		segments4d.addAll(c);
+	}
+
 	void recalc() {
 		segments2d.clear();
+		Set<Segment4d> nSegments4d = new TreeSet<Segment4d>();
 		for (Segment4d s : segments4d) {
 			Point4d a4 = getRotated(s.getA());
 			Point4d b4 = getRotated(s.getB());
+			nSegments4d.add(new Segment4d(a4, b4, s.getColor()));
 			Point2d a2 = new Point2d(a4.getX(), a4.getY());
 			Point2d b2 = new Point2d(b4.getX(), b4.getY());
 			segments2d.add(new Segment2d(a2, b2, s.getColor()));
+		}
+		segments4d = nSegments4d;
+		for (int i = 0; i < angles.length; i++) {
+			angles[i] = 0;
 		}
 	}
 
 	public Set<Segment2d> getSegments2d() {
 		return new TreeSet<Segment2d>(segments2d);
-	}
-
-	public void add(Segment4d e) {
-		segments4d.add(e);
-		recalc();
-	}
-
-	public void addAll(Collection<? extends Segment4d> col) {
-		segments4d.addAll(col);
-		recalc();
 	}
 
 	public void addAngles(double r1, double r2, double r3, double r4) {

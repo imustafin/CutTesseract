@@ -22,7 +22,7 @@ public class Segment2d implements Comparable<Segment2d> {
 	public int compareTo(Segment2d z) {
 		if (a.compareTo(z.a) == 0) {
 			if (b.compareTo(z.b) == 0) {
-				return 0;
+				return Integer.compare(this.color.getRGB(), z.color.getRGB());
 			} else {
 				return b.compareTo(z.b);
 			}

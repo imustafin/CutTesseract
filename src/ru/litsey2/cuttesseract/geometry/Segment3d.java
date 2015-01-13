@@ -68,7 +68,7 @@ public class Segment3d implements Comparable<Segment3d> {
 	public int compareTo(Segment3d z) {
 		if (a.compareTo(z.a) == 0) {
 			if (b.compareTo(z.b) == 0) {
-				return 0;
+				return Integer.compare(this.color.getRGB(), z.color.getRGB());
 			} else {
 				return b.compareTo(z.b);
 			}

@@ -27,7 +27,7 @@ public class Segment4d implements Comparable<Segment4d> {
 	public int compareTo(Segment4d z) {
 		if (getA().compareTo(z.getA()) == 0) {
 			if (getB().compareTo(z.getB()) == 0) {
-				return 0;
+				return Integer.compare(this.color.getRGB(), z.color.getRGB());
 			} else {
 				return getB().compareTo(z.getB());
 			}
