@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
+import ru.litsey2.cuttesseract.geometry.Geometry;
 import ru.litsey2.cuttesseract.geometry.Point2d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment2d;
@@ -23,10 +24,10 @@ public class PointRotator {
 		angles = new double[4];
 		recalc();
 	}
-	
+
 	Segment4d getNormalSegment() {
-		for(Segment4d s : segments4d) {
-			if(s.getColor().equals(Constants.NORMAL_COLOR)) {
+		for (Segment4d s : segments4d) {
+			if (s.getColor().equals(Constants.NORMAL_COLOR)) {
 				return new Segment4d(s);
 			}
 		}
@@ -111,6 +112,34 @@ public class PointRotator {
 		angles[2] += r3;
 		angles[3] += r4;
 		recalc();
+	}
+
+	/**
+	 * Rotates all segments so that plane normal points to us
+	 */
+	void rotateNormalToUs() {
+		Vector4d n = new Vector4d(getNormalSegment()).getNormalized();
+		if (Geometry.compareEps(0, n.getY()) != 0) {
+			double a0 = Math.atan(n.getX() / n.getY());
+			addAngles(a0, 0, 0, 0);
+		}
+		n = new Vector4d(getNormalSegment()).getNormalized();
+		if (Geometry.compareEps(0, n.getZ()) != 0) {
+			double a1 = Math.atan(n.getY() / n.getZ());
+			addAngles(0, a1, 0, 0);
+		}
+		n = new Vector4d(getNormalSegment()).getNormalized();
+		if (Geometry.compareEps(0, n.getW()) != 0) {
+			double a2 = Math.atan(n.getZ() / n.getW());
+			addAngles(0, 0, a2, 0);
+		}
+		n = new Vector4d(getNormalSegment()).getNormalized();
+		System.err.println(n);
+//		if (Geometry.compareEps(0, n.getX()) != 0) {
+//			System.err.println(n);
+////			double a3 = Math.atan(n.getX() / n.getZ());
+////			addAngles(0, 0, 0, a3);
+//		}
 	}
 
 }

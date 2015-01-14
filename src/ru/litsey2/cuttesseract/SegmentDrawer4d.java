@@ -208,7 +208,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 			d += deg;
 			break;
 		case 'z':
-			rotateNormal();
+			pointRotator.rotateNormalToUs();
 			break;
 		case 'x':
 			System.err.println(new Vector4d(pointRotator.getNormalSegment()));
@@ -220,21 +220,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		repaint();
 	}
 
-	/**
-	 * Rotates all segments so that plane normal points to us
-	 */
-	void rotateNormal() {
-		Vector4d n = new Vector4d(pointRotator.getNormalSegment());
-		if (Geometry.compareEps(0, n.getY()) != 0) {
-			double a0 = Math.atan(n.getX() / n.getY());
-			pointRotator.addAngles(a0, 0, 0, 0);
-		}
-		n = new Vector4d(pointRotator.getNormalSegment());
-		if (Geometry.compareEps(0, n.getZ()) != 0) {
-			double a1 = Math.atan(n.getY() / n.getZ());
-			pointRotator.addAngles(0, a1, 0, 0);
-		}
-	}
+	
 
 	@Override
 	public void keyReleased(KeyEvent e) {
