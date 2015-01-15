@@ -16,6 +16,15 @@ public class Plane4d {
 		e = cfs[4];
 	}
 
+	public Plane4d(Point4d p, Vector4d n) {
+		a = n.x;
+		b = n.y;
+		c = n.z;
+		d = n.w;
+		
+		e = -(a * p.x + b * p.y + c * p.z + d * p.w);
+	}
+
 	@Override
 	public String toString() {
 		return "Plane4d [a=" + a + ", b=" + b + ", c=" + c + ", d=" + d

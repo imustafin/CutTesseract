@@ -1,6 +1,7 @@
 package ru.litsey2.cuttesseract;
 
 import java.io.PrintStream;
+import java.nio.channels.ReadPendingException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
@@ -11,11 +12,21 @@ import ru.litsey2.cuttesseract.geometry.Cube4d;
 import ru.litsey2.cuttesseract.geometry.Plane4d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
+import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 public class CubeCut4d {
 
+	static Scanner in = new Scanner(System.in);
+
+	static Point4d readPoint4d() {
+		int x = in.nextInt();
+		int y = in.nextInt();
+		int z = in.nextInt();
+		int w = in.nextInt();
+		return new Point4d(x, y, z, w);
+	}
+
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
 		in.useLocale(Locale.US);
 		PrintStream out = new PrintStream(System.out);
 		Panel4d canvas = new Panel4d();
@@ -25,25 +36,32 @@ public class CubeCut4d {
 
 		try {
 
+			out.println("Enter input mode\n"
+					+ "2 for point and normal vector\n" + "4 for 4 points4d");
+
+			int mode = in.nextInt();
+			
+			Plane4d plane;
+			
+			if(mode != 2 && mode != 4) {
+				throw new IllegalArgumentException("Wrong mode " + mode);
+			}
+			if(mode == 4) {
 			Point4d[] pts = new Point4d[4];
 
 			out.println("We need 4 4d points");
 			for (int i = 0; i < 4; i++) {
-				try {
-					int x = in.nextInt();
-					int y = in.nextInt();
-					int z = in.nextInt();
-					int w = in.nextInt();
-					pts[i] = new Point4d(x, y, z, w);
-				} catch (Exception e) {
-					i--;
-					e.printStackTrace();
-					out.println("Try again plz. Point #" + i);
-				}
+				Point4d p = readPoint4d();
+				pts[i] = p;
 			}
 
-			Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
-
+			plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
+			} else {
+				Point4d point = readPoint4d();
+				Vector4d n = new Vector4d(readPoint4d());
+				
+				plane = new Plane4d(point, n);
+			}
 			canvas.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0),
 					plane.getNormal(), Constants.NORMAL_COLOR));
 			canvas.planeNormal = plane.getNormal();
@@ -96,7 +114,7 @@ public class CubeCut4d {
 				if (a.getW() == b.getW() && (a.getW() == 1 || a.getW() == -1)) {
 					sameness++;
 				}
-				if (sameness == 2) {
+				if (sameness >= 2) {
 					cutEdges.add(new Segment4d(a, b, Constants.CUT_COLOR));
 				}
 			}

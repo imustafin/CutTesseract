@@ -128,10 +128,21 @@ public class PointRotator {
 			double a0 = Math.atan(n.getX() / n.getY());
 			addAngles(a0, 0, 0, 0);
 		}
+		
+		
+		n = new Vector4d(getNormalSegment()).getNormalized();
+		if(Geometry.compareEps(0, n.getY()) != 0 && Geometry.compareEps(0, n.getZ()) == 0) {
+			addAngles(0, Math.PI / 2, 0, 0);
+		}
 		n = new Vector4d(getNormalSegment()).getNormalized();
 		if (Geometry.compareEps(0, n.getZ()) != 0) {
 			double a1 = Math.atan(n.getY() / n.getZ());
 			addAngles(0, a1, 0, 0);
+		}
+		
+		n = new Vector4d(getNormalSegment()).getNormalized();
+		if(Geometry.compareEps(0, n.getZ()) != 0 && Geometry.compareEps(0, n.getW()) == 0) {
+			addAngles(0, 0, Math.PI / 2, 0);
 		}
 		n = new Vector4d(getNormalSegment()).getNormalized();
 		if (Geometry.compareEps(0, n.getW()) != 0) {
