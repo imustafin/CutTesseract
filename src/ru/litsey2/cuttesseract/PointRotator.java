@@ -119,6 +119,11 @@ public class PointRotator {
 	 */
 	void rotateNormalToUs() {
 		Vector4d n = new Vector4d(getNormalSegment()).getNormalized();
+		//x!=0,y=0   =>  a0=90
+		if(Geometry.compareEps(0, n.getX()) != 0 && Geometry.compareEps(0, n.getY()) == 0) {
+			addAngles(Math.PI / 2, 0, 0, 0);
+		}
+		n = new Vector4d(getNormalSegment()).getNormalized();
 		if (Geometry.compareEps(0, n.getY()) != 0) {
 			double a0 = Math.atan(n.getX() / n.getY());
 			addAngles(a0, 0, 0, 0);
@@ -133,13 +138,6 @@ public class PointRotator {
 			double a2 = Math.atan(n.getZ() / n.getW());
 			addAngles(0, 0, a2, 0);
 		}
-		n = new Vector4d(getNormalSegment()).getNormalized();
-		System.err.println(n);
-//		if (Geometry.compareEps(0, n.getX()) != 0) {
-//			System.err.println(n);
-////			double a3 = Math.atan(n.getX() / n.getZ());
-////			addAngles(0, 0, 0, a3);
-//		}
 	}
 
 }
