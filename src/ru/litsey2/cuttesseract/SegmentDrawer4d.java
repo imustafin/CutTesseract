@@ -122,7 +122,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 			double deltaY = (e.getY() - RrotY) * rotK;
 			RrotX = e.getX();
 			RrotY = e.getY();
-			pointRotator.addAngles(0, 0, deltaY, deltaX);
+			pointRotator.addAngles(0, 0, deltaY, deltaX, 0);
 			repaint();
 		}
 		if (SwingUtilities.isMiddleMouseButton(e)) {
@@ -130,7 +130,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 			double deltaY = (e.getY() - MrotY) * rotK;
 			MrotX = e.getX();
 			MrotY = e.getY();
-			pointRotator.addAngles(deltaX, deltaY, 0, 0);
+			pointRotator.addAngles(0, deltaY, 0, 0, deltaX);
 			repaint();
 		}
 
@@ -225,7 +225,8 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		default:
 			break;
 		}
-		pointRotator.addAngles(a, b, c, d);
+		//TODO: add listener for r4
+		pointRotator.addAngles(a, b, c, d, 0);
 		repaint();
 	}
 

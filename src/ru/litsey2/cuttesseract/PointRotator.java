@@ -21,7 +21,7 @@ public class PointRotator {
 	public PointRotator() {
 		segments4d = new TreeSet<Segment4d>();
 		segments2d = new TreeSet<Segment2d>();
-		angles = new double[4];
+		angles = new double[5];
 		recalc();
 	}
 
@@ -72,6 +72,14 @@ public class PointRotator {
 		nw = w * Math.cos(angles[3]) - x * Math.sin(angles[3]);
 		nx = w * Math.sin(angles[3]) + x * Math.cos(angles[3]);
 
+		x = nx;
+		y = ny;
+		z = nz;
+		w = nw;
+
+		nx = x * Math.cos(angles[4]) - z * Math.sin(angles[4]);
+		nz = x * Math.sin(angles[4]) + z * Math.cos(angles[4]);
+		
 		return new Point4d(nx, ny, nz, nw);
 	}
 
@@ -106,11 +114,12 @@ public class PointRotator {
 		return new TreeSet<Segment2d>(segments2d);
 	}
 
-	public void addAngles(double r1, double r2, double r3, double r4) {
-		angles[0] += r1;
-		angles[1] += r2;
-		angles[2] += r3;
-		angles[3] += r4;
+	public void addAngles(double r0, double r1, double r2, double r3, double r4) {
+		angles[0] += r0;
+		angles[1] += r1;
+		angles[2] += r2;
+		angles[3] += r3;
+		angles[4] += r4;
 		recalc();
 	}
 
@@ -121,33 +130,33 @@ public class PointRotator {
 		Vector4d n = new Vector4d(getNormalSegment()).getNormalized();
 		//x!=0,y=0   =>  a0=90
 		if(Geometry.compareEps(0, n.getX()) != 0 && Geometry.compareEps(0, n.getY()) == 0) {
-			addAngles(Math.PI / 2, 0, 0, 0);
+			addAngles(Math.PI / 2, 0, 0, 0, 0);
 		}
 		n = new Vector4d(getNormalSegment()).getNormalized();
 		if (Geometry.compareEps(0, n.getY()) != 0) {
 			double a0 = Math.atan(n.getX() / n.getY());
-			addAngles(a0, 0, 0, 0);
+			addAngles(a0, 0, 0, 0, 0);
 		}
 		
 		
 		n = new Vector4d(getNormalSegment()).getNormalized();
 		if(Geometry.compareEps(0, n.getY()) != 0 && Geometry.compareEps(0, n.getZ()) == 0) {
-			addAngles(0, Math.PI / 2, 0, 0);
+			addAngles(0, Math.PI / 2, 0, 0, 0);
 		}
 		n = new Vector4d(getNormalSegment()).getNormalized();
 		if (Geometry.compareEps(0, n.getZ()) != 0) {
 			double a1 = Math.atan(n.getY() / n.getZ());
-			addAngles(0, a1, 0, 0);
+			addAngles(0, a1, 0, 0, 0);
 		}
 		
 		n = new Vector4d(getNormalSegment()).getNormalized();
 		if(Geometry.compareEps(0, n.getZ()) != 0 && Geometry.compareEps(0, n.getW()) == 0) {
-			addAngles(0, 0, Math.PI / 2, 0);
+			addAngles(0, 0, Math.PI / 2, 0, 0);
 		}
 		n = new Vector4d(getNormalSegment()).getNormalized();
 		if (Geometry.compareEps(0, n.getW()) != 0) {
 			double a2 = Math.atan(n.getZ() / n.getW());
-			addAngles(0, 0, a2, 0);
+			addAngles(0, 0, a2, 0, 0);
 		}
 	}
 
