@@ -29,10 +29,8 @@ public class CubeCut4d {
 	public static void main(String[] args) {
 		in.useLocale(Locale.US);
 		PrintStream out = new PrintStream(System.out);
-		Panel4d canvas = new Panel4d();
-		canvas.createAndShowGUI();
 
-		Cube4d cube = new Cube4d(1, Constants.CUBE_COLOR);
+		Cube4d cube = new Cube4d(1, Colors.CUBE_COLOR);
 
 		try {
 
@@ -40,30 +38,34 @@ public class CubeCut4d {
 					+ "2 for point and normal vector\n" + "4 for 4 points4d");
 
 			int mode = in.nextInt();
-			
+
 			Plane4d plane;
-			
-			if(mode != 2 && mode != 4) {
+
+			if (mode != 2 && mode != 4) {
 				throw new IllegalArgumentException("Wrong mode " + mode);
 			}
-			if(mode == 4) {
-			Point4d[] pts = new Point4d[4];
+			if (mode == 4) {
+				Point4d[] pts = new Point4d[4];
 
-			out.println("We need 4 4d points");
-			for (int i = 0; i < 4; i++) {
-				Point4d p = readPoint4d();
-				pts[i] = p;
-			}
+				out.println("We need 4 4d points");
+				for (int i = 0; i < 4; i++) {
+					Point4d p = readPoint4d();
+					pts[i] = p;
+				}
 
-			plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
-			} else {
+				plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
+			} else { // mode == 2
+				out.println("We need Point4d");
 				Point4d point = readPoint4d();
+				out.println("We need Vector4d as Point4d");
 				Vector4d n = new Vector4d(readPoint4d());
 				
 				plane = new Plane4d(point, n);
 			}
+			Panel4d canvas = new Panel4d();
+			canvas.createAndShowGUI();
 			canvas.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0),
-					plane.getNormal(), Constants.NORMAL_COLOR));
+					plane.getNormal(), Colors.NORMAL_COLOR));
 			canvas.planeNormal = plane.getNormal();
 			canvas.pointRotator.addAll(makeCut(plane, cube));
 			canvas.pointRotator.addAll(cube.getSegments());
@@ -115,7 +117,7 @@ public class CubeCut4d {
 					sameness++;
 				}
 				if (sameness >= 2) {
-					cutEdges.add(new Segment4d(a, b, Constants.CUT_COLOR));
+					cutEdges.add(new Segment4d(a, b, Colors.CUT_COLOR));
 				}
 			}
 		}

@@ -27,7 +27,7 @@ public class PointRotator {
 
 	Segment4d getNormalSegment() {
 		for (Segment4d s : segments4d) {
-			if (s.getColor().equals(Constants.NORMAL_COLOR)) {
+			if (s.getColor().equals(Colors.NORMAL_COLOR)) {
 				return new Segment4d(s);
 			}
 		}

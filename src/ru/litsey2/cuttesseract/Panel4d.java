@@ -17,13 +17,13 @@ public class Panel4d {
 	void createAndShowGUI() {
 
 		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(1, 0, 0, 0),
-				Constants.X_COLOR));
+				Colors.X_COLOR));
 		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(0, 1, 0, 0),
-				Constants.Y_COLOR));
+				Colors.Y_COLOR));
 		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 1, 0),
-				Constants.Z_COLOR));
+				Colors.Z_COLOR));
 		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 0, 1),
-				Constants.W_COLOR));
+				Colors.W_COLOR));
 
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

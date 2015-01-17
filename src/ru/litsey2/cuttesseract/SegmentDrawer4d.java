@@ -55,7 +55,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 	PointRotator pointRotator;
 
 	boolean drawCube = true;
-	
+
 	public SegmentDrawer4d(PointRotator pointRotator) {
 		this.pointRotator = pointRotator;
 		this.addMouseMotionListener(this);
@@ -63,7 +63,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		this.addMouseWheelListener(this);
 		this.addKeyListener(this);
 		this.setFocusable(true);
-		setBackground(Color.gray);
+		setBackground(Colors.BACKGROUND_COLOR);
 		repaint();
 	}
 
@@ -103,7 +103,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		Set<Segment2d> segments = pointRotator.getSegments2d();
 
 		for (Segment2d s : segments) {
-			if(s.getColor() == Constants.CUBE_COLOR && !drawCube) {
+			if (s.getColor() == Colors.CUBE_COLOR && !drawCube) {
 				continue;
 			}
 			drawSegment2d(s, g);
@@ -175,8 +175,6 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.err.println(e.getKeyChar());
-
 	}
 
 	@Override
@@ -216,7 +214,8 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 			pointRotator.rotateNormalToUs();
 			break;
 		case 'x':
-			System.err.println(new Vector4d(pointRotator.getNormalSegment()).getNormalized());
+			System.err.println(new Vector4d(pointRotator.getNormalSegment())
+					.getNormalized());
 			break;
 		case 'c':
 			drawCube = !drawCube;
@@ -225,17 +224,13 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		default:
 			break;
 		}
-		//TODO: add listener for r4
+		// TODO: add listener for r4
 		pointRotator.addAngles(a, b, c, d, 0);
 		repaint();
 	}
 
-	
-
 	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void keyReleased(KeyEvent e) {}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
