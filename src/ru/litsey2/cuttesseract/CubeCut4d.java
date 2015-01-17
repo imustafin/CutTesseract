@@ -1,7 +1,6 @@
 package ru.litsey2.cuttesseract;
 
 import java.io.PrintStream;
-import java.nio.channels.ReadPendingException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
