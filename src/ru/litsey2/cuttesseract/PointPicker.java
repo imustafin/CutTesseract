@@ -3,12 +3,15 @@ package ru.litsey2.cuttesseract;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -17,17 +20,25 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.MouseInputListener;
 
+import ru.litsey2.cuttesseract.geometry.Cube4d;
+import ru.litsey2.cuttesseract.geometry.Geometry;
+import ru.litsey2.cuttesseract.geometry.Plane4d;
 import ru.litsey2.cuttesseract.geometry.Point2d;
+import ru.litsey2.cuttesseract.geometry.Point4d;
+import ru.litsey2.cuttesseract.geometry.Segment4d;
+import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 import com.sun.corba.se.impl.interceptors.PICurrent;
 
 @SuppressWarnings("serial")
-public class PointSelector extends JPanel implements MouseMotionListener,
+public class PointPicker extends JPanel implements MouseMotionListener,
 		MouseListener {
 
 	AxisBox axis1;
 	AxisBox axis2;
 	JPanel control;
+
+	SegmentDrawer4d segmentDrawer;
 
 	class AxisBox extends JPanel implements MouseInputListener {
 
@@ -67,6 +78,16 @@ public class PointSelector extends JPanel implements MouseMotionListener,
 			x1 = 0;
 			y1 = 0;
 
+			updateTexts();
+
+		}
+
+		void updateTexts() {
+			x1 = (double) (x - x0) / x0;
+			y1 = (double) (y - y0) / -y0;
+			textX.setText(Double.toString(x1));
+			textY.setText(Double.toString(y1));
+
 		}
 
 		@Override
@@ -97,7 +118,9 @@ public class PointSelector extends JPanel implements MouseMotionListener,
 		public void mousePressed(MouseEvent e) {
 			x = e.getX();
 			y = e.getY();
+			updateTexts();
 			repaint();
+			drawCut();
 		}
 
 		@Override
@@ -116,7 +139,9 @@ public class PointSelector extends JPanel implements MouseMotionListener,
 		public void mouseDragged(MouseEvent e) {
 			x = e.getX();
 			y = e.getY();
+			updateTexts();
 			repaint();
+			drawCut();
 		}
 
 		@Override
@@ -124,11 +149,40 @@ public class PointSelector extends JPanel implements MouseMotionListener,
 		}
 	}
 
-	public PointSelector(Color bgcolor) {
+	Point4d getPoint4d() {
+		return new Point4d(axis1.x1, axis1.y1, axis2.x1, axis2.y1);
+	}
+
+	void drawCut() {
+		Cube4d cube = new Cube4d(1, Colors.CUBE_COLOR);
+		Plane4d plane = new Plane4d(Point4d.ZERO, new Vector4d(getPoint4d()));
+		Set<Segment4d> set = Geometry.makeCut(plane, cube);
+		set.addAll(cube.getSegments());
+		set.add(new Segment4d(Point4d.ZERO, plane.getNormal(),
+				Colors.NORMAL_COLOR));
+
+
+		set.add(new Segment4d(Point4d.ZERO, new Point4d(1, 0, 0, 0),
+				Colors.X_COLOR));
+		set.add(new Segment4d(Point4d.ZERO, new Point4d(0, 1, 0, 0),
+				Colors.Y_COLOR));
+		set.add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 1, 0),
+				Colors.Z_COLOR));
+		set.add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 0, 1),
+				Colors.W_COLOR));
+
+		segmentDrawer.pointRotator.segments4d = set;
+		segmentDrawer.pointRotator.rotateNormalToUs();
+		segmentDrawer.repaint();
+	}
+
+	public PointPicker(Color bgcolor, SegmentDrawer4d segmentDrawer) {
 		setBackground(bgcolor);
 
+		this.segmentDrawer = segmentDrawer;
+
 		setPreferredSize(new Dimension(300, 150));
-		
+
 		NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
 		DecimalFormat decimalFormat = (DecimalFormat) numberFormat;
 		decimalFormat.setGroupingUsed(false);
@@ -157,12 +211,9 @@ public class PointSelector extends JPanel implements MouseMotionListener,
 		layout.setAutoCreateGaps(true);
 		layout.setAutoCreateContainerGaps(true);
 
-		JButton buttonSet = new JButton("Set");
-
 		layout.setHorizontalGroup(layout.createSequentialGroup()
 				.addComponent(textX).addComponent(textY).addComponent(textZ)
-				.addComponent(textW).addComponent(buttonSet).addComponent(axis1).addComponent(axis2));
-
+				.addComponent(textW).addComponent(axis1).addComponent(axis2));
 
 	}
 

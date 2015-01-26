@@ -18,6 +18,7 @@ public class PointRotator {
 
 	private double[] angles;
 
+	
 	public PointRotator() {
 		segments4d = new TreeSet<Segment4d>();
 		segments2d = new TreeSet<Segment2d>();

@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
+import com.sun.corba.se.impl.oa.poa.AOMEntry;
+
 import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 @SuppressWarnings("serial")
@@ -24,29 +26,32 @@ public class MainFrame extends JFrame {
 
 		setLayout(new SpringLayout());
 		
-		SpringLayout controlLayout = new SpringLayout();
+		SpringLayout mainLayout = new SpringLayout();
 		
-		JPanel controlPanel = new JPanel(controlLayout);
+		JPanel mainPanel = new JPanel(mainLayout);
 		
-		PointSelector yellow = new PointSelector(Color.yellow);
-		PointSelector green = new PointSelector(Color.green);
+		SegmentDrawer4d segmentDrawer = new SegmentDrawer4d(pointRotator);
 		
-		controlPanel.add(yellow);
-		controlPanel.add(green);
+		PointPicker pointSelector = new PointPicker(Color.green, segmentDrawer);
 		
-		controlLayout.putConstraint(SpringLayout.NORTH, yellow, 0, SpringLayout.NORTH, controlPanel);
-		controlLayout.putConstraint(SpringLayout.WEST, yellow, 0, SpringLayout.WEST, controlPanel);
-		controlLayout.putConstraint(SpringLayout.EAST, yellow, 0, SpringLayout.EAST, controlPanel);
+		mainPanel.add(segmentDrawer);
 		
-		controlLayout.putConstraint(SpringLayout.SOUTH, green, 0, SpringLayout.SOUTH, controlPanel);
-		controlLayout.putConstraint(SpringLayout.WEST, green, 0, SpringLayout.WEST, controlPanel);
-		controlLayout.putConstraint(SpringLayout.EAST, green, 0, SpringLayout.EAST, controlPanel);
+		mainLayout.putConstraint(SpringLayout.NORTH, segmentDrawer, 0, SpringLayout.NORTH, mainPanel);
+		mainLayout.putConstraint(SpringLayout.SOUTH, segmentDrawer, 0, SpringLayout.NORTH, pointSelector);
+		mainLayout.putConstraint(SpringLayout.EAST, segmentDrawer, 0, SpringLayout.EAST, mainPanel);
+		mainLayout.putConstraint(SpringLayout.WEST, segmentDrawer, 0, SpringLayout.WEST, mainPanel);
+		
+		mainPanel.add(pointSelector);
+		
+		mainLayout.putConstraint(SpringLayout.SOUTH, pointSelector, 0, SpringLayout.SOUTH, mainPanel);
+		mainLayout.putConstraint(SpringLayout.WEST, pointSelector, 0, SpringLayout.WEST, mainPanel);
+		mainLayout.putConstraint(SpringLayout.EAST, pointSelector, 0, SpringLayout.EAST, mainPanel);
 		
 		
 		
 		
 		setLayout(new GridLayout(1, 1));
-		add(controlPanel);
+		add(mainPanel);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
