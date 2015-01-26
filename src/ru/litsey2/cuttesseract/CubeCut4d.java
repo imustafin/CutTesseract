@@ -7,6 +7,8 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.swing.JFrame;
+
 import ru.litsey2.cuttesseract.geometry.Cube4d;
 import ru.litsey2.cuttesseract.geometry.Plane4d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
@@ -40,10 +42,8 @@ public class CubeCut4d {
 
 			Plane4d plane;
 
-			if (mode != 2 && mode != 4) {
-				throw new IllegalArgumentException("Wrong mode " + mode);
-			}
-			if (mode == 4) {
+			switch (mode) {
+			case (4):
 				Point4d[] pts = new Point4d[4];
 
 				out.println("We need 4 4d points");
@@ -51,24 +51,33 @@ public class CubeCut4d {
 					Point4d p = readPoint4d();
 					pts[i] = p;
 				}
-
 				plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
-			} else { // mode == 2
+				break;
+			case (2):
 				out.println("We need Point4d");
 				Point4d point = readPoint4d();
 				out.println("We need Vector4d as Point4d");
 				Vector4d n = new Vector4d(readPoint4d());
-				
+
 				plane = new Plane4d(point, n);
+				break;
+			case (-1) :
+				out.println("A secret debug mode!!");
+				out.println("2");
+				out.println("0 0 0 0");
+				out.println("1 1 1 1");
+				plane = new Plane4d(new Point4d(0, 0, 0, 0), new Vector4d(1, 1, 1, 1));
+				break;
+			default:
+				throw new IllegalArgumentException("No such mode " + mode);
 			}
-			Panel4d canvas = new Panel4d();
-			canvas.createAndShowGUI();
-			canvas.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0),
+			MainFrame mainFrame = new MainFrame();
+			mainFrame.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0),
 					plane.getNormal(), Colors.NORMAL_COLOR));
-			canvas.planeNormal = plane.getNormal();
-			canvas.pointRotator.addAll(makeCut(plane, cube));
-			canvas.pointRotator.addAll(cube.getSegments());
-			canvas.frame.repaint();
+			mainFrame.planeNormal = plane.getNormal();
+			mainFrame.pointRotator.addAll(makeCut(plane, cube));
+			mainFrame.pointRotator.addAll(cube.getSegments());
+			mainFrame.repaint();
 
 		} finally {
 			in.close();
