@@ -8,8 +8,9 @@
 	media="screen">
 <link rel="stylesheet" type="text/css"
 	href="stylesheets/pygment_trac.css" media="screen">
-<link rel="stylesheet" type="text/css" href="stylesheets/print.css"
-	media="print">
+<!--<link rel="stylesheet" type="text/css" href="stylesheets/print.css"
+	media="print">-->
+<script type="text/javascript" src="javascripts/main.js"></script>
 
 <title>CutTesseract by imustafin</title>
 </head>
@@ -17,24 +18,45 @@
 <body>
 
 	<header>
-		<div class="container">
+		<div class="container" name="top">
 			<h1>CutTesseract</h1>
 			<h2>Немного четырёхмерной геометрии</h2>
 
 			<section id="downloads">
-				<a href="downloads/CutTesseract_0.2.zip" class="btn">Скачать
-					v0.2</a> <a href="downloads/CutTesseract.zip" class="btn">Скачать
-					v0.0</a>
+				<a href="downloads/CutTesseract_0.2.zip" class="btn">Скачать v0.2</a>
+				<a href="downloads/CutTesseract.zip" class="btn">Скачать v0.0</a>
 			</section>
 		</div>
 	</header>
-
+	
 	<div class="container">
 		<section id="main_content">
 
+			<!-- menu -->
+			<div class=menu>
+				<a href="javascript:show_hide('menu_list')" class="btn">Menu:</a>
+				<div id="menu_list" style="display:none">
+					<ul>
+					<li><a href="#top">Top</a><hr></li>
+					<li><a href="#post2">Версия 0.2</a><hr></li>
+					<li><a href="#post1">Post</a><hr></li>
+					<li><a href="#installing">Установка</a><hr></li>
+					<li><a href="#using">Использование</a>
+						<ul>
+							<li><a href="#using_v0.0">v0.0</a></li>
+							<li><a href="#using_v0.2">v0.2</a></li>
+						</ul>
+					</li><hr>
+					<li><a href="#download">Скачать</a><hr></li>
+					<li><a href="#screenshots">Скриншоты</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- main body -->
 			<hr>
 			<h1>
-				<a id="post2" class="anchor" href="#post2" aria-hidden="true"><span
+				<a id="post2" class="anchor" name="post2" aria-hidden="true"><span
 					class="octicon octicon-link"></span></a>Версия 0.2
 			</h1>
 			<p>
@@ -50,7 +72,7 @@
 
 			<hr>
 			<h1>
-				<a id="post1" class="anchor" href="#post1" aria-hidden="true"><span
+				<a id="post1" class="anchor" name="post1" aria-hidden="true"><span
 					class="octicon octicon-link"></span></a>STDIN для слабых! Шутка.
 			</h1>
 			<p>
@@ -65,34 +87,38 @@
 
 			<hr>
 			<h1>
-				<a id="cuttesseract" class="anchor" href="#installing"
+				<a id="cuttesseract" class="anchor" name="installing"
 					aria-hidden="true"><span class="octicon octicon-link"></span></a>Установка
-				и использование
 			</h1>
-			<h2>Установка</h2>
 			<p>
 			<ol>
 				<li>Если у вас нет, <a href="https://java.com/ru/download/">скачать
 						JRE</a></li>
-				<li>Скачать программу <a href="downloads/CutTesseract.zip"
-					class="btn">.zip</a></li>
+				<li><a href="#download"
+					class="btn">Скачать программу</a></li>
 				<li>Разархивировать .zip</li>
 				<li>Запустить start.bat</li>
 			</ol>
 			</p>
 
-
-
-			<h2>Использование</h2>
-
+			<hr>
+			<h1>
+				<a id="cuttesseract" class="anchor" name="using"
+					aria-hidden="true"><span class="octicon octicon-link"></span></a>Использование
+			</h1>
+			
+			<h2>
+				<a id="cuttesseract" class="anchor" name="using_v0.0"
+					aria-hidden="true"><span class="octicon octicon-link"></span></a>v0.0
+			</h2>
 			<p>
 			<ol>
-				<li>Далее нужно ввести:
+				<li>После запуска в консоль нужно ввести:
 					<ul>
-						<li>четырехмерную точку и четырехмерный вектор</li>
+						<li><font color=#b5e853>"2"</font> и четырехмерную точку с четырехмерным вектором</li>
 					</ul> либо
 					<ul>
-						<li>4 четырехмерных точки</li>
+						<li><font color=#b5e853>"4"</font> и 4 четырехмерных точки</li>
 					</ul> чтобы задать пространтво сечения и нажать Enter.
 				</li>
 				<li>Потом откроется окно с сечением</li>
@@ -112,16 +138,62 @@
 				</ul>
 			</ol>
 			</p>
+			
+			<h2>
+				<a id="cuttesseract" class="anchor" name="using_v0.2"
+					aria-hidden="true"><span class="octicon octicon-link"></span></a>v0.2
+			</h2>
+			<p>
+			<ol>
+				<li>После запуска в консоль нужно ввести:
+					<ul>
+						<li><font color=#b5e853>"2"</font> и четырехмерную точку с четырехмерным вектором</li>
+					</ul> либо
+					<ul>
+						<li><font color=#b5e853>"4"</font> и 4 четырехмерных точки</li>
+					</ul> либо
+					<ul>
+						<li><font color=#b5e853>"0"</font> (графически)</li>
+					</ul> чтобы задать пространтво сечения и нажать Enter.
+				</li>
+				<li>Потом откроется окно с сечением</li>
+				<li>Управление:</li>
+				<ul>
+					<li>Чтобы передвигать изображение, используйте левую кнопку
+						мыши.</li>
+					<li>Чтобы поворачивать изображение в трехмерном пространстве,
+						используйте правую кнопку мыши.</li>
+					<li>Чтобы скрыть изображение тессеракта нажмите на кнопку <font
+						color=#b5e853>Toggle cube</font>.
+					</li>
+					<li>Чтобы задать четы рехмерный вектор, введите 4 его координаты в специальные поля, затем нажмите кнопку <font
+						color=#b5e853>Set</font>
+					</li>
+				</ul>
+			</ol>
+			</p>			
+			
 			<hr>
 			<h1>
-				<a id="screenshots" class="anchor" href="#screenshots"
+				<a id="screenshots" class="anchor" name="download"
+					aria-hidden="true"><span class="octicon octicon-link"></span></a>Скачать
+			</h1>
+			
+			<a href="downloads/CutTesseract_0.2.zip" class="btn">Скачать v0.2</a>
+			<a href="#using_v0.2">См. как пользоваться v0.2</a><br>
+			<a href="downloads/CutTesseract.zip" class="btn">Скачать v0.0</a>
+			<a href="#using_v0.0">См. как пользоваться v0.0</a><br>
+			
+			<hr>
+			<h1>
+				<a id="screenshots" class="anchor" name="screenshots"
 					aria-hidden="true"><span class="octicon octicon-link"></span></a>Скриншоты
 			</h1>
 
-			<img src="images/screenshots/a1.png" width=100> <img
-				src="images/screenshots/a2.png" width=100> <img
-				src="images/screenshots/a3.png" width=100> <img
-				src="images/screenshots/a4.png" width=100>
+			<a href="images/screenshots/a1.png"><img src="images/screenshots/a1.png" width=100></a>
+			<a href="images/screenshots/a2.png"><img src="images/screenshots/a2.png" width=100></a>
+			<a href="images/screenshots/a3.png"><img src="images/screenshots/a3.png" width=100></a>
+			<a href="images/screenshots/a4.png"><img src="images/screenshots/a4.png" width=100></a>
 		</section>
 
 	</div>
