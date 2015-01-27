@@ -245,3 +245,13 @@ a {
 .cf {
   zoom:1;
 }
+
+/*
+	menu
+*/
+
+.menu {
+	position: fixed;
+	left: 1%;
+	top: 25%;
+}
