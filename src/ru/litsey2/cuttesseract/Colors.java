@@ -11,4 +11,6 @@ public class Colors {
 	public static final Color CUT_COLOR = Color.MAGENTA;
 	public static final Color NORMAL_COLOR = Color.YELLOW;
 	public static final Color BACKGROUND_COLOR = Color.BLACK;
+	
+	public static final Color POINT_COLOR = Color.WHITE;
 }
