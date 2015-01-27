@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -16,15 +18,13 @@ import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import ru.litsey2.cuttesseract.geometry.Geometry;
 import ru.litsey2.cuttesseract.geometry.Point2d;
 import ru.litsey2.cuttesseract.geometry.Segment2d;
-import ru.litsey2.cuttesseract.geometry.Segment4d;
 import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 @SuppressWarnings("serial")
 class SegmentDrawer4d extends JPanel implements MouseMotionListener,
-		MouseListener, MouseWheelListener, KeyListener {
+		MouseListener, MouseWheelListener {
 
 	/**
 	 * 
@@ -61,8 +61,6 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
 		this.addMouseWheelListener(this);
-		this.addKeyListener(this);
-		this.setFocusable(true);
 		setBackground(Colors.BACKGROUND_COLOR);
 		repaint();
 	}
@@ -96,6 +94,11 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		g.setColor(oldColor);
 
 	}
+	
+	void toggleCube() {
+		drawCube = !drawCube;
+		repaint();
+	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -117,19 +120,19 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 			OY = OoldY + (e.getY() - OstartY);
 			repaint();
 		}
+		if (SwingUtilities.isMiddleMouseButton(e)) {
+//			double deltaX = (e.getX() - RrotX) * rotK;
+//			double deltaY = (e.getY() - RrotY) * rotK;
+//			RrotX = e.getX();
+//			RrotY = e.getY();
+//			pointRotator.addAngles(0, 0, deltaY, deltaX, 0);
+//			repaint();
+		}
 		if (SwingUtilities.isRightMouseButton(e)) {
 			double deltaX = (e.getX() - RrotX) * rotK;
 			double deltaY = (e.getY() - RrotY) * rotK;
 			RrotX = e.getX();
 			RrotY = e.getY();
-			pointRotator.addAngles(0, 0, deltaY, deltaX, 0);
-			repaint();
-		}
-		if (SwingUtilities.isMiddleMouseButton(e)) {
-			double deltaX = (e.getX() - MrotX) * rotK;
-			double deltaY = (e.getY() - MrotY) * rotK;
-			MrotX = e.getX();
-			MrotY = e.getY();
 			pointRotator.addAngles(0, deltaY, 0, 0, deltaX);
 			repaint();
 		}
@@ -144,13 +147,13 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 			OoldX = OX;
 			OoldY = OY;
 		}
+		if (SwingUtilities.isMiddleMouseButton(e)) {
+//			RrotX = e.getX();
+//			RrotY = e.getY();
+		}
 		if (SwingUtilities.isRightMouseButton(e)) {
 			RrotX = e.getX();
 			RrotY = e.getY();
-		}
-		if (SwingUtilities.isMiddleMouseButton(e)) {
-			MrotX = e.getX();
-			MrotY = e.getY();
 		}
 
 	}
@@ -172,65 +175,6 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		}
 		repaint();
 	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		double deg = 0.1248768;
-		char ch = e.getKeyChar();
-		double a = 0;
-		double b = 0;
-		double c = 0;
-		double d = 0;
-		switch (ch) {
-		case 'q':
-			a -= +deg;
-			break;
-		case 'w':
-			a += deg;
-			break;
-		case 'a':
-			b -= deg;
-			break;
-		case 's':
-			b += deg;
-			break;
-		case 'e':
-			c -= deg;
-			break;
-		case 'r':
-			c += deg;
-			break;
-		case 'd':
-			d -= deg;
-			break;
-		case 'f':
-			d += deg;
-			break;
-		case 'z':
-			pointRotator.rotateNormalToUs();
-			break;
-		case 'x':
-			System.err.println(new Vector4d(pointRotator.getNormalSegment())
-					.getNormalized());
-			break;
-		case 'c':
-			drawCube = !drawCube;
-			repaint();
-			return;
-		default:
-			break;
-		}
-		// TODO: add listener for r4
-		pointRotator.addAngles(a, b, c, d, 0);
-		repaint();
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
