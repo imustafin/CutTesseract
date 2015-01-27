@@ -18,17 +18,18 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.MouseInputListener;
+import javax.swing.text.BadLocationException;
 
 import ru.litsey2.cuttesseract.geometry.Cube4d;
 import ru.litsey2.cuttesseract.geometry.Geometry;
 import ru.litsey2.cuttesseract.geometry.Plane4d;
-import ru.litsey2.cuttesseract.geometry.Point2d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
 import ru.litsey2.cuttesseract.geometry.Vector4d;
-
-import com.sun.corba.se.impl.interceptors.PICurrent;
 
 @SuppressWarnings("serial")
 public class PointPicker extends JPanel implements MouseMotionListener,
@@ -41,6 +42,8 @@ public class PointPicker extends JPanel implements MouseMotionListener,
 	SegmentDrawer4d segmentDrawer;
 
 	class AxisBox extends JPanel implements MouseInputListener {
+
+		static final int SIZE = 200;
 
 		private Color colorX;
 		private Color colorY;
@@ -56,7 +59,9 @@ public class PointPicker extends JPanel implements MouseMotionListener,
 		JTextField textY;
 
 		AxisBox(Color colorX, Color colorY, JTextField textX, JTextField textY) {
-			setPreferredSize(new Dimension(100, 100));
+			setMinimumSize(new Dimension(SIZE, SIZE));
+			setPreferredSize(new Dimension(SIZE, SIZE));
+			setMaximumSize(new Dimension(SIZE, SIZE));
 
 			setBackground(Colors.BACKGROUND_COLOR);
 
@@ -80,6 +85,20 @@ public class PointPicker extends JPanel implements MouseMotionListener,
 
 			updateTexts();
 
+		}
+
+		void setX(double x2) {
+			x1 = x2;
+			x = (int) (x1 * x0 + x0);
+			repaint();
+			drawCut();
+		}
+
+		void setY(double y2) {
+			y1 = -y2;
+			y = (int) (y1 * y0 + y0);
+			repaint();
+			drawCut();
 		}
 
 		void updateTexts() {
@@ -111,11 +130,20 @@ public class PointPicker extends JPanel implements MouseMotionListener,
 		}
 
 		@Override
+		public void mousePressed(MouseEvent e) {
+			x = e.getX();
+			y = e.getY();
+			updateTexts();
+			repaint();
+			drawCut();
+		}
+
+		@Override
 		public void mouseClicked(MouseEvent e) {
 		}
 
 		@Override
-		public void mousePressed(MouseEvent e) {
+		public void mouseDragged(MouseEvent e) {
 			x = e.getX();
 			y = e.getY();
 			updateTexts();
@@ -136,15 +164,6 @@ public class PointPicker extends JPanel implements MouseMotionListener,
 		}
 
 		@Override
-		public void mouseDragged(MouseEvent e) {
-			x = e.getX();
-			y = e.getY();
-			updateTexts();
-			repaint();
-			drawCut();
-		}
-
-		@Override
 		public void mouseMoved(MouseEvent e) {
 		}
 	}
@@ -161,7 +180,6 @@ public class PointPicker extends JPanel implements MouseMotionListener,
 		set.add(new Segment4d(Point4d.ZERO, plane.getNormal(),
 				Colors.NORMAL_COLOR));
 
-
 		set.add(new Segment4d(Point4d.ZERO, new Point4d(1, 0, 0, 0),
 				Colors.X_COLOR));
 		set.add(new Segment4d(Point4d.ZERO, new Point4d(0, 1, 0, 0),
@@ -176,31 +194,50 @@ public class PointPicker extends JPanel implements MouseMotionListener,
 		segmentDrawer.repaint();
 	}
 
-	public PointPicker(Color bgcolor, SegmentDrawer4d segmentDrawer) {
-		setBackground(bgcolor);
-
+	public PointPicker(final SegmentDrawer4d segmentDrawer) {
 		this.segmentDrawer = segmentDrawer;
 
-		setPreferredSize(new Dimension(300, 150));
+		setPreferredSize(new Dimension(600, 250));
 
 		NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
 		DecimalFormat decimalFormat = (DecimalFormat) numberFormat;
 		decimalFormat.setGroupingUsed(false);
 
-		JFormattedTextField textX = new JFormattedTextField(decimalFormat);
+		final JFormattedTextField textX = new JFormattedTextField(decimalFormat);
 		textX.setColumns(5);
 
-		JFormattedTextField textY = new JFormattedTextField(decimalFormat);
+		final JFormattedTextField textY = new JFormattedTextField(decimalFormat);
 		textY.setColumns(5);
 
-		JFormattedTextField textZ = new JFormattedTextField(decimalFormat);
+		final JFormattedTextField textZ = new JFormattedTextField(decimalFormat);
 		textZ.setColumns(5);
 
-		JFormattedTextField textW = new JFormattedTextField(decimalFormat);
+		final JFormattedTextField textW = new JFormattedTextField(decimalFormat);
 		textW.setColumns(5);
 
 		axis1 = new AxisBox(Colors.X_COLOR, Colors.Y_COLOR, textX, textY);
 		axis2 = new AxisBox(Colors.Z_COLOR, Colors.W_COLOR, textZ, textW);
+
+		JButton buttonSet = new JButton("Set");
+		buttonSet.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				axis1.setX(Double.parseDouble(textX.getText()));
+				axis1.setY(Double.parseDouble(textY.getText()));
+				axis2.setX(Double.parseDouble(textZ.getText()));
+				axis2.setY(Double.parseDouble(textW.getText()));
+			}
+		});
+
+		JButton buttonToggleCube = new JButton("Toggle cube");
+		buttonToggleCube.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				segmentDrawer.toggleCube();
+			}
+		});
 
 		control = new JPanel();
 
@@ -211,9 +248,26 @@ public class PointPicker extends JPanel implements MouseMotionListener,
 		layout.setAutoCreateGaps(true);
 		layout.setAutoCreateContainerGaps(true);
 
-		layout.setHorizontalGroup(layout.createSequentialGroup()
-				.addComponent(textX).addComponent(textY).addComponent(textZ)
-				.addComponent(textW).addComponent(axis1).addComponent(axis2));
+		layout.setHorizontalGroup(layout
+				.createSequentialGroup()
+				.addComponent(buttonToggleCube)
+				.addGroup(
+						layout.createSequentialGroup().addComponent(textX)
+								.addComponent(textY).addComponent(textZ)
+								.addComponent(textW).addComponent(buttonSet))
+				.addGroup(
+						layout.createParallelGroup().addComponent(axis1)
+								.addComponent(axis2)));
+		layout.setVerticalGroup(layout
+				.createSequentialGroup()
+				.addComponent(buttonToggleCube)
+				.addGroup(
+						layout.createSequentialGroup().addComponent(textX)
+								.addComponent(textY).addComponent(textZ)
+								.addComponent(textW))
+				.addGroup(
+						layout.createParallelGroup().addComponent(axis1)
+								.addComponent(axis2)));
 
 	}
 

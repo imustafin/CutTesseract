@@ -1,13 +1,10 @@
 package ru.litsey2.cuttesseract;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
-
-import com.sun.corba.se.impl.oa.poa.AOMEntry;
 
 import ru.litsey2.cuttesseract.geometry.Vector4d;
 
@@ -20,7 +17,7 @@ public class MainFrame extends JFrame {
 
 	
 	public MainFrame() {
-		super();
+		super("CubeCut4d v0.2");
 		
 		pointRotator = new PointRotator();
 
@@ -32,7 +29,7 @@ public class MainFrame extends JFrame {
 		
 		SegmentDrawer4d segmentDrawer = new SegmentDrawer4d(pointRotator);
 		
-		PointPicker pointSelector = new PointPicker(Color.green, segmentDrawer);
+		PointPicker pointSelector = new PointPicker(segmentDrawer);
 		
 		mainPanel.add(segmentDrawer);
 		
@@ -46,9 +43,6 @@ public class MainFrame extends JFrame {
 		mainLayout.putConstraint(SpringLayout.SOUTH, pointSelector, 0, SpringLayout.SOUTH, mainPanel);
 		mainLayout.putConstraint(SpringLayout.WEST, pointSelector, 0, SpringLayout.WEST, mainPanel);
 		mainLayout.putConstraint(SpringLayout.EAST, pointSelector, 0, SpringLayout.EAST, mainPanel);
-		
-		
-		
 		
 		setLayout(new GridLayout(1, 1));
 		add(mainPanel);
