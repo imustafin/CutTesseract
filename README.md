@@ -1,10 +1,5 @@
-*tex-work
-How to compile title page:
+Compile main.tex with pdftex. Must include li.png and title.tex in working directory.
 ```
-latex --latex-engine=xelatex test_title.tex
-xdvi test_title.dvi
-```
-Dont want to compile?
-```
-xdvi test_title.dvi
+pdflatex main.tex
+xpdf main.pdf
 ```
