@@ -21,7 +21,6 @@ public class Plane4d {
 		b = n.y;
 		c = n.z;
 		d = n.w;
-		
 		e = -(a * p.x + b * p.y + c * p.z + d * p.w);
 	}
 
