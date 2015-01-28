@@ -18,15 +18,24 @@ public class PointRotator {
 
 	private double[] angles;
 
+	void addCoordVectors() {
+		add(new Segment4d(Point4d.ZERO, new Point4d(1, 0, 0, 0), Colors.X_COLOR));
+		add(new Segment4d(Point4d.ZERO, new Point4d(0, 1, 0, 0), Colors.Y_COLOR));
+		add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 1, 0), Colors.Z_COLOR));
+		add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 0, 1), Colors.W_COLOR));
+	}
 	
 	public PointRotator() {
 		segments4d = new TreeSet<Segment4d>();
 		segments2d = new TreeSet<Segment2d>();
 		angles = new double[5];
-		add(new Segment4d(Point4d.ZERO, new Point4d(1, 0, 0, 0), Colors.X_COLOR));
-		add(new Segment4d(Point4d.ZERO, new Point4d(0, 1, 0, 0), Colors.Y_COLOR));
-		add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 1, 0), Colors.Z_COLOR));
-		add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 0, 1), Colors.W_COLOR));
+		addCoordVectors();
+		recalc();
+	}
+	
+	void setNewCut(Set<Segment4d> set) {
+		segments4d = set;
+		addCoordVectors();
 		recalc();
 	}
 
