@@ -4,29 +4,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
-import java.util.Set;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
 
-import ru.litsey2.cuttesseract.geometry.Cube4d;
-import ru.litsey2.cuttesseract.geometry.Geometry;
-import ru.litsey2.cuttesseract.geometry.Plane4d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
-import ru.litsey2.cuttesseract.geometry.Segment4d;
-import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 @SuppressWarnings("serial")
 public abstract class PointPicker extends JPanel {

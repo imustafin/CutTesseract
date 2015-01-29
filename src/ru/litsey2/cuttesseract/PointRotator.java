@@ -33,8 +33,9 @@ public class PointRotator {
 		recalc();
 	}
 	
-	void setNewCut(Set<Segment4d> set) {
+	void setNewCut(Set<Segment4d> set, Vector4d planeNormal) {
 		segments4d = set;
+		segments4d.add(new Segment4d(Vector4d.ZERO, planeNormal, Colors.NORMAL_COLOR));
 		addCoordVectors();
 		recalc();
 	}

@@ -4,10 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -20,7 +16,6 @@ import javax.swing.SwingUtilities;
 
 import ru.litsey2.cuttesseract.geometry.Point2d;
 import ru.litsey2.cuttesseract.geometry.Segment2d;
-import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 @SuppressWarnings("serial")
 class SegmentDrawer4d extends JPanel implements MouseMotionListener,
