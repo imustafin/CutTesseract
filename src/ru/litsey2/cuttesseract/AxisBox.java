@@ -9,8 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.MouseInputListener;
 
-import com.sun.xml.internal.bind.v2.runtime.Coordinator;
-
 @SuppressWarnings("serial")
 abstract class AxisBox extends JPanel implements MouseInputListener {
 
