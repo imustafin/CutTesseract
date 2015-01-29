@@ -10,7 +10,7 @@ public class CubeCut4d {
 			
 			@Override
 			public void run() {
-				new MainFrame("CutTesseract WORK");
+				new MainFrame("CutTesseract v0.3-noRotateFix");
 			}
 		});
 		
