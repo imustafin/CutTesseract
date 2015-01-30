@@ -25,7 +25,7 @@ public class Panel4d {
 		pointRotator.add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 0, 1),
 				Colors.W_COLOR));
 
-		frame = new JFrame();
+		frame = new JFrame("CutTesseract v0.0-w-rotations");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		frame.add(new SegmentDrawer4d(pointRotator));
