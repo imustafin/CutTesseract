@@ -61,8 +61,8 @@ public class PointRotator {
 		z = nz;
 		w = nw;
 
-		nz = z * Math.cos(angles[2]) - w * Math.sin(angles[2]);
-		nw = z * Math.sin(angles[2]) + w * Math.cos(angles[2]);
+		ny = y * Math.cos(angles[2]) - w * Math.sin(angles[2]);
+		nw = y * Math.sin(angles[2]) + w * Math.cos(angles[2]);
 
 		x = nx;
 		y = ny;

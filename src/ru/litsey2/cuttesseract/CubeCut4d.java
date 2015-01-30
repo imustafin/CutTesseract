@@ -34,39 +34,44 @@ public class CubeCut4d {
 		try {
 
 			out.println("Enter input mode\n"
-					+ "2 for point and normal vector\n" + "4 for 4 points4d");
+					+ "2 for point and normal vector\n" + "4 for 4 points4d\n"
+					+ "0 for no cut, only cube");
 
 			int mode = in.nextInt();
 
-			Plane4d plane;
+			Plane4d plane = null;
 
-			if (mode != 2 && mode != 4) {
+			if (mode != 2 && mode != 4 && mode != 0) {
 				throw new IllegalArgumentException("Wrong mode " + mode);
 			}
-			if (mode == 4) {
-				Point4d[] pts = new Point4d[4];
+			if (mode != 0) {
+				if (mode == 4) {
+					Point4d[] pts = new Point4d[4];
 
-				out.println("We need 4 4d points");
-				for (int i = 0; i < 4; i++) {
-					Point4d p = readPoint4d();
-					pts[i] = p;
+					out.println("We need 4 4d points");
+					for (int i = 0; i < 4; i++) {
+						Point4d p = readPoint4d();
+						pts[i] = p;
+					}
+
+					plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
+				} else { // mode == 2
+					out.println("We need Point4d");
+					Point4d point = readPoint4d();
+					out.println("We need Vector4d as Point4d");
+					Vector4d n = new Vector4d(readPoint4d());
+
+					plane = new Plane4d(point, n);
 				}
-
-				plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
-			} else { // mode == 2
-				out.println("We need Point4d");
-				Point4d point = readPoint4d();
-				out.println("We need Vector4d as Point4d");
-				Vector4d n = new Vector4d(readPoint4d());
-				
-				plane = new Plane4d(point, n);
 			}
 			Panel4d canvas = new Panel4d();
 			canvas.createAndShowGUI();
-			canvas.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0),
-					plane.getNormal(), Colors.NORMAL_COLOR));
-			canvas.planeNormal = plane.getNormal();
-			canvas.pointRotator.addAll(makeCut(plane, cube));
+			if (plane != null) {
+				canvas.pointRotator.add(new Segment4d(new Point4d(0, 0, 0, 0),
+						plane.getNormal(), Colors.NORMAL_COLOR));
+				canvas.planeNormal = plane.getNormal();
+				canvas.pointRotator.addAll(makeCut(plane, cube));
+			}
 			canvas.pointRotator.addAll(cube.getSegments());
 			canvas.frame.repaint();
 
