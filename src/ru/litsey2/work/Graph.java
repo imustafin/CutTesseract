@@ -63,8 +63,18 @@ public class Graph {
 	public int hashCode() {
 		return m * 1000 + n;
 	}
+	
+	public String printGraph(){
+		String s = "[" + this.n + "][" + this.m + "]\n" + "(";
+		for(int i = 0; i < this.n - 1; i++){
+			s += this.deg[i] + ", ";
+		}
+		s += this.deg[n-1] + ")\n";
+		return s;
+	}
 
 	public boolean equals(Graph g) {
+		//if(g) throw new IllegalStateException("Bug");
 		if (n != g.n || m != g.m) {
 			return false;
 		}
@@ -80,32 +90,28 @@ public class Graph {
 		}
 
 		do {
-			boolean[][] re = new boolean[n][n];
+			/*boolean[][] re = new boolean[n][n];
 			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < m; j++) {
+				for (int j = 0; j < n; j++) {
 					int u = rep[i];
 					int v = rep[j];
 					re[u][v] = g.e[i][j];
 				}
-			}
+			}*/
 
 			boolean ok = true;
-			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < m; j++) {
-					if(re[i][j] != e[i][j]) {
-						ok = false;
-						break;
+			for (int i = 0; i < n && ok; i++) {
+				for (int j = 0; j < n && ok; j++) {
+					if(g.e[rep[i]][rep[j]] != e[i][j]) {
+						ok = false;						
 					}
-				}
-				if(!ok) {
-					break;
-				}
+				}				
 			}
 			if(ok) {
 				return true;
 			}
 		} while ((rep = Permutator.nextPermutation(rep)) != null);
-
+		
 		return false;
 	}
 }

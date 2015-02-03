@@ -35,12 +35,12 @@ public class Geometry {
 			}
 		}
 
-		System.out.println("=======CUT POINTS=====");
+		/*System.out.println("=======CUT POINTS=====");
 		for (Point4d p : cutPoints) {
 			System.out.println(p);
 		}
-		System.out.println("======================");
-
+		System.out.println("======================");*/
+		
 		Set<Segment4d> cutEdges = new TreeSet<Segment4d>();
 		for (Point4d a : cutPoints) {
 			for (Point4d b : cutPoints) {

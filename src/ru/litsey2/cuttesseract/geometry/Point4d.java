@@ -22,7 +22,7 @@ public class Point4d implements Comparable<Point4d> {
 		double cy = Geometry.compareEps(0, y) == 0 ? 0 : y;
 		double cz = Geometry.compareEps(0, z) == 0 ? 0 : z;
 		double cw = Geometry.compareEps(0, w) == 0 ? 0 : w;
-		return "(" + cx + ", " + cy + ", " + cz + ", " + cw + ")";
+		return (int)cx + " " + (int)cy + " " + (int)cz + " " + (int)cw;
 	}
 
 	Point4d(Point4d a) {
