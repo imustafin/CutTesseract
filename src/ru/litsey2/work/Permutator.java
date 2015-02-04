@@ -8,7 +8,25 @@ public class Permutator {
 	 * modifies <b>c</b> to next permutation or returns null if such permutation
 	 * does not exist
 	 */
-	public static int[] nextPermutation(final int[] c) {
+	public static int[] nextPermutation(final int[] c, final int bad) {
+		//optimization
+		if(bad != -1){
+			int min = 100000000;
+			int min_index = bad;
+			for(int i = bad + 1; i < c.length - 1; i++){
+				if(c[i] > c[bad] && c[i] < min){
+					min = c[i];
+					min_index = i;
+				}
+			}
+			if(min_index != bad){
+				int tmp = c[bad];
+				c[bad] = c[min_index];
+				c[min_index] = tmp;
+				Arrays.sort(c, bad + 1, c.length - 1);
+				return c;
+			}
+		}
 		// 1. finds the largest k, that c[k] < c[k+1]
 		int first = getFirst(c);
 		if (first == -1)

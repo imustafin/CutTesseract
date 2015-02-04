@@ -88,7 +88,7 @@ public class Graph {
 		for (int i = 0; i < n; i++) {
 			rep[i] = i;
 		}
-
+		int bad = -1;
 		do {
 			/*boolean[][] re = new boolean[n][n];
 			for (int i = 0; i < n; i++) {
@@ -98,19 +98,20 @@ public class Graph {
 					re[u][v] = g.e[i][j];
 				}
 			}*/
-
+			bad = -1;
 			boolean ok = true;
 			for (int i = 0; i < n && ok; i++) {
 				for (int j = 0; j < n && ok; j++) {
 					if(g.e[rep[i]][rep[j]] != e[i][j]) {
-						ok = false;						
+						ok = false;
+						bad = i;
 					}
 				}				
 			}
 			if(ok) {
 				return true;
 			}
-		} while ((rep = Permutator.nextPermutation(rep)) != null);
+		} while ((rep = Permutator.nextPermutation(rep, bad)) != null);
 		
 		return false;
 	}
