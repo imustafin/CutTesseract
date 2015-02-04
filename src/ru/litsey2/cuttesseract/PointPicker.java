@@ -53,13 +53,13 @@ public abstract class PointPicker extends JPanel {
 
 		axis1 = new AxisBox(this, Colors.X_COLOR, Colors.Y_COLOR, textX, textY) {
 			@Override
-			void coordChanged() {
+			void onCoordChanged() {
 				pointChanged();
 			}
 		};
 		axis2 = new AxisBox(this, Colors.Z_COLOR, Colors.W_COLOR, textZ, textW) {
 			@Override
-			void coordChanged() {
+			void onCoordChanged() {
 				pointChanged();
 			}
 		};

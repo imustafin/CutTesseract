@@ -11,35 +11,68 @@ import ru.litsey2.cuttesseract.geometry.Segment2d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
 import ru.litsey2.cuttesseract.geometry.Vector4d;
 
+/**
+ * Provides a method to store and rotate segments
+ * 
+ * @author Ilgiz Mustafin
+ *
+ */
 public class PointRotator {
 
+	/**
+	 * Rotated 4d segments
+	 */
 	Set<Segment4d> segments4d;
+	/**
+	 * A projection of <code>segments4d</code> to 2d. Contains segments which
+	 * are ready to be drawn on the screen
+	 */
 	Set<Segment2d> segments2d;
 
-	private double[] angles;
+	
+	//TODO comment on #angles indexes  
+	/**
+	 * Angles to rotate segments by
+	 * 
+	 */
+	private double[] angles = new double[5];
 
-	void addCoordVectors() {
+	/**
+	 * Adds axis lines to the {@link #segments4d}
+	 */
+	private void addCoordVectors() {
 		add(new Segment4d(Point4d.ZERO, new Point4d(1, 0, 0, 0), Colors.X_COLOR));
 		add(new Segment4d(Point4d.ZERO, new Point4d(0, 1, 0, 0), Colors.Y_COLOR));
 		add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 1, 0), Colors.Z_COLOR));
 		add(new Segment4d(Point4d.ZERO, new Point4d(0, 0, 0, 1), Colors.W_COLOR));
 	}
-	
+
+	/**
+	 * Constructs a PointRotator with only axis segments in it
+	 */
 	public PointRotator() {
 		segments4d = new TreeSet<Segment4d>();
 		segments2d = new TreeSet<Segment2d>();
-		angles = new double[5];
-		addCoordVectors();
-		recalc();
-	}
-	
-	void setNewCut(Set<Segment4d> set, Vector4d planeNormal) {
-		segments4d = set;
-		segments4d.add(new Segment4d(Vector4d.ZERO, planeNormal, Colors.NORMAL_COLOR));
 		addCoordVectors();
 		recalc();
 	}
 
+	/**
+	 * Sets new segments to rotate
+	 * @param segments new segments to rotate
+	 * @param planeNormal new planeNormal, it shouldn't be in the segments
+	 */
+	void setNewCut(Set<Segment4d> segments, Vector4d planeNormal) {
+		segments4d = segments;
+		segments4d.add(new Segment4d(Vector4d.ZERO, planeNormal,
+				Colors.NORMAL_COLOR));
+		addCoordVectors();
+		recalc();
+	}
+
+	/**
+	 * @return plane normal segment
+	 */
 	Segment4d getNormalSegment() {
 		for (Segment4d s : segments4d) {
 			if (s.getColor().equals(Colors.NORMAL_COLOR)) {
@@ -49,6 +82,11 @@ public class PointRotator {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param a point to rotate
+	 * @return 
+	 */
 	public Point4d getRotated(Point4d a) {
 		double x = a.getX();
 		double y = a.getY();
