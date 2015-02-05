@@ -27,7 +27,7 @@ public class PointGenerator {
 		}
 	}
 
-	Point4d nextPoint() {
+	public Point4d nextPoint() {
 		if (i == p.size()) {
 			return null;
 		} else {

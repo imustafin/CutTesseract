@@ -33,14 +33,12 @@ public class CutGenerator {
 	int now = 0;
 
 	void gend() {
-		long tt;
 		Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);		
 		Set<Segment4d> cut = Geometry.makeCut(plane, cube);
 		Graph g = new Graph(cut);
 		if (g.n < 4) {
 			return;
 		}
-				
 		for(int i = 0; i < now; i++){
 			if(g.equals(Graps[i])){
 				return;
@@ -62,9 +60,9 @@ public class CutGenerator {
 		if (num == 4) {
 			cnt++;
 			System.out.println(cnt / 1000 + "." + String.format("%03d", cnt % 1000) + " | [" + (double)cnt / (System.currentTimeMillis() / 1000L - startTime) + "]");
-			long tt = System.currentTimeMillis();
+			//long tt = System.currentTimeMillis();
 			gend();
-			System.out.println("gend took " + (System.currentTimeMillis() - tt) + " ms");
+			//System.out.println("gend took " + (System.currentTimeMillis() - tt) + " ms");
 			return;
 		}
 		PointGenerator gen = new PointGenerator(from, to, step, st);
