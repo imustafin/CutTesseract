@@ -1,7 +1,6 @@
 package ru.litsey2.cuttesseract.geometry;
 
 
-
 public class Formulas {
 
 	static Vector3d findK(Vector3d a, Vector3d b) {
@@ -91,6 +90,14 @@ public class Formulas {
 		return new Point3d(x, y, z);
 	}
 
+	/**
+	 * Returns coefficients from plane equation <code>ax + by + cz + d = 0</code>
+	 * 
+	 * @param p1 first point
+	 * @param p2 second point
+	 * @param p3 third point
+	 * @return array <code>{a, b, c, d}</code> 
+	 */
 	static double[] plane3dCoefficients(Point3d p1, Point3d p2, Point3d p3) {
 		double x1 = p1.getX();
 		double x2 = p2.getX();
@@ -112,6 +119,15 @@ public class Formulas {
 		return new double[] { a, b, c, d };
 	}
 
+	/**
+	 * Returns coefficients from plane equation <code>ax + by + cz + dw + e = 0</code>
+	 * 
+	 * @param p1 first point
+	 * @param p2 second point
+	 * @param p3 third point
+	 * @param p4 fourth point
+	 * @return array <code>{a, b, c, d, e}</code> 
+	 */
 	static double[] plane4dCoefficients(Point4d p1, Point4d p2, Point4d p3,
 			Point4d p4) {
 
@@ -200,6 +216,42 @@ public class Formulas {
 				* (-(x4 * y2 * z1) + x2 * y4 * z1 + x4 * y1 * z2 - x1 * y4 * z2
 						- x2 * y1 * z4 + x1 * y2 * z4);
 		return new double[] { a, b, c, d, e };
+	}
+	
+	static Vector4d multiply(Vector4d a, Vector4d b, Vector4d c, Vector4d d) {
+		double[][] mt = new double[4][4];
+		Vector4d[] ar = { a, b, c, d };
+		for (int i = 0; i < 4; i++) {
+			Vector4d v = ar[i];
+			mt[i][0] = v.getX();
+			mt[i][1] = v.getY();
+			mt[i][2] = v.getZ();
+			mt[i][3] = v.getW();
+		}
+
+		double[] dets = new double[4];
+
+		for (int i = 0; i < 4; i++) {
+			double[][] cm = new double[3][3];
+			for (int j = 1; j < 4; j++) {
+
+				for (int k = 0; k < 4; k++) {
+					int ck = k;
+					if (k == i) {
+						continue;
+					} else {
+						if (k > i) {
+							ck++;
+						}
+					}
+					cm[j][k] = mt[j][ck];
+				}
+			}
+			dets[i] = new Matrix(mt).getDeterminant();
+		}
+		Vector4d ans = new Vector4d(new Point4d(dets[0], -dets[1], dets[2],
+				-dets[3]));
+		return ans.getNormalized();
 	}
 
 }

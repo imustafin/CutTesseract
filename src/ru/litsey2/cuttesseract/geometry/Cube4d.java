@@ -7,9 +7,24 @@ import java.util.TreeSet;
 public class Cube4d {
 
 	private final Point4d[] vertices;
+	/**
+	 * if <code>hasEdges[i][j]</code> is true, then there is an edge between
+	 * i<sup>th</sup> and j<sup>th</sup> vertex
+	 */
 	private final boolean[][] hasEdge;
+	/**
+	 * Set of all edges as <code>Segment4d</code>
+	 */
 	private final Set<Segment4d> segments;
 
+	/**
+	 * Constructs <code>Cube4d</code> with coordinates
+	 * <code>(-x, -x, -x, -x)</code> through <code>(x, x, x, x)</code> and
+	 * specified color
+	 * 
+	 * @param coord cube vertex coordinate
+	 * @param edgeColor color of <code>{@link #segments}</code>
+	 */
 	public Cube4d(double coord, Color edgeColor) {
 		Point4d[] v = { new Point4d(-coord, -coord, -coord, -coord),
 				new Point4d(-coord, -coord, -coord, coord),

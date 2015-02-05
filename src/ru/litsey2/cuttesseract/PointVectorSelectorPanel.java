@@ -19,7 +19,7 @@ import ru.litsey2.cuttesseract.geometry.Vector4d;
 public abstract class PointVectorSelectorPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * The currently selected point
 	 */
@@ -36,7 +36,8 @@ public abstract class PointVectorSelectorPanel extends JPanel {
 
 	/**
 	 * 
-	 * @param segmentDrawer a <code>SegmentDrawer</code> to control
+	 * @param segmentDrawer
+	 *            a <code>SegmentDrawer</code> to control
 	 */
 	PointVectorSelectorPanel(SegmentDrawer4d segmentDrawer) {
 
@@ -48,6 +49,8 @@ public abstract class PointVectorSelectorPanel extends JPanel {
 
 		PointPicker pSelector = new PointPicker(Color.LIGHT_GRAY, segmentDrawer) {
 
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			void pointChanged() {
 				point = getPoint4d();
@@ -58,6 +61,8 @@ public abstract class PointVectorSelectorPanel extends JPanel {
 		point = pSelector.getPoint4d();
 
 		PointPicker vSelector = new PointPicker(Color.CYAN, segmentDrawer) {
+
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			void pointChanged() {

@@ -18,12 +18,12 @@ public class MainFrame extends JFrame {
 
 	Vector4d planeNormal;
 
-	PointRotator pointRotator;
+	PointRotater pointRotator;
 
 	public MainFrame(String title) {
 		super(title);
 
-		pointRotator = new PointRotator();
+		pointRotator = new PointRotater();
 
 		setLayout(new SpringLayout());
 

@@ -17,7 +17,7 @@ import ru.litsey2.cuttesseract.geometry.Vector4d;
  * @author Ilgiz Mustafin
  *
  */
-public class PointRotator {
+public class PointRotater {
 
 	/**
 	 * Rotated 4d segments
@@ -29,8 +29,7 @@ public class PointRotator {
 	 */
 	Set<Segment2d> segments2d;
 
-	
-	//TODO comment on #angles indexes  
+	// TODO comment on #angles indexes
 	/**
 	 * Angles to rotate segments by
 	 * 
@@ -50,7 +49,7 @@ public class PointRotator {
 	/**
 	 * Constructs a PointRotator with only axis segments in it
 	 */
-	public PointRotator() {
+	public PointRotater() {
 		segments4d = new TreeSet<Segment4d>();
 		segments2d = new TreeSet<Segment2d>();
 		addCoordVectors();
@@ -59,8 +58,11 @@ public class PointRotator {
 
 	/**
 	 * Sets new segments to rotate
-	 * @param segments new segments to rotate
-	 * @param planeNormal new planeNormal, it shouldn't be in the segments
+	 * 
+	 * @param segments
+	 *            new segments to rotate
+	 * @param planeNormal
+	 *            new planeNormal, it shouldn't be in the segments
 	 */
 	void setNewCut(Set<Segment4d> segments, Vector4d planeNormal) {
 		segments4d = segments;
@@ -83,9 +85,11 @@ public class PointRotator {
 	}
 
 	/**
+	 * Rotates the specified point by angles specified in <code>angles[]</code>
 	 * 
-	 * @param a point to rotate
-	 * @return 
+	 * @param a
+	 *            point to rotate
+	 * @return rotated copy of the specified point
 	 */
 	public Point4d getRotated(Point4d a) {
 		double x = a.getX();
@@ -136,16 +140,30 @@ public class PointRotator {
 		return new Point4d(nx, ny, nz, nw);
 	}
 
+	/**
+	 * Adds the specified segment to this <code>PointRotater</code>
+	 * 
+	 * @param e segment to add
+	 */
 	void add(Segment4d e) {
 		segments4d.add(e);
 		recalc();
 	}
 
+	/**
+	 * Adds all of the segments from the specified <code>Collection</code> to
+	 * this <code>PointRotater</code>
+	 * 
+	 * @param c <code>Collection</code> to add
+	 */
 	void addAll(Collection<? extends Segment4d> c) {
 		segments4d.addAll(c);
 		recalc();
 	}
 
+	/**
+	 * Recalculates {@link #segments2d} and {@link #segments4d}
+	 */
 	void recalc() {
 		segments2d.clear();
 		Set<Segment4d> nSegments4d = new TreeSet<Segment4d>();
@@ -167,6 +185,14 @@ public class PointRotator {
 		return new TreeSet<Segment2d>(segments2d);
 	}
 
+	/**
+	 * Adds the specified angles and recalculates new positions
+	 * @param r0 XY angle
+	 * @param r1 YZ angle
+	 * @param r2 ZW angle
+	 * @param r3 WX angle
+	 * @param r4 XZ angle
+	 */
 	public void addAngles(double r0, double r1, double r2, double r3, double r4) {
 		angles[0] += r0;
 		angles[1] += r1;

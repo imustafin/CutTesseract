@@ -47,11 +47,11 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 
 	double rotK = 0.01;
 
-	PointRotator pointRotator;
+	PointRotater pointRotator;
 
 	boolean drawCube = true;
 
-	public SegmentDrawer4d(PointRotator pointRotator) {
+	public SegmentDrawer4d(PointRotater pointRotator) {
 		this.pointRotator = pointRotator;
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
@@ -76,8 +76,8 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 		Color oldColor = g.getColor();
 		g.setColor(s.getColor());
 
-		Point2d a = s.getA();
-		Point2d b = s.getB();
+		Point2d a = s.getFirst();
+		Point2d b = s.getSecond();
 
 		int x1 = xc(a.getX());
 		int y1 = yc(a.getY());

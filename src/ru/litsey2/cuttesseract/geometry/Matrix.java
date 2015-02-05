@@ -7,17 +7,14 @@ public class Matrix {
 		this.data = data;
 	}
 
+	/**
+	 * @return determinant of the matrix
+	 */
 	public double getDeterminant() {
 		return determinant(data);
 	}
 
-	/**
-	 * 
-	 * @param matrix
-	 *            (two dimensional array)
-	 * @return determinant
-	 */
-	double determinant(double[][] matrix) {
+	private double determinant(double[][] matrix) {
 		int sum = 0;
 		int s;
 		if (matrix.length == 1) {

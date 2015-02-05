@@ -8,8 +8,26 @@ import ru.litsey2.cuttesseract.Colors;
 
 public class Geometry {
 
+	/**
+	 * The maximum error value possible in comparison
+	 * 
+	 * @see #compareEps(double, double)
+	 */
 	public static final double EPS = 1e-6;
 
+	/**
+	 * Compares two doubles. Two numbers are <i>close</i> if their absolute
+	 * difference is less or equal than the value of <code>{@link #EPS}</code>
+	 * 
+	 * @param a
+	 *            first double to compare
+	 * @param b
+	 *            second double to compare
+	 * @return the value 0 if <code>a</code> is <i>close</i> to <code>b</code>;
+	 *         a value less than 0 if <code>a</code> is less than <code>b</code>
+	 *         ; a value greater than 0 if <code>a</code> is greater than
+	 *         <code>b</code>
+	 */
 	public static int compareEps(double a, double b) {
 		if (Math.abs(a - b) <= EPS) {
 			return 0;
@@ -20,8 +38,14 @@ public class Geometry {
 			return 1;
 		}
 	}
-	
-	public static Set<Segment4d> makeCut(Plane4d cut, Cube4d cube) {
+
+	/**
+	 * Returns section edges as 4d segments
+	 * @param plane section plane 
+	 * @param cube section cube
+	 * @return set of 4d segments
+	 */
+	public static Set<Segment4d> makeSection(Plane4d plane, Cube4d cube) {
 		Set<Point4d> cutPoints = new TreeSet<Point4d>();
 		for (int i = 0; i < 16; i++) {
 			for (int j = i + 1; j < 16; j++) {
@@ -30,16 +54,10 @@ public class Geometry {
 				}
 				Segment4d e = new Segment4d(cube.getVertices()[i],
 						cube.getVertices()[j]);
-				ArrayList<Point4d> inter = e.intersectWithPlane(cut);
+				ArrayList<Point4d> inter = e.intersectWithPlane(plane);
 				cutPoints.addAll(inter);
 			}
 		}
-
-		System.out.println("=======CUT POINTS=====");
-		for (Point4d p : cutPoints) {
-			System.out.println(p);
-		}
-		System.out.println("======================");
 
 		Set<Segment4d> cutEdges = new TreeSet<Segment4d>();
 		for (Point4d a : cutPoints) {

@@ -1,14 +1,40 @@
 package ru.litsey2.cuttesseract.geometry;
 
-
 public class Point4d implements Comparable<Point4d> {
+	/**
+	 * The <code>x</code> coordinate of this point
+	 */
 	protected final double x;
+	/**
+	 * The <code>y</code> coordinate of this point
+	 */
 	protected final double y;
+	/**
+	 * The <code>z</code> coordinate of this point
+	 */
 	protected final double z;
+	/**
+	 * The <code>w</code> coordinate of this point
+	 */
 	protected final double w;
 
+	/**
+	 * The point with coordinates <code>(0, 0, 0, 0)</code>
+	 */
 	public static final Point4d ZERO = new Point4d(0, 0, 0, 0);
 
+	/**
+	 * Constructs point with the specified coordinates
+	 * 
+	 * @param x
+	 *            the specified <code>x</code> coordinate
+	 * @param y
+	 *            the specified <code>y</code> coordinate
+	 * @param z
+	 *            the specified <code>z</code> coordinate
+	 * @param w
+	 *            the specified <code>w</code> coordinate
+	 */
 	public Point4d(double x, double y, double z, double w) {
 		this.x = x;
 		this.y = y;
@@ -25,10 +51,26 @@ public class Point4d implements Comparable<Point4d> {
 		return "(" + cx + ", " + cy + ", " + cz + ", " + cw + ")";
 	}
 
+	/**
+	 * Constructs point as a copy of other point
+	 * 
+	 * @param a
+	 *            point to copy
+	 */
 	Point4d(Point4d a) {
-		this(a.getX(), a.getY(), a.getZ(), a.getW());
+		this(a.x, a.y, a.z, a.w);
 	}
 
+	/**
+	 * Compares this point to other point.
+	 * <p>
+	 * Points are first compared by the
+	 * <code>x</code> coordinate, then by the <code>y</code> coordinate, then by
+	 * the <code>z</code> coordinate, then by the <code>w</code> coordinate
+	 * 
+	 * @param b
+	 *            the point to be compared
+	 */
 	@Override
 	public int compareTo(Point4d b) {
 		if (Geometry.compareEps(getX(), b.getX()) == 0) {
@@ -72,7 +114,8 @@ public class Point4d implements Comparable<Point4d> {
 	}
 
 	public double compareToPlane(Plane4d p) {
-		double res = p.a * getX() + p.b * getY() + p.c * getZ() + p.d * getW() + p.e;
+		double res = p.a * getX() + p.b * getY() + p.c * getZ() + p.d * getW()
+				+ p.e;
 		return res;
 	}
 
