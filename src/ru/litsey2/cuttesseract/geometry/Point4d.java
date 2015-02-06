@@ -64,9 +64,9 @@ public class Point4d implements Comparable<Point4d> {
 	/**
 	 * Compares this point to other point.
 	 * <p>
-	 * Points are first compared by the
-	 * <code>x</code> coordinate, then by the <code>y</code> coordinate, then by
-	 * the <code>z</code> coordinate, then by the <code>w</code> coordinate
+	 * Points are first compared by the <code>x</code> coordinate, then by the
+	 * <code>y</code> coordinate, then by the <code>z</code> coordinate, then by
+	 * the <code>w</code> coordinate
 	 * 
 	 * @param b
 	 *            the point to be compared
@@ -92,6 +92,16 @@ public class Point4d implements Comparable<Point4d> {
 		}
 	}
 
+	/**
+	 * Checks if four points are <i>cospatial</i>. If four points are
+	 * <i>cospatial</i> they do not define a hyperplane.
+	 * 
+	 * @param a first point
+	 * @param b second point
+	 * @param c third point
+	 * @param d fourth point
+	 * @return true if the points are cospatial, false otherwise
+	 */
 	static boolean coSpatial(Point4d a, Point4d b, Point4d c, Point4d d) {
 		double[][] mt = new double[4][4];
 		Point4d[] ar = { a, b, c, d };
@@ -105,6 +115,13 @@ public class Point4d implements Comparable<Point4d> {
 		return (Geometry.compareEps(new Matrix(mt).getDeterminant(), 0) == 0);
 	}
 
+	/**
+	 * Returns distance from this to the other point
+	 * 
+	 * @param b
+	 *            point to compute the distance to
+	 * @return distance to the other point
+	 */
 	public double distance(Point4d b) {
 		double dx = b.getX() - getX();
 		double dy = b.getY() - getY();
@@ -113,12 +130,21 @@ public class Point4d implements Comparable<Point4d> {
 		return Math.sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
 	}
 
-	public double compareToPlane(Plane4d p) {
+	/**
+	 * Applies this point's coordinates to the plane's
+	 * <code>ax + by + cz + d</code> expression
+	 * 
+	 * @param p
+	 *            plane to apply coordinates to
+	 * @return result of <code>ax + by + cz + d</code>
+	 * 
+	 */
+	public double applyToPlane(Plane4d p) {
 		double res = p.a * getX() + p.b * getY() + p.c * getZ() + p.d * getW()
 				+ p.e;
 		return res;
 	}
-
+	
 	public double getX() {
 		return x;
 	}

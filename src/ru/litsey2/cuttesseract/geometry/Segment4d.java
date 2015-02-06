@@ -97,8 +97,8 @@ public class Segment4d implements Comparable<Segment4d> {
 	public ArrayList<Point4d> intersectWithPlane(Plane4d p) {
 		ArrayList<Point4d> ans = new ArrayList<Point4d>();
 
-		double res1 = getA().compareToPlane(p);
-		double res2 = getB().compareToPlane(p);
+		double res1 = getA().applyToPlane(p);
+		double res2 = getB().applyToPlane(p);
 		int sign1 = Geometry.compareEps(res1, 0);
 		int sign2 = Geometry.compareEps(res2, 0);
 
