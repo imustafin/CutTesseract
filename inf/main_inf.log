@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2010.5.17)  30 JAN 2015 16:31
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2010.5.17)  6 FEB 2015 13:29
 entering extended mode
 **main_inf.tex
 (./main_inf.tex
@@ -464,225 +464,400 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 )
 (/usr/share/texmf/tex/latex/tools/indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+Package: geometry 2002/07/08 v3.2 Page Geometry
+\Gm@cnth=\count90
+\Gm@cntv=\count91
+\c@Gm@tempcnt=\count92
+\Gm@bindingoffset=\dimen106
+\Gm@wd@mp=\dimen107
+\Gm@odd@mp=\dimen108
+\Gm@even@mp=\dimen109
+\Gm@dimlist=\toks15
+
+(/usr/share/texmf/tex/latex/geometry/geometry.cfg))
+(/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen110
+))
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen111
+)
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count93
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count94
+\leftroot@=\count95
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count96
+\DOTSCASE@=\count97
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen112
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count98
+\c@MaxMatrixCols=\count99
+\dotsspace@=\muskip10
+\c@parentequation=\count100
+\dspbrk@lvl=\count101
+\tag@help=\toks17
+\row@=\count102
+\column@=\count103
+\maxfields@=\count104
+\andhelp@=\toks18
+\eqnshift@=\dimen113
+\alignsep@=\dimen114
+\tagshift@=\dimen115
+\tagwidth@=\dimen116
+\totwidth@=\dimen117
+\lineht@=\dimen118
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+)
+(/usr/share/texmf/tex/latex/amscls/amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks21
+\thm@bodyfont=\toks22
+\thm@headfont=\toks23
+\thm@notefont=\toks24
+\thm@headpunct=\toks25
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks26
+)
+(/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
 ) (./main_inf.aux)
 \openout1 = `main_inf.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 
 (/usr/share/texmf/tex/context/base/supp-pdf.tex
 (/usr/share/texmf/tex/context/base/supp-mis.tex
 loading : Context Support Macros / Miscellaneous (2004.10.26)
-\protectiondepth=\count90
-\scratchcounter=\count91
-\scratchtoks=\toks15
-\scratchdimen=\dimen106
-\scratchskip=\skip43
-\scratchmuskip=\muskip10
-\scratchbox=\box26
+\protectiondepth=\count105
+\scratchcounter=\count106
+\scratchtoks=\toks27
+\scratchdimen=\dimen119
+\scratchskip=\skip49
+\scratchmuskip=\muskip11
+\scratchbox=\box28
 \scratchread=\read1
 \scratchwrite=\write3
-\zeropoint=\dimen107
-\onepoint=\dimen108
-\onebasepoint=\dimen109
-\minusone=\count92
-\thousandpoint=\dimen110
-\onerealpoint=\dimen111
-\emptytoks=\toks16
-\nextbox=\box27
-\nextdepth=\dimen112
-\everyline=\toks17
-\!!counta=\count93
-\!!countb=\count94
-\recursecounter=\count95
+\zeropoint=\dimen120
+\onepoint=\dimen121
+\onebasepoint=\dimen122
+\minusone=\count107
+\thousandpoint=\dimen123
+\onerealpoint=\dimen124
+\emptytoks=\toks28
+\nextbox=\box29
+\nextdepth=\dimen125
+\everyline=\toks29
+\!!counta=\count108
+\!!countb=\count109
+\recursecounter=\count110
 )
 loading : Context Support Macros / PDF (2004.03.26)
-\nofMPsegments=\count96
-\nofMParguments=\count97
-\MPscratchCnt=\count98
-\MPscratchDim=\dimen113
-\MPnumerator=\count99
-\everyMPtoPDFconversion=\toks18
-) (./title.tex <./li.png, id=1, 90.3375pt x 87.32625pt>
+\nofMPsegments=\count111
+\nofMParguments=\count112
+\MPscratchCnt=\count113
+\MPscratchDim=\dimen126
+\MPnumerator=\count114
+\everyMPtoPDFconversion=\toks30
+)
+-------------------- Geometry parameters
+paper: a4paper
+landscape: --
+twocolumn: --
+twoside: true
+asymmetric: --
+h-parts: 71.13188pt, 455.24411pt, 71.13188pt
+v-parts: 71.13188pt, 667.21715pt, 106.69781pt
+hmarginratio: --
+vmarginratio: 2:3
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  597.50787pt
+\paperheight 845.04684pt
+\textwidth  455.24411pt
+\textheight 667.21715pt
+\oddsidemargin  -1.1381pt
+\evensidemargin -1.1381pt
+\topmargin  -38.1381pt
+\headheight 12.0pt
+\headsep    25.0pt
+\footskip   30.0pt
+\marginparwidth 85.0pt
+\marginparsep   10.0pt
+\columnsep  10.0pt
+\skip\footins  10.8pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+\@twosidetrue \@mparswitchtrue 
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+ (./title.tex <./li.png, id=1, 90.3375pt x 87.32625pt>
 File: ./li.png Graphic file (type png)
  <use ./li.png>
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 31.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 31.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 31.
- [1
+LaTeX Font Info:    Try loading font information for U+msa on input line 31.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 31.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+) [1
 
 
-{/usr/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./li.png>])
-(./main_inf.toc)
+{/usr/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./li.png>]) (./main_
+inf.toc
+Overfull \hbox (21.75066pt too wide) in paragraph at lines 9--9
+ [][] []\T2A/cmr/m/n/12 Нахождение пересечения гиперплоскости сечения с ребрами
+ гиперкуба [][]  
+ []
+
+)
 \tf@toc=\write4
 \openout4 = `main_inf.toc'.
 
  [2
 
 ]
-Overfull \hbox (62.59103pt too wide) in paragraph at lines 30--32
-\T2A/cmr/m/n/12 своей целью создать программу для реализации модели пересечения
- четырехмерного
+Overfull \hbox (23.59969pt too wide) in paragraph at lines 32--35
+\T2A/cmr/m/n/12 работы программы, и ее математическое обоснование. Нами была ра
+зработана программа
  []
 
 
-Overfull \hbox (45.39438pt too wide) in paragraph at lines 33--34
-[]\T2A/cmr/m/n/12 Как известно, гиперкуб представляет собой куб в четырехмером 
-пространстве,
+Overfull \hbox (0.93625pt too wide) in paragraph at lines 32--35
+\T2A/cmr/m/n/12 четырехмерного пространства была использована аналогия метода н
+ахождения точек
  []
 
 
-Overfull \hbox (18.5356pt too wide) in paragraph at lines 33--34
-\T2A/cmr/m/n/12 точек в Евклидовом пространстве $\OT1/cmr/m/n/12 (\OMS/cmsy/m/n
-/12 ^^F\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 ^^F\OT1/cmr/m/n/12 
-1\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 ^^F\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OM
-S/cmsy/m/n/12 ^^F\OT1/cmr/m/n/12 1)$\T2A/cmr/m/n/12 . Тессеракт ограничивают
- []
-
-
-Overfull \hbox (21.34547pt too wide) in paragraph at lines 33--34
-\T2A/cmr/m/n/12 8 гиперплоскостей, т.е.подпространств, на единицу меньшей чем о
-бъемлющее
+Overfull \hbox (37.86018pt too wide) in paragraph at lines 36--37
+\T2A/cmr/m/n/12 может также называться тетракубом и тессерактом. В данной работ
+е будет рассматриваться
  []
 
 <./tesseract_fig1.png, id=15, 439.6425pt x 475.7775pt>
 File: ./tesseract_fig1.png Graphic file (type png)
 
 <use ./tesseract_fig1.png>
-Overfull \hbox (16.67924pt too wide) in paragraph at lines 41--42
-\T2A/cmr/m/n/12 данный гиперкуб в четырехмерном пространстве, не выходя из трех
-мерного.
+Overfull \hbox (21.52626pt too wide) in paragraph at lines 44--45
+[]\T2A/cmr/m/n/12 Конечно, невозможно представить графически, как будет выгляде
+ть данный гиперкуб
  []
 
 
-Overfull \hbox (23.20543pt too wide) in paragraph at lines 41--42
-\T2A/cmr/m/n/12 для получения трехмерного сечения, представляющего из себя мног
-огранник. 
+Overfull \hbox (14.69221pt too wide) in paragraph at lines 44--45
+\T2A/cmr/m/n/12 проекцию данного тессеракта на трехмерную плоскость. В случае п
+роекции невозможно
  []
 
 
-Overfull \hbox (30.46616pt too wide) in paragraph at lines 43--44
-[]\T2A/cmr/m/n/12 Программа будет написана на языке JAVA 1.7, потому, что это с
-овременный
+Overfull \hbox (1.03421pt too wide) in paragraph at lines 44--45
+\T2A/cmr/m/n/12 определить точки сечения, поэтому все действия нами выполнялись
+ в четырехмерных
+ []
+
+
+Overfull \hbox (27.79149pt too wide) in paragraph at lines 44--45
+\T2A/cmr/m/n/12 координатах для получения трехмерного сечения, представляющего 
+из себя многогранник. 
+ []
+
+
+Overfull \hbox (16.7622pt too wide) in paragraph at lines 46--47
+[]\T2A/cmr/m/n/12 Далее будет рассмотрен довольно простой способ представления 
+проекции тессеракта
  []
 
 [3
 
  <./tesseract_fig1.png>]
-Overfull \hbox (22.29172pt too wide) in paragraph at lines 45--46
-[]\T2A/cmr/m/n/12 Далее будет рассмотрен довольно простой способ представления 
-проекции
- []
 
-
-Overfull \hbox (5.81326pt too wide) in paragraph at lines 45--46
-\T2A/cmr/m/n/12 данный метод не позволяет определить точки пересечения гиперпло
-скости
- []
-
-
-LaTeX Warning: Command \cyra invalid in math mode on input line 47.
+LaTeX Warning: Command \cyra invalid in math mode on input line 48.
 
 Missing character: There is no а in font cmr12!
 
-LaTeX Warning: Command \cyra invalid in math mode on input line 47.
+LaTeX Warning: Command \cyra invalid in math mode on input line 48.
 
 Missing character: There is no а in font cmr12!
 
-Overfull \hbox (10.74037pt too wide) in paragraph at lines 47--48
+Overfull \hbox (29.35774pt too wide) in paragraph at lines 48--49
 []\T2A/cmr/m/n/12 Попытаемся представить себе, как будет выглядеть гиперкуб, не
- выходя
+ выходя из трјхмерного
  []
 
 
-Overfull \hbox (8.47583pt too wide) in paragraph at lines 47--48
-\T2A/cmr/m/n/12 из трјхмерного пространства. Возьмем одномерное пространство (л
-инию),
+Overfull \hbox (6.14214pt too wide) in paragraph at lines 48--49
+\T2A/cmr/m/n/12 нарисуем параллельный ему отрезок той же длины, затем соединим 
+концы. Получится
+ []
+
+
+Overfull \hbox (23.21227pt too wide) in paragraph at lines 48--49
+\T2A/cmr/m/n/12 гиперкуб т.е. его можно представить, как два трехмерных куба, л
+ежащих в параллельных
  []
 
 <./make_tess.png, id=29, 723.70375pt x 205.76875pt>
 File: ./make_tess.png Graphic file (type png)
  <use ./make_tess.png>
-Overfull \hbox (51.02559pt too wide) in paragraph at lines 50--51
-[][] 
+Overfull \hbox (2.34818pt too wide) in paragraph at lines 55--56
+\T2A/cmr/m/n/12 квадрат, т.е. уже куб 2 измерения. По аналогии куб $\OML/cmm/m/
+it/12 ABCDEFGH$ \T2A/cmr/m/n/12 образует проекцию
  []
 
 
-Overfull \hbox (29.47208pt too wide) in paragraph at lines 54--55
-[]\T2A/cmr/m/n/12 Как видим, отрезок $\OML/cmm/m/it/12 AB$ \T2A/cmr/m/n/12 в ре
-зультате параллельного переноса превращается
+Overfull \hbox (3.3474pt too wide) in paragraph at lines 59--59
+[]\T2A/cmr/bx/n/17.28 Описание работы программы, скриншоты и прочие
  []
 
 
-Overfull \hbox (29.56847pt too wide) in paragraph at lines 56--57
-\T2A/cmr/m/n/12 четырехмерном пространстве, можно прийти к следующей аналогии: 
-сечением
+Overfull \hbox (4.68875pt too wide) in paragraph at lines 61--65
+[]\T2A/cmr/m/n/12 Данная программа предназначена для визуализации отображения ч
+етырехмерного
+ []
+
+
+Overfull \hbox (9.42026pt too wide) in paragraph at lines 61--65
+\T2A/cmr/m/n/12 язык программирования представляет возможности очень быстрого п
+рототипирования
+ []
+
+
+Overfull \hbox (36.33652pt too wide) in paragraph at lines 61--65
+\T2A/cmr/m/n/12 После написания основного алгоритма и логики работы стала задач
+а составить графический
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--65
+
  []
 
 [4
 
- <./make_tess.png>]
-Overfull \hbox (10.15306pt too wide) in paragraph at lines 61--62
-\T2A/cmr/m/n/12 соединяем (создаем из них сегмент), после чего идет отрисовка п
-олученных
+ <./make_tess.png>] <./post3.png, id=34, 683.55376pt x 751.80875pt>
+File: ./post3.png Graphic file (type png)
+
+<use ./post3.png>
+Overfull \hbox (17.41698pt too wide) in paragraph at lines 68--69
+[]\T2A/cmr/m/n/12 Главное пространство занимает геометрическая трехмерная модел
+ь тессеракта(белые
  []
 
 
-Overfull \hbox (15.29372pt too wide) in paragraph at lines 61--62
-\T2A/cmr/m/n/12 она стала параллельна четвертой оси координат (0, 0, 0, 1). Для
- достижения
+Overfull \hbox (16.97992pt too wide) in paragraph at lines 68--69
+\T2A/cmr/m/n/12 сечение точкой и вектором нормали. Серая панель задает координа
+ты и местоположение
  []
 
 
-Overfull \hbox (23.15851pt too wide) in paragraph at lines 61--62
-\T2A/cmr/m/n/12 сказано в дальнейшем. В результате этих манипуляций четвертая к
-оордината
+Overfull \hbox (11.96562pt too wide) in paragraph at lines 68--69
+\T2A/cmr/m/n/12 ввода и нажать кнопку Set, или же использовать для введения спе
+циальные квадратные
  []
 
 
-Overfull \hbox (6.2918pt too wide) in paragraph at lines 61--62
-\T2A/cmr/m/n/12 у всех точек сечения становится однаковой, т.е. мы можем еј не 
-учитывать
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./post3.png>]
+Overfull \hbox (8.49153pt too wide) in paragraph at lines 73--74
+\T2A/cmr/m/n/12 задается гиперплоскость сечения. После получения уравнения гипе
+рплоскости сечения
  []
 
 
-Overfull \hbox (14.95186pt too wide) in paragraph at lines 63--64
-[]\T2A/cmr/m/n/12 Разберем подробнее процесс задания уравнения гиперплоскости с
-ечения. 
+Overfull \hbox (4.46046pt too wide) in paragraph at lines 73--74
+\T2A/cmr/m/n/12 сечением нужно повернуть так, чтобы она стала параллельна четве
+ртой оси координат
  []
 
 
-Overfull \hbox (1.07074pt too wide) in paragraph at lines 67--68
-\T2A/cmr/m/n/12 точек. Точка принадлежит гиперплоскости, если выполняется равен
-ство. 
+Overfull \hbox (10.82353pt too wide) in paragraph at lines 73--74
+\T2A/cmr/m/n/12 собой трехмерное геометрическое тело, вполне доступное для набл
+юдения и понимания. 
+ []
+
+
+Overfull \hbox (13.32298pt too wide) in paragraph at lines 77--79
+[]\T2A/cmr/m/n/12 Как было сказано, мы используем два метода для решения данной
+ задачи. Разберем,
+ []
+
+
+Overfull \hbox (15.43858pt too wide) in paragraph at lines 77--79
+\T2A/cmr/m/n/12 как задается уравнение гиперплоскости по четырем 4D точкам. Изв
+естно, что уравнение
  []
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.79 
+l.91 
      
 ? r
 OK, entering \nonstopmode...
 ! Display math should end with $$.
 <to be read again> 
                    \par 
-l.79 
+l.91 
      
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
@@ -690,7 +865,7 @@ So I shall assume that you typed `$$' both times.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.81 
+l.93 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -698,44 +873,33 @@ you left one out. Proceed, with fingers crossed.
 ! Display math should end with $$.
 <to be read again> 
                    \par 
-l.81 
+l.93 
      
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
-[5]
-Overfull \hbox (9.23575pt too wide) in paragraph at lines 83--83
-\T2A/cmr/m/n/12 Останется найти коэффициент $\OML/cmm/m/it/12 e$\T2A/cmr/m/n/12
- , который будет находиться подставлением
+[6]
+Overfull \hbox (12.1209pt too wide) in paragraph at lines 97--97
+[]\T2A/cmr/bx/n/14.4 Нахождение пересечения гиперплоскости сечения с ребрами
  []
 
 
-Overfull \hbox (14.81923pt too wide) in paragraph at lines 83--85
-\T2A/cmr/m/n/12 Таким образом, мы объявили гиперплоскость, используя введенные 
-данные. 
- []
+! LaTeX Error: Bad math environment delimiter.
 
-
-Overfull \hbox (49.86494pt too wide) in paragraph at lines 86--87
-[]\T2A/cmr/m/n/12 Для нахождения точек сечения надо найти пересечения данной ги
-перплоскости
- []
-
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.89 $\begin{equation}
-                      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.101 $\begin{equation}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 ! You can't use `\eqno' in math mode.
-\endequation ->\eqno 
-                     \hbox {\@eqnnum }$$\@ignoretrue 
-l.100 \end{equation}
+\endmathdisplay@a ...\df@tag \@empty \else \veqno 
+                                                  \alt@tag \df@tag \fi \ifx ...
+l.112 \end{equation}
                     $
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -745,7 +909,18 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! Missing \right. inserted.
 <inserted text> 
                 \right .
-l.100 \end{equation}
+l.112 \end{equation}
+                    $
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.112 \end{equation}
                     $
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -760,7 +935,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.100 \end{equation}
+l.112 \end{equation}
                     $
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -769,7 +944,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.100 \end{equation}
+l.112 \end{equation}
                     $
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -780,56 +955,63 @@ my insertion and my current dilemma will both disappear.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.100 \end{equation}
+l.112 \end{equation}
                     $
 Things are pretty mixed up, but I think the worst is over.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.102 
+l.114 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (21.31284pt too wide) in paragraph at lines 87--102
-\T2A/cmr/m/n/12 вершин гиперкуба и подставляет их координаты в уравнение гиперп
-лоскости. 
- []
-
-
-Overfull \hbox (86.43132pt too wide) in paragraph at lines 87--102
+Overfull \hbox (22.52054pt too wide) in paragraph at lines 99--114
 []$$$$[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--102
+Underfull \hbox (badness 10000) in paragraph at lines 99--114
 
  []
 
-[6]
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.107 $\begin{equation}
+[7]
+
+! LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119 $\begin{equation}
                        
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 ! You can't use `\eqno' in math mode.
-\endequation ->\eqno 
-                     \hbox {\@eqnnum }$$\@ignoretrue 
-l.111 \end{equation}
+\endmathdisplay@a ...\df@tag \@empty \else \veqno 
+                                                  \alt@tag \df@tag \fi \ifx ...
+l.123 \end{equation}
                     $
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.123 \end{equation}
+                    $
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
 
 ! LaTeX Error: \begin{document} ended by \end{equation}.
 
@@ -837,7 +1019,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.111 \end{equation}
+l.123 \end{equation}
                     $
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -846,7 +1028,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.111 \end{equation}
+l.123 \end{equation}
                     $
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -857,23 +1039,17 @@ my insertion and my current dilemma will both disappear.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.111 \end{equation}
+l.123 \end{equation}
                     $
 Things are pretty mixed up, but I think the worst is over.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.112 
+l.124 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (4.46173pt too wide) in paragraph at lines 105--112
-\T2A/cmr/m/n/12 и данного ребра. Пусть мы работаем с ребром $\OML/cmm/m/it/12 A
-B$ \T2A/cmr/m/n/12 гиперкуба и плоскостью
- []
 
 
 ! LaTeX Error: There's no line here to end.
@@ -882,28 +1058,30 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.114 Р
+l.126 Р
        —Р°РґР°РґРёРј РїР°СЂР°РјРµС‚СЂРёС‡РµСЃРєРѕРµ СѓСЂР°РІРЅРµРЅРёРµ РїСЂС...
 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.117 \begin{equation}
+
+! LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.129 \begin{equation}
                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 ! You can't use `\eqno' in math mode.
-\endequation ->\eqno 
-                     \hbox {\@eqnnum }$$\@ignoretrue 
-l.127 \end{equation}
+\endmathdisplay@a ...\df@tag \@empty \else \veqno 
+                                                  \alt@tag \df@tag \fi \ifx ...
+l.139 \end{equation}
                     
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -913,7 +1091,18 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! Missing \right. inserted.
 <inserted text> 
                 \right .
-l.127 \end{equation}
+l.139 \end{equation}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.139 \end{equation}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -928,7 +1117,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.127 \end{equation}
+l.139 \end{equation}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -937,7 +1126,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.127 \end{equation}
+l.139 \end{equation}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -948,14 +1137,14 @@ my insertion and my current dilemma will both disappear.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.127 \end{equation}
+l.139 \end{equation}
                     
 Things are pretty mixed up, but I think the worst is over.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.129 
+l.141 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -967,7 +1156,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.131 Р
+l.143 Р
        ўСЂРµР±СѓРµС‚СЃСЏ РЅР°Р№С‚Рё РЅРµРёР·РІРµСЃС‚РЅС‹Р№ РєРѕСЌС„С„РёС†РёР...
 
 Your command was ignored.
@@ -975,94 +1164,91 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (7.17363pt too wide) in paragraph at lines 131--133
-[]\T2A/cmr/m/n/12 Требуется найти неизвестный коэффициент $\OML/cmm/m/it/12 t$\
-T2A/cmr/m/n/12 . Находим его следующим
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 131--133
+Underfull \hbox (badness 10000) in paragraph at lines 143--145
 
  []
 
 
-Overfull \hbox (12.1151pt too wide) in paragraph at lines 136--137
-[]\T2A/cmr/m/n/12 Теперь параметрическое уравнение задано, требуется найти коор
-динаты
+Overfull \hbox (62.32658pt too wide) in paragraph at lines 148--149
+\T2A/cmr/m/n/12 пересечения нужно вычислить значения $\OT1/cmr/m/n/12 (\OML/cmm
+/m/it/12 x; y; z; w\OT1/cmr/m/n/12 )$\T2A/cmr/m/n/12 , входящие в состав систем
+ы параметрического
  []
 
 
-Overfull \hbox (16.95192pt too wide) in paragraph at lines 136--137
-\T2A/cmr/m/n/12 координат точек пересечения надо вычислить значения $\OT1/cmr/m
-/n/12 (\OML/cmm/m/it/12 x; y; z; w\OT1/cmr/m/n/12 )$\T2A/cmr/m/n/12 , входящие
+Overfull \hbox (16.97568pt too wide) in paragraph at lines 148--149
+\T2A/cmr/m/n/12 уравнения прямой. Найденная точка лежит между вершинами данного
+ ребра тессеракта
  []
 
 
-Overfull \hbox (53.12804pt too wide) in paragraph at lines 136--137
-\T2A/cmr/m/n/12 лежит между вершинами данного ребра тессеракта и принадлежит ги
-перплоскости
+Overfull \hbox (21.15234pt too wide) in paragraph at lines 152--154
+[]\T2A/cmr/m/n/12 После нахождения всех точек, требуется соединить их ребрами. 
+Для этого перебираем
  []
 
 
-Overfull \hbox (11.67139pt too wide) in paragraph at lines 139--139
-[]\T2A/cmr/bx/n/14.4 Построение геометрического тела сечения, поворот 
+Overfull \hbox (8.47409pt too wide) in paragraph at lines 152--154
+\T2A/cmr/m/n/12 лежали на одном ребре, необходимо, чтобы хотя бы две их координ
+аты были одинаковы
  []
 
 
-Overfull \hbox (7.3796pt too wide) in paragraph at lines 140--142
-\T2A/cmr/m/n/12 одном ребре - чтобы две двнные точки лежали на одном ребре, нео
-бходимо,
+Overfull \hbox (2.56357pt too wide) in paragraph at lines 155--156
+\T2A/cmr/m/n/12 Для осуществления данной цели используются матрицы поворота точ
+ки в плоскостях.
  []
 
 
-Overfull \hbox (6.62898pt too wide) in paragraph at lines 140--142
-\T2A/cmr/m/n/12 чтобы хотя бы две их координаты были одинаковы и равны соответс
-твенно
- []
-
-[7]
-Overfull \hbox (25.3958pt too wide) in paragraph at lines 143--144
-[]\T2A/cmr/m/n/12 Следующим шагом требуется повернуть плоскость сечения таким о
-бразом,
+Overfull \hbox (8.04973pt too wide) in paragraph at lines 155--156
+\T2A/cmr/m/n/12 Составляя нужную композицию поворотов, можно достичь поставленн
+ой выше задачи. 
  []
 
 
-Overfull \hbox (38.1178pt too wide) in paragraph at lines 143--144
-\T2A/cmr/m/n/12 чтобы нормаль к данной плоскости стала параллельной четвертой к
-оординатной
+Overfull \hbox (7.01213pt too wide) in paragraph at lines 157--159
+[]\T2A/cmr/m/n/12 Пусть дана система координат $\OML/cmm/m/it/12 Oxyzw$\T2A/cmr
+/m/n/12 . Определим матрицы поворота относительно
  []
 
 
-Overfull \hbox (6.27074pt too wide) in paragraph at lines 143--144
-\T2A/cmr/m/n/12 оси $\OML/cmm/m/it/12 Ow$\T2A/cmr/m/n/12 . Для осуществления да
-нной цели используются матрицы поворота
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 145--147
+Underfull \hbox (badness 10000) in paragraph at lines 157--159
 
  []
 
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.150 \begin{equation}
+
+! LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.162 \begin{equation}
                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 ! You can't use `\eqno' in math mode.
-\endequation ->\eqno 
-                     \hbox {\@eqnnum }$$\@ignoretrue 
-l.158 \end{equation}
+\endmathdisplay@a ...\df@tag \@empty \else \veqno 
+                                                  \alt@tag \df@tag \fi \ifx ...
+l.170 \end{equation}
                     
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.170 \end{equation}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
 
 ! LaTeX Error: \begin{document} ended by \end{equation}.
@@ -1071,7 +1257,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.158 \end{equation}
+l.170 \end{equation}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1080,7 +1266,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.158 \end{equation}
+l.170 \end{equation}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1091,43 +1277,57 @@ my insertion and my current dilemma will both disappear.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.158 \end{equation}
+l.170 \end{equation}
                     
 Things are pretty mixed up, but I think the worst is over.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.161 
+l.173 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--161
+Underfull \hbox (badness 10000) in paragraph at lines 160--173
 
  []
 
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.164 \begin{equation}
+[8]
+
+! LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.176 \begin{equation}
                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 ! You can't use `\eqno' in math mode.
-\endequation ->\eqno 
-                     \hbox {\@eqnnum }$$\@ignoretrue 
-l.172 \end{equation}
+\endmathdisplay@a ...\df@tag \@empty \else \veqno 
+                                                  \alt@tag \df@tag \fi \ifx ...
+l.184 \end{equation}
                     
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.184 \end{equation}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
 
 ! LaTeX Error: \begin{document} ended by \end{equation}.
@@ -1136,7 +1336,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.172 \end{equation}
+l.184 \end{equation}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1145,7 +1345,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.172 \end{equation}
+l.184 \end{equation}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1156,43 +1356,56 @@ my insertion and my current dilemma will both disappear.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.172 \end{equation}
+l.184 \end{equation}
                     
 Things are pretty mixed up, but I think the worst is over.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.175 
+l.187 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--175
+Underfull \hbox (badness 10000) in paragraph at lines 174--187
 
  []
 
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.178 \begin{equation}
+
+! LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.190 \begin{equation}
                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 ! You can't use `\eqno' in math mode.
-\endequation ->\eqno 
-                     \hbox {\@eqnnum }$$\@ignoretrue 
-l.186 \end{equation}
+\endmathdisplay@a ...\df@tag \@empty \else \veqno 
+                                                  \alt@tag \df@tag \fi \ifx ...
+l.198 \end{equation}
                     
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.198 \end{equation}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
 
 ! LaTeX Error: \begin{document} ended by \end{equation}.
@@ -1201,7 +1414,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.186 \end{equation}
+l.198 \end{equation}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1210,7 +1423,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.186 \end{equation}
+l.198 \end{equation}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1221,124 +1434,68 @@ my insertion and my current dilemma will both disappear.
 ! Extra \endgroup.
 <recently read> \endgroup 
                           
-l.186 \end{equation}
+l.198 \end{equation}
                     
 Things are pretty mixed up, but I think the worst is over.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.189 
+l.201 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--189
+Underfull \hbox (badness 10000) in paragraph at lines 188--201
 
  []
 
 
-Overfull \hbox (12.65474pt too wide) in paragraph at lines 190--192
-\T2A/cmr/m/n/12 . Таким образом, чтобы повернуть нормаль плоскости сечения пара
-ллельно
+Overfull \hbox (9.51814pt too wide) in paragraph at lines 205--207
+[]\T2A/cmr/m/n/12 После данных манипуляций получаем трехмерное результирующее с
+ечение, которое
  []
 
 
-Overfull \hbox (18.52428pt too wide) in paragraph at lines 193--195
-\T2A/cmr/m/n/12 сечение, которое и выводится на экран. Данное сечение не имеет 
-координаты
+Overfull \hbox (7.65822pt too wide) in paragraph at lines 209--210
+\T2A/cmr/m/n/12 которая может изобразить трехмерное сечение гиперкуба, поворачи
+вать его, используя
  []
 
 
-Overfull \hbox (6.34499pt too wide) in paragraph at lines 193--195
-\OML/cmm/m/it/12 w$\T2A/cmr/m/n/12 , и, как следствие, представляет собой геоме
-трическое тело в трехмерном
+Overfull \hbox (9.35501pt too wide) in paragraph at lines 209--210
+\T2A/cmr/m/n/12 формулы поворота точки относительно начала координат, математич
+еское обоснование
  []
 
 
-Overfull \hbox (3.5771pt too wide) in paragraph at lines 193--195
-\T2A/cmr/m/n/12 Евклидовом пространстве. Данное сечение имеет одинаковую коорди
-нату
- []
-
-
-Overfull \hbox (32.61284pt too wide) in paragraph at lines 193--195
-\OML/cmm/m/it/12 w$\T2A/cmr/m/n/12 , и, как следствие, идентично со своей проек
-цией на трехмерное пространство. 
- []
-
-<./a4.png, id=53, 560.0925pt x 616.3025pt>
-File: ./a4.png Graphic file (type png)
- <use ./a4.png>
-Overfull \hbox (24.1118pt too wide) in paragraph at lines 197--201
-\T2A/cmr/m/n/12 состоящий из восьми треугольников. Сечение получается из точки 
-$\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 (0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/c
-mm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0)$
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
-<./6prism1.png, id=57, 642.4pt x 587.19376pt>
-File: ./6prism1.png Graphic file (type png)
- <use ./6prism1.png>
-Underfull \hbox (badness 10000) in paragraph at lines 202--204
+Underfull \hbox (badness 10000) in paragraph at lines 215--218
 
  []
 
-[9 <./a4.png> <./6prism1.png>]
-Overfull \hbox (44.90907pt too wide) in paragraph at lines 216--217
-[]\T2A/cmr/m/n/12 Таким образом, наше исследование ставило своей целью создать 
-программную
- []
-
-
-Overfull \hbox (34.57845pt too wide) in paragraph at lines 216--217
-\T2A/cmr/m/n/12 гиперкуба трехмерной гиперплоскостью. Данная задача была нами д
-остигнута.
- []
-
-
-Overfull \hbox (18.53719pt too wide) in paragraph at lines 216--217
-\T2A/cmr/m/n/12 Была составлена математическая модель и на ее основе написана п
-рограмма.
- []
-
-
-Overfull \hbox (22.48755pt too wide) in paragraph at lines 216--217
-\T2A/cmr/m/n/12 Сечения гиперкуба строятся в четырехмерных координатах, и, как 
-следствие,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 222--225
-
- []
-
-[10] (./main_inf.aux) ) 
+[9] (./main_inf.aux) ) 
 Here is how much of TeX's memory you used:
- 2483 strings out of 94500
- 27147 string characters out of 1176766
- 82035 words of memory out of 1000000
- 5626 multiletter control sequences out of 10000+50000
- 15279 words of font info for 34 fonts, out of 500000 for 2000
+ 3749 strings out of 94500
+ 42240 string characters out of 1176766
+ 102335 words of memory out of 1000000
+ 6846 multiletter control sequences out of 10000+50000
+ 17197 words of font info for 43 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 25i,8n,38p,2071b,296s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 27i,8n,38p,2047b,303s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
- 63 PDF objects out of 300000
+ 59 PDF objects out of 300000
  0 named destinations out of 131072
- 26 words of extra memory for PDF output out of 65536
-</usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr
-/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bl
-uesky/cm/cmr8.pfb> </home/sapka/.texmf-var/pk/ljfour/lh/lh-t2a/labx1440.600pk><
-/usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/texmf/fonts/type
-1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb> </h
-ome/sapka/.texmf-var/pk/ljfour/lh/lh-t2a/labx1728.600pk> </home/sapka/.texmf-va
-r/pk/ljfour/lh/lh-t2a/larm1200.600pk> </home/sapka/.texmf-var/pk/ljfour/lh/lh-t
-2a/lacc1440.600pk> </home/sapka/.texmf-var/pk/ljfour/lh/lh-t2a/larm1440.600pk> 
-</home/sapka/.texmf-var/pk/ljfour/lh/lh-t2a/lati1440.600pk> </home/sapka/.texmf
--var/pk/ljfour/lh/lh-t2a/labx2488.600pk> </home/sapka/.texmf-var/pk/ljfour/lh/l
-h-t2a/lacc2074.600pk>
-Output written on main_inf.pdf (10 pages, 194457 bytes).
+ 21 words of extra memory for PDF output out of 65536
+</usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/
+share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/blu
+esky/cm/cmr8.pfb> </home/sapka/.texmf-var/pk/ljfour/lh/lh-t2a/labx1440.600pk></
+usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/texmf/fonts/type1
+/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb> </ho
+me/sapka/.texmf-var/pk/ljfour/lh/lh-t2a/labx1728.600pk> </home/sapka/.texmf-var
+/pk/ljfour/lh/lh-t2a/larm1200.600pk> </home/sapka/.texmf-var/pk/ljfour/lh/lh-t2
+a/lacc1440.600pk> </home/sapka/.texmf-var/pk/ljfour/lh/lh-t2a/larm1440.600pk> <
+/home/sapka/.texmf-var/pk/ljfour/lh/lh-t2a/lati1440.600pk> </home/sapka/.texmf-
+var/pk/ljfour/lh/lh-t2a/labx2488.600pk> </home/sapka/.texmf-var/pk/ljfour/lh/lh
+-t2a/lacc2074.600pk>
+Output written on main_inf.pdf (9 pages, 194626 bytes).
