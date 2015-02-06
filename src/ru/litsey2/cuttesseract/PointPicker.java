@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -12,6 +14,7 @@ import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import ru.litsey2.cuttesseract.geometry.Point4d;
 
@@ -39,17 +42,23 @@ public abstract class PointPicker extends JPanel {
 
 	/**
 	 * Constructs point with the selected coordinates
+	 * 
 	 * @return the picked point
 	 */
 	Point4d getPoint4d() {
-		return new Point4d(axis1.absoluteX, axis1.absoluteY, axis2.absoluteX, axis2.absoluteY);
+		return new Point4d(axis1.absoluteX, axis1.absoluteY, axis2.absoluteX,
+				axis2.absoluteY);
 	}
 
 	/**
 	 * Constructs <code>PointPicker</code> panel with the specified background
-	 * @param bgColor background color of the panel
+	 * 
+	 * @param bgColor
+	 *            background color of the panel
+	 * @param drawLine
+	 *            toggles drawing of {@link AxisBox#drawLine}
 	 */
-	public PointPicker(Color bgColor) {
+	public PointPicker(Color bgColor, boolean drawLine) {
 		setPreferredSize(new Dimension(200, 101));
 
 		setBackground(bgColor);
@@ -60,17 +69,82 @@ public abstract class PointPicker extends JPanel {
 
 		final JFormattedTextField textX = new JFormattedTextField(decimalFormat);
 		textX.setColumns(5);
+		textX.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusLost(FocusEvent e) {
+			}
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						textX.selectAll();
+					}
+				});
+			}
+		});
 
 		final JFormattedTextField textY = new JFormattedTextField(decimalFormat);
 		textY.setColumns(5);
+		textY.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusLost(FocusEvent e) {
+			}
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						textY.selectAll();
+					}
+				});
+			}
+		});
 
 		final JFormattedTextField textZ = new JFormattedTextField(decimalFormat);
 		textZ.setColumns(5);
+		textZ.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusLost(FocusEvent e) {
+			}
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						textZ.selectAll();
+					}
+				});
+			}
+		});
 
 		final JFormattedTextField textW = new JFormattedTextField(decimalFormat);
 		textW.setColumns(5);
+		textW.addFocusListener(new FocusListener() {
 
-		axis1 = new AxisBox(this, Colors.X_COLOR, Colors.Y_COLOR, textX, textY) {
+			@Override
+			public void focusLost(FocusEvent e) {
+			}
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						textW.selectAll();
+					}
+				});
+			}
+		});
+
+		axis1 = new AxisBox(this, Colors.X_COLOR, Colors.Y_COLOR, textX, textY,
+				drawLine) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -78,7 +152,8 @@ public abstract class PointPicker extends JPanel {
 				onPointChanged();
 			}
 		};
-		axis2 = new AxisBox(this, Colors.Z_COLOR, Colors.W_COLOR, textZ, textW) {
+		axis2 = new AxisBox(this, Colors.Z_COLOR, Colors.W_COLOR, textZ, textW,
+				drawLine) {
 			private static final long serialVersionUID = 1L;
 
 			@Override

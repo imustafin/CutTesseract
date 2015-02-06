@@ -69,11 +69,13 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 	double absoluteY = 0;
 
 	/**
-	 * A <code>JTextField</code> to put the value of <code>{@link #absoluteX}</code> to
+	 * A <code>JTextField</code> to put the value of
+	 * <code>{@link #absoluteX}</code> to
 	 */
 	JTextField textX;
 	/**
-	 * A <code>JTextField</code> to put the value of <code>{@link #absoluteY}</code> to
+	 * A <code>JTextField</code> to put the value of
+	 * <code>{@link #absoluteY}</code> to
 	 */
 	JTextField textY;
 
@@ -81,6 +83,12 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 	 * A parent <code>{@link PointPicker}</code>
 	 */
 	PointPicker pointPicker;
+
+	/**
+	 * If <code>true</code> line starting from the origin and ending in the
+	 * selected point is drawn
+	 */
+	boolean drawLine;
 
 	/**
 	 * Executed on any <code>x1</code> or <code>y1</code> change
@@ -98,13 +106,16 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 	 *            text field to put the <i>X</i> coordinate to
 	 * @param textY
 	 *            text field to put the <i>X</i> coordinate to
+	 * @param drawLine
+	 *            toggles drawing of {@link #drawLine}
 	 */
 	AxisBox(PointPicker pointPicker, Color colorX, Color colorY,
-			JTextField textX, JTextField textY) {
+			JTextField textX, JTextField textY, boolean drawLine) {
 		setMinimumSize(new Dimension(SIZE, SIZE));
 		setPreferredSize(new Dimension(SIZE, SIZE));
 		setMaximumSize(new Dimension(SIZE, SIZE));
 
+		this.drawLine = drawLine;
 		this.pointPicker = pointPicker;
 
 		setBackground(Colors.BACKGROUND_COLOR);
@@ -184,6 +195,10 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 		g.setColor(POINT_COLOR);
 		int r = 5;
 		g.fillOval(x - r, y - r, 2 * r, 2 * r);
+
+		if (drawLine) {
+			g.drawLine(originX, originY, x, y);
+		}
 
 		g.setColor(oldColor);
 
