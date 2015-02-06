@@ -11,22 +11,22 @@ public class Plane3d {
 	 * The <code>a</code> coefficient in the <code>ax + by + cz + d = 0</code>
 	 * plane equation
 	 */
-	final double a;
+	public final double a;
 	/**
 	 * The <code>b</code> coefficient in the <code>ax + by + cz + d = 0</code>
 	 * plane equation
 	 */
-	final double b;
+	public final double b;
 	/**
 	 * The <code>c</code> coefficient in the <code>ax + by + cz + d = 0</code>
 	 * plane equation
 	 */
-	final double c;
+	public final double c;
 	/**
 	 * The <code>d</code> coefficient in the <code>ax + by + cz + d = 0</code>
 	 * plane equation
 	 */
-	final double d;
+	public final double d;
 
 	/**
 	 * Constructs plane by the <code>ax + by + cz + d = 0</code> plane equation
@@ -68,11 +68,9 @@ public class Plane3d {
 
 	/**
 	 * 
-	 * @return plane normal
+	 * @return normalized plane normal
 	 */
 	Vector3d getNormal() {
-		Vector3d v = new Vector3d(new Point3d(a, b, c));
-		double l = v.length();
-		return new Vector3d(new Point3d(a / l, b / l, c / l));
+		return new Vector3d(a, b, c).getNormalized();
 	}
 }

@@ -37,13 +37,14 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 	private final Color colorY;
 
 	/**
-	 * The <i>X</i> coordinate of the center of the <code>AxisBox</code>
+	 * The <i>X</i> coordinate of the origin
+	 * 
 	 */
-	private final int x0;
+	private final int originX;
 	/**
-	 * The <i>Y</i> coordinate of the center of the <code>AxisBox</code>
+	 * The <i>Y</i> coordinate of the origin
 	 */
-	private final int y0;
+	private final int originY;
 
 	/**
 	 * The in-box <i>X</i> coordinate of the currently selected point.
@@ -60,19 +61,19 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 	 * The real <i>X</i> coordinate of the currently selected point. Relatively
 	 * to the center of the <code>AxisBox</code> and properly scaled
 	 */
-	double x1 = 0;
+	double absoluteX = 0;
 	/**
 	 * The real <i>Y</i> coordinate of the currently selected point. Relatively
 	 * to the center of the <code>AxisBox</code> and properly scaled
 	 */
-	double y1 = 0;
+	double absoluteY = 0;
 
 	/**
-	 * A <code>JTextField</code> to put the value of <code>{@link #x1}</code> to
+	 * A <code>JTextField</code> to put the value of <code>{@link #absoluteX}</code> to
 	 */
 	JTextField textX;
 	/**
-	 * A <code>JTextField</code> to put the value of <code>{@link #y1}</code> to
+	 * A <code>JTextField</code> to put the value of <code>{@link #absoluteY}</code> to
 	 */
 	JTextField textY;
 
@@ -117,14 +118,14 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 		addMouseListener(this);
 		addMouseMotionListener(this);
 
-		x0 = getPreferredSize().width / 2;
-		y0 = getPreferredSize().height / 2;
+		originX = getPreferredSize().width / 2;
+		originY = getPreferredSize().height / 2;
 
-		x = x0;
-		y = y0;
+		x = originX;
+		y = originY;
 
-		x1 = 0;
-		y1 = 0;
+		absoluteX = 0;
+		absoluteY = 0;
 
 		updateTexts();
 	}
@@ -137,8 +138,8 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 	 *            new real <i>X</i> value
 	 */
 	void setX(double x2) {
-		x1 = x2;
-		x = (int) (x1 * x0 + x0);
+		absoluteX = x2;
+		x = (int) (absoluteX * originX + originX);
 		repaint();
 		onCoordChanged();
 	}
@@ -151,8 +152,8 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 	 *            new real <i>Y</i> value
 	 */
 	void setY(double y2) {
-		y1 = -y2;
-		y = (int) (y1 * y0 + y0);
+		absoluteY = -y2;
+		y = (int) (absoluteY * originY + originY);
 		repaint();
 		onCoordChanged();
 	}
@@ -161,10 +162,10 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 	 * Puts the real coordinates to the corresponding text frames
 	 */
 	void updateTexts() {
-		x1 = (double) (x - x0) / x0;
-		y1 = (double) (y - y0) / -y0;
-		textX.setText(Double.toString(x1));
-		textY.setText(Double.toString(y1));
+		absoluteX = (double) (x - originX) / originX;
+		absoluteY = (double) (y - originY) / -originY;
+		textX.setText(Double.toString(absoluteX));
+		textY.setText(Double.toString(absoluteY));
 
 	}
 

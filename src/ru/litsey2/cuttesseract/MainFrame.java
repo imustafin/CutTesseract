@@ -6,17 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
-import ru.litsey2.cuttesseract.geometry.Vector4d;
-
 /**
- * 
+ * Main program window
  * @author Ilgiz Mustafin
  */
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
-	Vector4d planeNormal;
 
 	PointRotater pointRotator;
 

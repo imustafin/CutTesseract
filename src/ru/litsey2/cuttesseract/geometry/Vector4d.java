@@ -29,7 +29,7 @@ public class Vector4d extends Point4d {
 	 * @param s segment
 	 */
 	public Vector4d(Segment4d s) {
-		this(s.getA(), s.getB());
+		this(s.a, s.b);
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class Vector4d extends Point4d {
 	 */
 	public Vector4d getNormalized() {
 		double l = this.length();
-		Vector4d ans = new Vector4d(getX() / l, getY() / l, getZ() / l, getW() / l);
+		Vector4d ans = new Vector4d(x / l, y / l, z / l, w / l);
 		return ans;
 	}
 	

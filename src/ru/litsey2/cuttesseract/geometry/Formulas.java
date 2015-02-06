@@ -131,25 +131,25 @@ public class Formulas {
 	static double[] plane4dCoefficients(Point4d p1, Point4d p2, Point4d p3,
 			Point4d p4) {
 
-		double x1 = p1.getX();
-		double x2 = p2.getX();
-		double x3 = p3.getX();
-		double x4 = p4.getX();
+		double x1 = p1.x;
+		double x2 = p2.x;
+		double x3 = p3.x;
+		double x4 = p4.x;
 
-		double y1 = p1.getY();
-		double y2 = p2.getY();
-		double y3 = p3.getY();
-		double y4 = p4.getY();
+		double y1 = p1.y;
+		double y2 = p2.y;
+		double y3 = p3.y;
+		double y4 = p4.y;
 
-		double z1 = p1.getZ();
-		double z2 = p2.getZ();
-		double z3 = p3.getZ();
-		double z4 = p4.getZ();
+		double z1 = p1.z;
+		double z2 = p2.z;
+		double z3 = p3.z;
+		double z4 = p4.z;
 
-		double w1 = p1.getW();
-		double w2 = p2.getW();
-		double w3 = p3.getW();
-		double w4 = p4.getW();
+		double w1 = p1.w;
+		double w2 = p2.w;
+		double w3 = p3.w;
+		double w4 = p4.w;
 
 		double a = w3 * y2 * z1 - w4 * y2 * z1 - w2 * y3 * z1 + w4 * y3 * z1
 				+ w2 * y4 * z1 - w3 * y4 * z1 - w3 * y1 * z2 + w4 * y1 * z2
@@ -223,10 +223,10 @@ public class Formulas {
 		Vector4d[] ar = { a, b, c, d };
 		for (int i = 0; i < 4; i++) {
 			Vector4d v = ar[i];
-			mt[i][0] = v.getX();
-			mt[i][1] = v.getY();
-			mt[i][2] = v.getZ();
-			mt[i][3] = v.getW();
+			mt[i][0] = v.x;
+			mt[i][1] = v.y;
+			mt[i][2] = v.z;
+			mt[i][3] = v.w;
 		}
 
 		double[] dets = new double[4];

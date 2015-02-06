@@ -42,7 +42,7 @@ public abstract class PointPicker extends JPanel {
 	 * @return the picked point
 	 */
 	Point4d getPoint4d() {
-		return new Point4d(axis1.x1, axis1.y1, axis2.x1, axis2.y1);
+		return new Point4d(axis1.absoluteX, axis1.absoluteY, axis2.absoluteX, axis2.absoluteY);
 	}
 
 	/**

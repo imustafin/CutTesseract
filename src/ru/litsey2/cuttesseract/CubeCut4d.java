@@ -3,7 +3,7 @@ package ru.litsey2.cuttesseract;
 import javax.swing.SwingUtilities;
 
 /**
- * A main class
+ * A main class, creates a {@link MainFrame}
  * 
  * @author Ilgiz Mustafin
  * @version 0.3

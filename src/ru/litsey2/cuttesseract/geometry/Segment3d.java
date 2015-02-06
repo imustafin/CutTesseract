@@ -9,17 +9,17 @@ public class Segment3d implements Comparable<Segment3d> {
 	 * 
 	 * @see Point4d#compareTo(Point4d)
 	 */
-	protected final Point3d first;
+	public final Point3d first;
 	/**
 	 * The second point of the segment. It is not less than the first point.
 	 * 
 	 * @see Point4d#compareTo(Point4d)
 	 */
-	protected final Point3d second;
+	public final Point3d second;
 	/**
 	 * The color of the segment
 	 */
-	final Color color;
+	public final Color color;
 
 	@Override
 	public String toString() {

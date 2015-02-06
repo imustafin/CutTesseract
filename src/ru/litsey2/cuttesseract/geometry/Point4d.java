@@ -4,19 +4,19 @@ public class Point4d implements Comparable<Point4d> {
 	/**
 	 * The <code>x</code> coordinate of this point
 	 */
-	protected final double x;
+	public final double x;
 	/**
 	 * The <code>y</code> coordinate of this point
 	 */
-	protected final double y;
+	public final double y;
 	/**
 	 * The <code>z</code> coordinate of this point
 	 */
-	protected final double z;
+	public final double z;
 	/**
 	 * The <code>w</code> coordinate of this point
 	 */
-	protected final double w;
+	public final double w;
 
 	/**
 	 * The point with coordinates <code>(0, 0, 0, 0)</code>
@@ -73,22 +73,22 @@ public class Point4d implements Comparable<Point4d> {
 	 */
 	@Override
 	public int compareTo(Point4d b) {
-		if (Geometry.compareEps(getX(), b.getX()) == 0) {
-			if (Geometry.compareEps(getY(), b.getY()) == 0) {
-				if (Geometry.compareEps(getZ(), b.getZ()) == 0) {
-					if (Geometry.compareEps(getW(), b.getW()) == 0) {
+		if (Geometry.compareEps(x, b.x) == 0) {
+			if (Geometry.compareEps(y, b.y) == 0) {
+				if (Geometry.compareEps(z, b.z) == 0) {
+					if (Geometry.compareEps(w, b.w) == 0) {
 						return 0;
 					} else {
-						return Double.compare(getW(), b.getW());
+						return Double.compare(w, b.w);
 					}
 				} else {
-					return Double.compare(getZ(), b.getZ());
+					return Double.compare(z, b.z);
 				}
 			} else {
-				return Double.compare(getY(), b.getY());
+				return Double.compare(y, b.y);
 			}
 		} else {
-			return Double.compare(getX(), b.getX());
+			return Double.compare(x, b.x);
 		}
 	}
 
@@ -96,10 +96,14 @@ public class Point4d implements Comparable<Point4d> {
 	 * Checks if four points are <i>cospatial</i>. If four points are
 	 * <i>cospatial</i> they do not define a hyperplane.
 	 * 
-	 * @param a first point
-	 * @param b second point
-	 * @param c third point
-	 * @param d fourth point
+	 * @param a
+	 *            first point
+	 * @param b
+	 *            second point
+	 * @param c
+	 *            third point
+	 * @param d
+	 *            fourth point
 	 * @return true if the points are cospatial, false otherwise
 	 */
 	static boolean coSpatial(Point4d a, Point4d b, Point4d c, Point4d d) {
@@ -107,10 +111,10 @@ public class Point4d implements Comparable<Point4d> {
 		Point4d[] ar = { a, b, c, d };
 		for (int i = 0; i < 4; i++) {
 			Point4d p = ar[i];
-			mt[i][0] = p.getX();
-			mt[i][1] = p.getY();
-			mt[i][2] = p.getZ();
-			mt[i][3] = p.getW();
+			mt[i][0] = p.x;
+			mt[i][1] = p.y;
+			mt[i][2] = p.z;
+			mt[i][3] = p.w;
 		}
 		return (Geometry.compareEps(new Matrix(mt).getDeterminant(), 0) == 0);
 	}
@@ -123,10 +127,10 @@ public class Point4d implements Comparable<Point4d> {
 	 * @return distance to the other point
 	 */
 	public double distance(Point4d b) {
-		double dx = b.getX() - getX();
-		double dy = b.getY() - getY();
-		double dz = b.getZ() - getZ();
-		double dw = b.getW() - getW();
+		double dx = b.x - x;
+		double dy = b.y - y;
+		double dz = b.z - z;
+		double dw = b.w - w;
 		return Math.sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
 	}
 
@@ -140,25 +144,8 @@ public class Point4d implements Comparable<Point4d> {
 	 * 
 	 */
 	public double applyToPlane(Plane4d p) {
-		double res = p.a * getX() + p.b * getY() + p.c * getZ() + p.d * getW()
-				+ p.e;
+		double res = p.a * x + p.b * y + p.c * z + p.d * w + p.e;
 		return res;
-	}
-	
-	public double getX() {
-		return x;
-	}
-
-	public double getY() {
-		return y;
-	}
-
-	public double getZ() {
-		return z;
-	}
-
-	public double getW() {
-		return w;
 	}
 
 }

@@ -1,10 +1,18 @@
 package ru.litsey2.cuttesseract.geometry;
 
 public class Matrix {
-	final double[][] data;
+	private final double[][] data;
 
 	public Matrix(double[][] data) {
-		this.data = data;
+		this.data = data.clone();
+	}
+	
+	/**
+	 * 
+	 * @return copy of {@link #data}
+	 */
+	public double[][] getData() {
+		return data.clone();
 	}
 
 	/**

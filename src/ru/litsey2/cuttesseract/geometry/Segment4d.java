@@ -9,17 +9,17 @@ public class Segment4d implements Comparable<Segment4d> {
 	 * 
 	 * @see Point4d#compareTo(Point4d)
 	 */
-	private final Point4d a;
+	public final Point4d a;
 	/**
 	 * The second point of the segment. It is not less than the first point.
 	 * 
 	 * @see Point4d#compareTo(Point4d)
 	 */
-	private final Point4d b;
+	public final Point4d b;
 	/**
 	 * The color of the segment
 	 */
-	protected final Color color;
+	public final Color color;
 
 	/**
 	 * Constructs segment with the specified two points and color. The second
@@ -64,7 +64,9 @@ public class Segment4d implements Comparable<Segment4d> {
 
 	/**
 	 * Constructs this segment as a copy of the specified segment
-	 * @param s a segment to copy
+	 * 
+	 * @param s
+	 *            a segment to copy
 	 */
 	public Segment4d(Segment4d s) {
 		this.a = s.a;
@@ -97,16 +99,16 @@ public class Segment4d implements Comparable<Segment4d> {
 	public ArrayList<Point4d> intersectWithPlane(Plane4d p) {
 		ArrayList<Point4d> ans = new ArrayList<Point4d>();
 
-		double res1 = getA().applyToPlane(p);
-		double res2 = getB().applyToPlane(p);
+		double res1 = a.applyToPlane(p);
+		double res2 = b.applyToPlane(p);
 		int sign1 = Geometry.compareEps(res1, 0);
 		int sign2 = Geometry.compareEps(res2, 0);
 
 		if (sign1 == 0) {
-			ans.add(getA());
+			ans.add(a);
 		}
 		if (sign2 == 0) {
-			ans.add(getB());
+			ans.add(b);
 		}
 
 		if (ans.size() > 0) {
@@ -117,32 +119,17 @@ public class Segment4d implements Comparable<Segment4d> {
 			return ans;
 		}
 
-		Vector4d ab = new Vector4d(getA(), getB());
+		Vector4d ab = new Vector4d(a, b);
 		/*
 		 * t: в параметрическом уравенении прямой параметр задающий точку
 		 * пересечения с плоскостью.
 		 */
-		double t = (-p.a * getA().getX() - p.b * getA().getY() - p.c
-				* getA().getZ() - p.d * getA().getW() - p.e)
-				/ (p.a * ab.getX() + p.b * ab.getY() + p.c * ab.getZ() + p.d
-						* ab.getW());
-		Point4d m = new Point4d(getA().getX() + ab.getX() * t, getA().getY()
-				+ ab.getY() * t, getA().getZ() + ab.getZ() * t, getA().getW()
-				+ ab.getW() * t);
+		double t = (-p.a * a.x - p.b * a.y - p.c * a.z - p.d * a.w - p.e)
+				/ (p.a * ab.x + p.b * ab.y + p.c * ab.z + p.d * ab.w);
+		Point4d m = new Point4d(a.x + ab.x * t, a.y + ab.y * t, a.z + ab.z * t,
+				a.w + ab.w * t);
 		ans.add(m);
 		return ans;
-	}
-
-	public Color getColor() {
-		return color;
-	}
-
-	public Point4d getA() {
-		return a;
-	}
-
-	public Point4d getB() {
-		return b;
 	}
 
 }

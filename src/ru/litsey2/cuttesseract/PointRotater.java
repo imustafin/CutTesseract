@@ -29,9 +29,15 @@ public class PointRotater {
 	 */
 	Set<Segment2d> segments2d;
 
-	// TODO comment on #angles indexes
 	/**
-	 * Angles to rotate segments by
+	 * Angles to rotate all point by
+	 * <ul>
+	 * <li><code>[0]</code>: XY angle
+	 * <li><code>[1]</code>: YZ angle
+	 * <li><code>[2]</code>: ZW angle
+	 * <li><code>[3]</code>: WX angle
+	 * <li><code>[4]</code>: XZ angle
+	 * </ul>
 	 * 
 	 */
 	private double[] angles = new double[5];
@@ -77,7 +83,7 @@ public class PointRotater {
 	 */
 	Segment4d getNormalSegment() {
 		for (Segment4d s : segments4d) {
-			if (s.getColor().equals(Colors.NORMAL_COLOR)) {
+			if (s.color.equals(Colors.NORMAL_COLOR)) {
 				return new Segment4d(s);
 			}
 		}
@@ -92,10 +98,10 @@ public class PointRotater {
 	 * @return rotated copy of the specified point
 	 */
 	public Point4d getRotated(Point4d a) {
-		double x = a.getX();
-		double y = a.getY();
-		double z = a.getZ();
-		double w = a.getW();
+		double x = a.x;
+		double y = a.y;
+		double z = a.z;
+		double w = a.w;
 
 		double nx = x;
 		double ny = y;
@@ -168,12 +174,12 @@ public class PointRotater {
 		segments2d.clear();
 		Set<Segment4d> nSegments4d = new TreeSet<Segment4d>();
 		for (Segment4d s : segments4d) {
-			Point4d a4 = getRotated(s.getA());
-			Point4d b4 = getRotated(s.getB());
-			nSegments4d.add(new Segment4d(a4, b4, s.getColor()));
-			Point2d a2 = new Point2d(a4.getX(), a4.getY());
-			Point2d b2 = new Point2d(b4.getX(), b4.getY());
-			segments2d.add(new Segment2d(a2, b2, s.getColor()));
+			Point4d a4 = getRotated(s.a);
+			Point4d b4 = getRotated(s.b);
+			nSegments4d.add(new Segment4d(a4, b4, s.color));
+			Point2d a2 = new Point2d(a4.x, a4.y);
+			Point2d b2 = new Point2d(b4.x, b4.y);
+			segments2d.add(new Segment2d(a2, b2, s.color));
 		}
 		segments4d = nSegments4d;
 		for (int i = 0; i < angles.length; i++) {
@@ -196,6 +202,8 @@ public class PointRotater {
 	 * @param r2 ZW angle
 	 * @param r3 WX angle
 	 * @param r4 XZ angle
+	 * 
+	 * @see #angles
 	 */
 	public void addAngles(double r0, double r1, double r2, double r3, double r4) {
 		angles[0] += r0;
@@ -212,35 +220,35 @@ public class PointRotater {
 	void rotateNormalToUs() {
 		Vector4d n = new Vector4d(getNormalSegment()).getNormalized();
 		// x!=0,y=0   =>  a0=90
-		if (Geometry.compareEps(0, n.getX()) != 0
-				&& Geometry.compareEps(0, n.getY()) == 0) {
+		if (Geometry.compareEps(0, n.x) != 0
+				&& Geometry.compareEps(0, n.y) == 0) {
 			addAngles(Math.PI / 2, 0, 0, 0, 0);
 		}
 		n = new Vector4d(getNormalSegment()).getNormalized();
-		if (Geometry.compareEps(0, n.getY()) != 0) {
-			double a0 = Math.atan(n.getX() / n.getY());
+		if (Geometry.compareEps(0, n.y) != 0) {
+			double a0 = Math.atan(n.x / n.y);
 			addAngles(a0, 0, 0, 0, 0);
 		}
 
 		n = new Vector4d(getNormalSegment()).getNormalized();
-		if (Geometry.compareEps(0, n.getY()) != 0
-				&& Geometry.compareEps(0, n.getZ()) == 0) {
+		if (Geometry.compareEps(0, n.y) != 0
+				&& Geometry.compareEps(0, n.z) == 0) {
 			addAngles(0, Math.PI / 2, 0, 0, 0);
 		}
 		n = new Vector4d(getNormalSegment()).getNormalized();
-		if (Geometry.compareEps(0, n.getZ()) != 0) {
-			double a1 = Math.atan(n.getY() / n.getZ());
+		if (Geometry.compareEps(0, n.z) != 0) {
+			double a1 = Math.atan(n.y / n.z);
 			addAngles(0, a1, 0, 0, 0);
 		}
 
 		n = new Vector4d(getNormalSegment()).getNormalized();
-		if (Geometry.compareEps(0, n.getZ()) != 0
-				&& Geometry.compareEps(0, n.getW()) == 0) {
+		if (Geometry.compareEps(0, n.z) != 0
+				&& Geometry.compareEps(0, n.w) == 0) {
 			addAngles(0, 0, Math.PI / 2, 0, 0);
 		}
 		n = new Vector4d(getNormalSegment()).getNormalized();
-		if (Geometry.compareEps(0, n.getW()) != 0) {
-			double a2 = Math.atan(n.getZ() / n.getW());
+		if (Geometry.compareEps(0, n.w) != 0) {
+			double a2 = Math.atan(n.z / n.w);
 			addAngles(0, 0, a2, 0, 0);
 		}
 	}

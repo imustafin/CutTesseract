@@ -14,8 +14,10 @@ public class Vector3d extends Point3d {
 	}
 
 	/**
-	 * Constructs vector with the specified point's coordinates 
-	 * @param p the specified point
+	 * Constructs vector with the specified point's coordinates
+	 * 
+	 * @param p
+	 *            the specified point
 	 */
 	Vector3d(Point3d p) {
 		this(p.x, p.y, p.z);
@@ -23,17 +25,24 @@ public class Vector3d extends Point3d {
 
 	/**
 	 * Constructs vector with the specified coordinates
-	 * @param x the specified <code>x</code> coordinate
-	 * @param y the specified <code>y</code> coordinate
-	 * @param z the specified <code>z</code> coordinate
+	 * 
+	 * @param x
+	 *            the specified <code>x</code> coordinate
+	 * @param y
+	 *            the specified <code>y</code> coordinate
+	 * @param z
+	 *            the specified <code>z</code> coordinate
 	 */
 	public Vector3d(double x, double y, double z) {
 		super(x, y, z);
 	}
 
 	/**
-	 * Returns new vector which is a result of multiplication of this vector by a scalar
-	 * @param k scalar to multiply by
+	 * Returns new vector which is a result of multiplication of this vector by
+	 * a scalar
+	 * 
+	 * @param k
+	 *            scalar to multiply by
 	 * @return result of multiplication of this vector by scalar
 	 */
 	Vector3d multiply(double k) {
@@ -41,10 +50,19 @@ public class Vector3d extends Point3d {
 	}
 
 	/**
-	 * @return the length of this vector 
+	 * @return the length of this vector
 	 */
 	double length() {
 		return ZERO.distance(this);
+	}
+
+	/**
+	 * @return a vector with the same magnitude but with the length of one
+	 */
+	public Vector3d getNormalized() {
+		double l = this.length();
+		Vector3d ans = new Vector3d(x / l, y / l, z / l);
+		return ans;
 	}
 
 	@Override

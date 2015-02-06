@@ -8,17 +8,17 @@ public class Segment2d implements Comparable<Segment2d> {
 	 * 
 	 * @see Point4d#compareTo(Point4d)
 	 */
-	private final Point2d first;
+	public final Point2d first;
 	/**
 	 * The second point of the segment. It is not less than the first point.
 	 * 
 	 * @see Point4d#compareTo(Point4d)
 	 */
-	private final Point2d second;
+	public final Point2d second;
 	/**
 	 * The color of the segment
 	 */
-	private final Color color;
+	public final Color color;
 
 	/**
 	 * Constructs segment with the specified two points and color. The second
@@ -80,18 +80,6 @@ public class Segment2d implements Comparable<Segment2d> {
 		} else {
 			return first.compareTo(z.first);
 		}
-	}
-
-	public Color getColor() {
-		return color;
-	}
-
-	public Point2d getFirst() {
-		return first;
-	}
-
-	public Point2d getSecond() {
-		return second;
 	}
 
 }

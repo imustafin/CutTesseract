@@ -4,15 +4,15 @@ public class Point3d implements Comparable<Point3d> {
 	/**
 	 * The <code>x</code> coordinate of this point
 	 */
-	protected final double x;
+	public final double x;
 	/**
 	 * The <code>y</code> coordinate of this point
 	 */
-	protected final double y;
+	public final double y;
 	/**
 	 * The <code>z</code> coordinate of this point
 	 */
-	protected final double z;
+	public final double z;
 
 	/**
 	 * The point with coordinates <code>(0, 0, 0)</code>

@@ -5,11 +5,11 @@ public class Point2d implements Comparable<Point2d> {
 	/**
 	 * The <code>x</code> coordinate of this point
 	 */
-	private final double x;
+	public final double x;
 	/**
 	 * The <code>y</code> coordinate of this point
 	 */
-	private final double y;
+	public final double y;
 
 	/**
 	 * Constructs point by the specified <code>x</code> and <code>y</code>
@@ -36,23 +36,15 @@ public class Point2d implements Comparable<Point2d> {
 	 */
 	@Override
 	public int compareTo(Point2d b) {
-		if (Geometry.compareEps(getX(), b.getX()) == 0) {
-			if (Geometry.compareEps(getY(), b.getY()) == 0) {
+		if (Geometry.compareEps(x, b.x) == 0) {
+			if (Geometry.compareEps(y, b.y) == 0) {
 				return 0;
 			} else {
-				return Double.compare(getY(), b.getY());
+				return Double.compare(y, b.y);
 			}
 		} else {
-			return Double.compare(getX(), b.getX());
+			return Double.compare(x, b.x);
 		}
-	}
-
-	public double getX() {
-		return x;
-	}
-
-	public double getY() {
-		return y;
 	}
 
 }

@@ -6,27 +6,27 @@ public class Plane4d {
 	 * The <code>a</code> coefficient in the
 	 * <code>ax + by + cz + dw + e= 0</code> plane equation
 	 */
-	final double a;
+	public final double a;
 	/**
 	 * The <code>b</code> coefficient in the
 	 * <code>ax + by + cz + dw + e= 0</code> plane equation
 	 */
-	final double b;
+	public final double b;
 	/**
 	 * The <code>c</code> coefficient in the
 	 * <code>ax + by + cz + dw + e= 0</code> plane equation
 	 */
-	final double c;
+	public final double c;
 	/**
 	 * The <code>d</code> coefficient in the
 	 * <code>ax + by + cz + dw + e= 0</code> plane equation
 	 */
-	final double d;
+	public final double d;
 	/**
 	 * The <code>e</code> coefficient in the
 	 * <code>ax + by + cz + dw + e= 0</code> plane equation
 	 */
-	final double e;
+	public final double e;
 
 	/**
 	 * Constructs plane by four points

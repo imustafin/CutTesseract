@@ -11,11 +11,11 @@ public class Cube4d {
 	 * if <code>hasEdges[i][j]</code> is true, then there is an edge between
 	 * i<sup>th</sup> and j<sup>th</sup> vertex
 	 */
-	private final boolean[][] hasEdge;
+	public final boolean[][] hasEdge;
 	/**
 	 * Set of all edges as <code>Segment4d</code>
 	 */
-	private final Set<Segment4d> segments;
+	public final Set<Segment4d> segments;
 
 	/**
 	 * Constructs <code>Cube4d</code> with coordinates
@@ -50,16 +50,16 @@ public class Cube4d {
 				Point4d a = getVertices()[i];
 				Point4d b = getVertices()[j];
 				int sameness = 0;
-				if (a.getX() == b.getX()) {
+				if (a.x== b.x) {
 					sameness++;
 				}
-				if (a.getY() == b.getY()) {
+				if (a.y == b.y) {
 					sameness++;
 				}
-				if (a.getZ() == b.getZ()) {
+				if (a.z == b.z) {
 					sameness++;
 				}
-				if (a.getW() == b.getW()) {
+				if (a.w == b.w) {
 					sameness++;
 				}
 				if (sameness == 3) {
@@ -74,16 +74,27 @@ public class Cube4d {
 		}
 	}
 
+	/**
+	 * @return a copy of {@link #segments}
+	 */
 	public Set<Segment4d> getSegments() {
-		return segments;
+		return new TreeSet<Segment4d>(segments);
 	}
 
+	/**
+	 * 
+	 * @return a copy of {@link #hasEdge}
+	 */
 	public boolean[][] getHasEdge() {
-		return hasEdge;
+		return hasEdge.clone();
 	}
 
+	/**
+	 * 
+	 * @return a copy of {@link #vertices}
+	 */
 	public Point4d[] getVertices() {
-		return vertices;
+		return vertices.clone();
 	}
 
 }

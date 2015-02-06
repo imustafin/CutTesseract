@@ -41,8 +41,8 @@ public class PointVectorControlPanel extends JPanel {
 				Cube4d cube = new Cube4d(1, Colors.CUBE_COLOR);
 				Set<Segment4d> set = Geometry.makeSection(plane, cube);
 				set.addAll(cube.getSegments());
-				segmentDrawer.pointRotator.setNewCut(set, plane.getNormal());
-				segmentDrawer.pointRotator.rotateNormalToUs();
+				segmentDrawer.pointRotater.setNewCut(set, plane.getNormal());
+				segmentDrawer.pointRotater.rotateNormalToUs();
 				segmentDrawer.repaint();
 			}
 
