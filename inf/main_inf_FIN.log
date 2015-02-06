@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2010.5.17)  6 FEB 2015 14:46
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2010.5.17)  6 FEB 2015 14:54
 entering extended mode
 **main_inf_FIN.tex
 (./main_inf_FIN.tex
@@ -1583,6 +1583,11 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 303--304
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 305--308
 
  []
@@ -1591,7 +1596,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 305--308
 Here is how much of TeX's memory you used:
  5475 strings out of 94500
  64741 string characters out of 1176766
- 134256 words of memory out of 1000000
+ 133256 words of memory out of 1000000
  8548 multiletter control sequences out of 10000+50000
  21256 words of font info for 52 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
@@ -1613,4 +1618,4 @@ exmf-var/pk/ljfour/lh/lh-t2a/lacc1440.600pk> </home/sapka/.texmf-var/pk/ljfour/
 lh/lh-t2a/larm1440.600pk> </home/sapka/.texmf-var/pk/ljfour/lh/lh-t2a/lati1440.
 600pk> </home/sapka/.texmf-var/pk/ljfour/lh/lh-t2a/labx2488.600pk> </home/sapka
 /.texmf-var/pk/ljfour/lh/lh-t2a/lacc2074.600pk>
-Output written on main_inf_FIN.pdf (11 pages, 235505 bytes).
+Output written on main_inf_FIN.pdf (11 pages, 235369 bytes).
