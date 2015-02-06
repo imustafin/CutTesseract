@@ -10,14 +10,14 @@ import javax.swing.JTextField;
 import javax.swing.event.MouseInputListener;
 
 /**
- * Provides a <code>JPanel</code> with a <code>MouseInputListener</code>. Lets
- * us to select a point in a <i>2d</i> space.
+ * A <code>JPanel</code> with a <code>MouseInputListener</code>. Provides
+ * ability to graphically pick a point in a two dimensional spaыce.
  *
  * @author Ilgiz Mustafin
  */
-@SuppressWarnings("serial")
 abstract class AxisBox extends JPanel implements MouseInputListener {
 
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Size of of all <code>AxisBoxes</code>
 	 */

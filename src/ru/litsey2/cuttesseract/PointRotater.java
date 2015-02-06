@@ -181,6 +181,10 @@ public class PointRotater {
 		}
 	}
 
+	/**
+	 * 
+	 * @return a copy of {@link #segments2d}
+	 */
 	public Set<Segment2d> getSegments2d() {
 		return new TreeSet<Segment2d>(segments2d);
 	}
