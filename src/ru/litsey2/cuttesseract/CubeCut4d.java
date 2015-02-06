@@ -2,12 +2,14 @@ package ru.litsey2.cuttesseract;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
 import ru.litsey2.cuttesseract.geometry.Cube4d;
+import ru.litsey2.cuttesseract.geometry.Geometry;
 import ru.litsey2.cuttesseract.geometry.Plane4d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
@@ -126,6 +128,57 @@ public class CubeCut4d {
 			}
 		}
 
+		for (int i = 0; i < cube.getVertices().length; i++) {
+			for (int j = i + 1; j < cube.getVertices().length; j++) {
+				for (int k = j + 1; k < cube.getVertices().length; k++) {
+					for (int l = k + 1; l < cube.getVertices().length; l++) {
+						Point4d a = cube.getVertices()[i];
+						Point4d b = cube.getVertices()[j];
+						Point4d c = cube.getVertices()[k];
+						Point4d d = cube.getVertices()[l];
+
+						Segment4d ab = new Segment4d(a, b, Colors.CUT_COLOR);
+						Segment4d ac = new Segment4d(a, c, Colors.CUT_COLOR);
+						Segment4d ad = new Segment4d(a, d, Colors.CUT_COLOR);
+						Segment4d bc = new Segment4d(b, c, Colors.CUT_COLOR);
+						Segment4d bd = new Segment4d(b, d, Colors.CUT_COLOR);
+						Segment4d cd = new Segment4d(c, d, Colors.CUT_COLOR);
+
+						if (!cutEdges.containsAll(Arrays.asList(ab, ac, ad, bc,
+								bd, cd))) {
+							continue;
+						}
+
+						Point4d[] points = { a, b, c, d };
+						for (int m = 0; m < points.length; m++) {
+							for (int n = 0; n < points.length; n++) {
+								Point4d p = points[m];
+								Point4d q = points[n];
+
+								int sameness = 0;
+								if (Geometry.compareEps(p.getX(), q.getX()) == 0) {
+									sameness++;
+								}
+								if (Geometry.compareEps(p.getY(), q.getY()) == 0) {
+									sameness++;
+								}
+								if (Geometry.compareEps(p.getZ(), q.getZ()) == 0) {
+									sameness++;
+								}
+								if (Geometry.compareEps(p.getW(), q.getW()) == 0) {
+									sameness++;
+								}
+								if (sameness != 3) {
+									cutEdges.remove(new Segment4d(p, q,
+											Colors.CUT_COLOR));
+								}
+							}
+						}
+
+					}
+				}
+			}
+		}
 		return cutEdges;
 	}
 }
