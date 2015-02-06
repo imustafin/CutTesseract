@@ -11,7 +11,7 @@
 
 ## Скриншоты и примеры работы
  
-![Скриншот][https://raw.githubusercontent.com/imustafin/CutTesseract/gh-pages/images/post3.png "screenshot 1"]
+![Скриншот](https://raw.githubusercontent.com/imustafin/CutTesseract/gh-pages/images/post3.png "screenshot 1")
 
 
 На данном скриншоте можно видеть изображение сечения тессеракта
