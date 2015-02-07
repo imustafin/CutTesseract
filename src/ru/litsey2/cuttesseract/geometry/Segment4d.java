@@ -21,6 +21,11 @@ public class Segment4d implements Comparable<Segment4d> {
 	 */
 	public final Color color;
 
+	@Override
+	public String toString() {
+		return "Segment4d [a=" + a + ", b=" + b + ", color=" + color + "]";
+	}
+
 	/**
 	 * Constructs segment with the specified two points and color. The second
 	 * point should not be less than the first point if it is not so then they
