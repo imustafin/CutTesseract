@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
+import ru.litsey2.cuttesseract.geometry.Cube4d;
+
 /**
  * Main program window
  * @author Ilgiz Mustafin
@@ -14,12 +16,12 @@ public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	PointRotater pointRotator;
+	PointRotator pointRotator;
 
 	public MainFrame(String title) {
 		super(title);
 
-		pointRotator = new PointRotater();
+		pointRotator = new PointRotator(new Cube4d(1, Colors.CUBE_COLOR));
 
 		setLayout(new SpringLayout());
 

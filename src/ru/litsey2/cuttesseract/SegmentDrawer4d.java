@@ -98,7 +98,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 	/**
 	 * <code>PointRotater</code> to get segments to draw from
 	 */
-	final PointRotater pointRotater;
+	final PointRotator pointRotator;
 
 	/**
 	 * If set to <code>false</code> segments with color equal to
@@ -108,12 +108,12 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 
 	/**
 	 * Constructs <code>SegmentDrawer</code> with the specified
-	 * <code>{@link PointRotater}</code>
+	 * <code>{@link PointRotator}</code>
 	 * 
 	 * @param pointRotater
 	 */
-	public SegmentDrawer4d(PointRotater pointRotater) {
-		this.pointRotater = pointRotater;
+	public SegmentDrawer4d(PointRotator pointRotater) {
+		this.pointRotator = pointRotater;
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
 		this.addMouseWheelListener(this);
@@ -177,7 +177,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		Set<Segment2d> segments = pointRotater.getSegments2d();
+		Set<Segment2d> segments = pointRotator.getSegments2d();
 
 		for (Segment2d s : segments) {
 			if (s.color == Colors.CUBE_COLOR && !drawCube) {
@@ -207,7 +207,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 			double deltaY = (e.getY() - rightRotationY0) * ROTATION_SPEED;
 			rightRotationX0 = e.getX();
 			rightRotationY0 = e.getY();
-			pointRotater.addAngles(0, deltaY, 0, 0, deltaX);
+			pointRotator.addAngles(0, deltaY, 0, 0, deltaX);
 			repaint();
 		}
 

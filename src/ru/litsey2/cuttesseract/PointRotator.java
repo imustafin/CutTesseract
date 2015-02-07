@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
+import ru.litsey2.cuttesseract.geometry.Cube4d;
 import ru.litsey2.cuttesseract.geometry.Geometry;
 import ru.litsey2.cuttesseract.geometry.Point2d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
@@ -17,7 +18,7 @@ import ru.litsey2.cuttesseract.geometry.Vector4d;
  * @author Ilgiz Mustafin
  *
  */
-public class PointRotater {
+public class PointRotator {
 
 	/**
 	 * Rotated 4d segments
@@ -55,10 +56,11 @@ public class PointRotater {
 	/**
 	 * Constructs a PointRotator with only axis segments in it
 	 */
-	public PointRotater() {
+	public PointRotator(Cube4d cube) {
 		segments4d = new TreeSet<Segment4d>();
 		segments2d = new TreeSet<Segment2d>();
 		addCoordVectors();
+		addAll(cube.getSegments());
 		recalc();
 	}
 
@@ -70,11 +72,12 @@ public class PointRotater {
 	 * @param planeNormal
 	 *            new planeNormal, it shouldn't be in the segments
 	 */
-	void setNewCut(Set<Segment4d> segments, Vector4d planeNormal) {
+	void setNewCut(Set<Segment4d> segments, Vector4d planeNormal, Cube4d cube) {
 		segments4d = segments;
 		segments4d.add(new Segment4d(Vector4d.ZERO, planeNormal,
 				Colors.NORMAL_COLOR));
 		addCoordVectors();
+		addAll(cube.getSegments());
 		recalc();
 	}
 
@@ -147,7 +150,7 @@ public class PointRotater {
 	}
 
 	/**
-	 * Adds the specified segment to this <code>PointRotater</code>
+	 * Adds the specified segment to this <code>PointRotator</code>
 	 * 
 	 * @param e segment to add
 	 */
@@ -158,7 +161,7 @@ public class PointRotater {
 
 	/**
 	 * Adds all of the segments from the specified <code>Collection</code> to
-	 * this <code>PointRotater</code>
+	 * this <code>PointRotator</code>
 	 * 
 	 * @param c <code>Collection</code> to add
 	 */
