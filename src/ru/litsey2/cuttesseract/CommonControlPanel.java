@@ -4,12 +4,9 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-import ru.litsey2.cuttesseract.geometry.Segment4d;
 
 /**
  * A control panel with common, not specific to any input mode controls

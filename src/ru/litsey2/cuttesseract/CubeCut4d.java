@@ -15,7 +15,7 @@ public class CubeCut4d {
 			
 			@Override
 			public void run() {
-				new MainFrame("CutTesseract v0.4");
+				new MainFrame("CutTesseract v0.4.1");
 			}
 		});
 		
