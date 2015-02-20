@@ -12,7 +12,7 @@ import javax.swing.text.StyleContext.SmallAttributeSet;
 
 import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
-import sun.awt.SunToolkit.InfiniteLoop;
+
 
 public class Graph {
 

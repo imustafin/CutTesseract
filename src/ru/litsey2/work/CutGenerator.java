@@ -76,8 +76,8 @@ public class CutGenerator {
 			System.out.println(cnt / 1000 + "."
 					+ String.format("%03d", cnt % 1000) + " | [" + (double) cnt
 					/ (System.currentTimeMillis() / 1000L - startTime) + "]");
-			// System.out.println(pts[0].toString() + " " + pts[1].toString() +
-			// " " + pts[2].toString() + " " + pts[3].toString());
+			 System.out.println(pts[0].toString() + " " + pts[1].toString() +
+			 " " + pts[2].toString() + " " + pts[3].toString());
 			// long tt = System.currentTimeMillis();
 			gend(false);
 			// System.out.println("gend took " + (System.currentTimeMillis() -
