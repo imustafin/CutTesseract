@@ -39,6 +39,12 @@ public class CutGenerator {
 
 	void gend(boolean skip) {
 		Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
+		if (Double.isNaN(plane.getNormal().getW())
+				|| Double.isNaN(plane.getNormal().getX())
+				|| Double.isNaN(plane.getNormal().getY())
+				|| Double.isNaN(plane.getNormal().getZ())) {
+			return;
+		}
 		Set<Segment4d> cut = Geometry.makeSection(plane, cube);
 		Graph g = new Graph(cut);
 		if (g.n < 4) {
@@ -73,11 +79,15 @@ public class CutGenerator {
 				return;
 			if (cnt > Fend)
 				return;
-			System.out.println(cnt / 1000 + "."
-					+ String.format("%03d", cnt % 1000) + " | [" + (double) cnt
-					/ (System.currentTimeMillis() / 1000L - startTime) + "]");
-			 System.out.println(pts[0].toString() + " " + pts[1].toString() +
-			 " " + pts[2].toString() + " " + pts[3].toString());
+			if (cnt % 1000 == 0) {
+				System.out.println(cnt / 1000 + "."
+						+ String.format("%03d", cnt % 1000) + " | ["
+						+ (double) cnt
+						/ (System.currentTimeMillis() / 1000L - startTime)
+						+ "]");
+			}
+			// System.out.println(pts[0].toString() + " " + pts[1].toString()
+			// + " " + pts[2].toString() + " " + pts[3].toString());
 			// long tt = System.currentTimeMillis();
 			gend(false);
 			// System.out.println("gend took " + (System.currentTimeMillis() -
@@ -198,7 +208,7 @@ public class CutGenerator {
 			}
 			// System.out.println("[" + i + "]");
 			gend(skip);
-			//System.out.println(Graps[now - 1].hash);
+			// System.out.println(Graps[now - 1].hash);
 		}
 		scanner.close();
 	}
@@ -210,7 +220,7 @@ public class CutGenerator {
 			cg.pw = new PrintWriter("cuts.txt");
 			cg.getFstart();
 			cg.gen(0, 0);
-			//cg.merge();
+			// cg.merge();
 			cg.prEnd();
 		} finally {
 			cg.pw.close();
