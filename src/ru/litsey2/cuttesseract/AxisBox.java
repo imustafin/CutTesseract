@@ -9,9 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.MouseInputListener;
 
-@SuppressWarnings("serial")
+//*@SuppressWarnings("serial")
 abstract class AxisBox extends JPanel implements MouseInputListener {
 
+	private static final long serialVersionUID = 1L;
+	
 	static final int SIZE = 100;
 
 	private Color colorX;

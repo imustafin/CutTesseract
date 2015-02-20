@@ -15,22 +15,21 @@ import javax.swing.JPanel;
 
 import ru.litsey2.cuttesseract.geometry.Point4d;
 
-@SuppressWarnings("serial")
+//*@SuppressWarnings("serial")
 public abstract class PointPicker extends JPanel {
 
+	private static final long serialVersionUID = 1L;
+	
 	AxisBox axis1;
 	AxisBox axis2;
-	JPanel control;
-
-	SegmentDrawer4d segmentDrawer;
+	JPanel panel;
 
 	Point4d getPoint4d() {
 		return new Point4d(axis1.x1, axis1.y1, axis2.x1, axis2.y1);
 	}
 
-	public PointPicker(Color bgColor, final SegmentDrawer4d segmentDrawer) {
-		this.segmentDrawer = segmentDrawer;
-		
+	public PointPicker(Color bgColor) {
+	
 		setPreferredSize(new Dimension(200, 101));
 
 		setBackground(bgColor);
@@ -52,15 +51,17 @@ public abstract class PointPicker extends JPanel {
 		textW.setColumns(5);
 
 		axis1 = new AxisBox(this, Colors.X_COLOR, Colors.Y_COLOR, textX, textY) {
+			private static final long serialVersionUID = 1L;
 			@Override
 			void coordChanged() {
-				pointChanged();
+				onPointChanged();
 			}
 		};
 		axis2 = new AxisBox(this, Colors.Z_COLOR, Colors.W_COLOR, textZ, textW) {
+			private static final long serialVersionUID = 1L;
 			@Override
 			void coordChanged() {
-				pointChanged();
+				onPointChanged();
 			}
 		};
 
@@ -76,11 +77,11 @@ public abstract class PointPicker extends JPanel {
 			}
 		});
 
-		control = new JPanel();
+		panel = new JPanel();
 
 		GroupLayout layout = new GroupLayout(this);
 
-		control.setLayout(layout);
+		panel.setLayout(layout);
 
 		layout.setAutoCreateGaps(true);
 		layout.setAutoCreateContainerGaps(true);
@@ -105,6 +106,6 @@ public abstract class PointPicker extends JPanel {
 								.addComponent(axis2)));
 	}
 
-	abstract void pointChanged();
+	abstract void onPointChanged();
 	
 }

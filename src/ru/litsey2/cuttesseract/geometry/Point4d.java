@@ -71,7 +71,7 @@ public class Point4d implements Comparable<Point4d> {
 		return Math.sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
 	}
 
-	public double compareToPlane(Plane4d p) {
+	public double applyToPlane(Plane4d p) {
 		double res = p.a * getX() + p.b * getY() + p.c * getZ() + p.d * getW() + p.e;
 		return res;
 	}
@@ -90,6 +90,13 @@ public class Point4d implements Comparable<Point4d> {
 
 	public double getW() {
 		return w;
+	}
+	
+	public boolean equals(Point4d a) {
+		if(this.w == a.w && this.x == a.x && this.y == a.y && this.z == a.z){
+			return true;
+		}
+		return false;
 	}
 
 }

@@ -26,10 +26,10 @@ public abstract class PointVectorSelectorPanel extends JPanel {
 
 		SpringLayout layout = new SpringLayout();
 
-		PointPicker pSelector = new PointPicker(Color.LIGHT_GRAY, segmentDrawer) {
+		PointPicker pSelector = new PointPicker(Color.LIGHT_GRAY) {
 
 			@Override
-			void pointChanged() {
+			void onPointChanged() {
 				point = getPoint4d();
 				pointVectorChanged();
 			}
@@ -37,10 +37,10 @@ public abstract class PointVectorSelectorPanel extends JPanel {
 		
 		point = pSelector.getPoint4d();
 		
-		PointPicker vSelector = new PointPicker(Color.CYAN, segmentDrawer) {
+		PointPicker vSelector = new PointPicker(Color.CYAN) {
 
 			@Override
-			void pointChanged() {
+			void onPointChanged() {
 				vector = new Vector4d(getPoint4d());
 				pointVectorChanged();
 			}
