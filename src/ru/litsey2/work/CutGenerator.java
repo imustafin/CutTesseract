@@ -39,7 +39,7 @@ public class CutGenerator {
 
 	void gend(boolean skip) {
 		Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
-		Set<Segment4d> cut = Geometry.makeCut(plane, cube);
+		Set<Segment4d> cut = Geometry.makeSection(plane, cube);
 		Graph g = new Graph(cut);
 		if (g.n < 4) {
 			return;
@@ -116,7 +116,7 @@ public class CutGenerator {
 				pts[i] = new Point4d(coor[0], coor[1], coor[2], coor[3]);
 			}
 			Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
-			Set<Segment4d> cut = Geometry.makeCut(plane, cube);
+			Set<Segment4d> cut = Geometry.makeSection(plane, cube);
 			Graph g = new Graph(cut);
 			System.out.println("[" + now + "]" + Arrays.toString(g.deg));
 			/*
