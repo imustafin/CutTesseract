@@ -13,7 +13,6 @@ import javax.swing.text.StyleContext.SmallAttributeSet;
 import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
 
-
 public class Graph {
 
 	boolean[][] e;
@@ -111,25 +110,46 @@ public class Graph {
 			 * rep[i]; } System.out.println(s);
 			 */
 		} while ((rep = Permutator.nextPermutation(rep, bad)) != null);
+
 		String s = "";
 		for (int i = 0; i < min.length; i++) {
-			s += "" + min[i];
+			s += min[i];
 		}
 		return s;
 	}
 
-	public boolean strEquals(String a, String b){
-		if(a.length() != b.length()){
+	public long to10(int[] a) {
+		long ans = 0;
+		for (int i = 0; i < 64; i++) {
+			if(a.length > i){
+				break;
+			}
+			if (toBool(a[a.length - i])) {
+				ans += Math.pow(2, i);
+			}
+		}
+		return ans;
+	}
+
+	public boolean toBool(int a) {
+		if (a == 1)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean strEquals(String a, String b) {
+		if (a.length() != b.length()) {
 			return false;
 		}
-		for(int i = 0; i < a.length(); i++){
-			if(a.charAt(i) != b.charAt(i)){
+		for (int i = 0; i < a.length(); i++) {
+			if (a.charAt(i) != b.charAt(i)) {
 				return false;
-			} 
+			}
 		}
 		return true;
-	} 
-	
+	}
+
 	public int toInt(boolean a) {
 		if (a) {
 			return 1;
@@ -137,7 +157,7 @@ public class Graph {
 			return 0;
 		}
 	}
-	
+
 	public String printGraph() {
 		String s = "[" + this.n + "][" + this.m + "]\n" + "(";
 		for (int i = 0; i < this.n - 1; i++) {
@@ -172,42 +192,19 @@ public class Graph {
 		} else {
 			return false;
 		}
-/*
-		boolean k;
-
-		if (this.hash.equals(g.hash)) {
-			k = true;
-		} else {
-			k = false;
-		}
-
-		int[] rep = new int[n];
-		for (int i = 0; i < n; i++) {
-			rep[i] = i;
-		}
-		int bad = -1;
-		do {
-			bad = -1;
-			boolean ok = true;
-			for (int i = 0; i < n && ok; i++) {
-				for (int j = 0; j < n && ok; j++) {
-					if (g.e[rep[i]][rep[j]] != e[i][j]) {
-						ok = false;
-						bad = i;
-					}
-				}
-			}
-			if (ok) {
-				if (!k) {
-					System.out.println("WTF");
-				}
-				return true;
-			}
-		} while ((rep = Permutator.nextPermutation(rep, bad)) != null);
-
-		if (k) {
-			System.out.println("WTF 2");
-		}
-		return false;*/
+		/*
+		 * boolean k;
+		 * 
+		 * if (this.hash.equals(g.hash)) { k = true; } else { k = false; }
+		 * 
+		 * int[] rep = new int[n]; for (int i = 0; i < n; i++) { rep[i] = i; }
+		 * int bad = -1; do { bad = -1; boolean ok = true; for (int i = 0; i < n
+		 * && ok; i++) { for (int j = 0; j < n && ok; j++) { if
+		 * (g.e[rep[i]][rep[j]] != e[i][j]) { ok = false; bad = i; } } } if (ok)
+		 * { if (!k) { System.out.println("WTF"); } return true; } } while ((rep
+		 * = Permutator.nextPermutation(rep, bad)) != null);
+		 * 
+		 * if (k) { System.out.println("WTF 2"); } return false;
+		 */
 	}
 }

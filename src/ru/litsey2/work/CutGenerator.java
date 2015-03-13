@@ -36,6 +36,8 @@ public class CutGenerator {
 	// HashSet<Graph> set = new HashSet<Graph>();
 	Graph[] Graps = new Graph[1000];
 	int now = 0;
+	int numsnow = 0;
+	int[] nums = new int[100];
 
 	void gend(boolean skip) {
 		Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
@@ -50,24 +52,15 @@ public class CutGenerator {
 		if (g.n < 4) {
 			return;
 		}
-		if (!skip) {
-			for (int i = 0; i < now; i++) {
-				if (g.equals(Graps[i])) {
-					return;
-				}
-			}
-		}
-		if (g.hash == null)
-			g.hash = g.hash();
-		Graps[now] = g;
-		now++;
-		// boolean added = set.add(g);
-		// if (added) {
-		pw.println("[" + now + "] " + pts[0] + " " + pts[1] + " " + pts[2]
-				+ " " + pts[3]);
-		pw.flush();
+		nums[g.n] = 1;
+		return;
 		/*
-		 * if(now == 10) { throw new IllegalStateException("Too many cuts"); }
+		 * if (!skip) { for (int i = 0; i < now; i++) { if (g.equals(Graps[i]))
+		 * { return; } } } if (g.hash == null) g.hash = g.hash(); Graps[now] =
+		 * g; now++; // boolean added = set.add(g); // if (added) {
+		 * pw.println("[" + now + "] " + pts[0] + " " + pts[1] + " " + pts[2] +
+		 * " " + pts[3]); pw.flush(); /* if(now == 10) { throw new
+		 * IllegalStateException("Too many cuts"); }
 		 */
 		// }
 	}
@@ -77,8 +70,13 @@ public class CutGenerator {
 			cnt++;
 			if (cnt < Fstart)
 				return;
-			if (cnt > Fend)
+			if (cnt == Fend) {
+				pw.println(Arrays.toString(nums));
+				pw.flush();
+			}
+			if (cnt > Fend) {
 				return;
+			}
 			if (cnt % 1000 == 0) {
 				System.out.println(cnt / 1000 + "."
 						+ String.format("%03d", cnt % 1000) + " | ["
@@ -192,7 +190,7 @@ public class CutGenerator {
 	public void merge() throws FileNotFoundException {
 		Scanner scanner = new Scanner(new File("merge.txt"));
 		int k = 1;
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 2472; i++) {
 			Point4d p = null;
 			boolean skip = false;
 			if (scanner.nextInt() == k) {
@@ -218,9 +216,9 @@ public class CutGenerator {
 		CutGenerator cg = new CutGenerator();
 		try {
 			cg.pw = new PrintWriter("cuts.txt");
-			cg.getFstart();
-			cg.gen(0, 0);
-			// cg.merge();
+			//cg.getFstart();
+			//cg.gen(0, 0);
+			 cg.merge();
 			cg.prEnd();
 		} finally {
 			cg.pw.close();
