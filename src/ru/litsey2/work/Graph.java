@@ -70,46 +70,31 @@ public class Graph {
 		for (int i = 0; i < n; i++) {
 			rep[i] = i;
 		}
-		int[] min = new int[n * (n - 1) / 2];
-		// int[] min = new int[n * n];
-		Arrays.fill(min, 2);
-		// int count = 0;
+		boolean[] min = new boolean[n * (n - 1) / 2];
+		Arrays.fill(min, true);
 		int bad = -1;
-		// System.out.println(n);
 		do {
 			bad = -1;
 			boolean ok = true;
 			boolean good = false;
-			int[] localmin = new int[n * (n - 1) / 2];
-			// int[] localmin = new int[n * n];
+			boolean[] localmin = new boolean[n * (n - 1) / 2];
 			int now = 0;
 			for (int i = 0; i < n && ok; i++) {
 				for (int j = i + 1; j < n && ok; j++) {
-					// System.out.println("i:" + i + ", j:" + j);
-					if (toInt(e[rep[i]][rep[j]]) > min[now] && !good) {
+					if (e[rep[i]][rep[j]] && !min[now] && !good) {
 						ok = false;
 						bad = i;
 					}
-					if (toInt(e[rep[i]][rep[j]]) < min[now]) {
+					if (!e[rep[i]][rep[j]] && min[now]) {
 						good = true;
 					}
-					localmin[now] = toInt(e[rep[i]][rep[j]]);
+					localmin[now] = e[rep[i]][rep[j]];
 					now++;
 				}
 			}
 			if (good) {
 				min = localmin;
 			}
-			// count++;
-			/*
-			 * if(count % 5000000 == 0){ String s = "(" + count + ")"; for (int
-			 * i = 0; i < rep.length; i++) { s += " " + rep[i]; }
-			 * System.out.println(s); } count++;
-			 */
-			/*
-			 * String s = ""; for (int i = 0; i < rep.length; i++) { s += "" +
-			 * rep[i]; } System.out.println(s);
-			 */
 		} while ((rep = Permutator.nextPermutation(rep, bad)) != null);
 
 //		String s = "";
@@ -125,46 +110,19 @@ public class Graph {
 		}
 	}
 
-	public long to10(int[] a) {
+	public long to10(boolean[] a) {
 		long ans = 0;
 		for (int i = 0; i < Math.min(64, a.length); i++) {
 			if (a.length <= i) {
 				break;
 			}
-			long x = toBool(a[i]) ? 1 : 0;
+			long x = a[i] ? 1 : 0;
 			ans = ans << 1;
 			ans = ans | x;
 		}
 		return ans;
 	}
-
-	public boolean toBool(int a) {
-		if (a == 1)
-			return true;
-		else
-			return false;
-	}
-
-	public boolean strEquals(String a, String b) {
-		if (a.length() != b.length()) {
-			return false;
-		}
-		for (int i = 0; i < a.length(); i++) {
-			if (a.charAt(i) != b.charAt(i)) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	public int toInt(boolean a) {
-		if (a) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-
+	
 	public String printGraph() {
 		String s = "[" + this.n + "][" + this.m + "]\n" + "(";
 		for (int i = 0; i < this.n - 1; i++) {
