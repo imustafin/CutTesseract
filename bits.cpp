@@ -8,7 +8,7 @@ long to_long(vector<int> v) {
 	for(int i = 0; i < v.size(); i++) {
 		long x = v[i] ? 1 : 0;
 		ans = ans << 1;
-		ans = ans | 1;
+		ans = ans | x;
 	}
 	return ans;
 }

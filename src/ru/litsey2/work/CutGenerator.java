@@ -36,8 +36,9 @@ public class CutGenerator {
 	// HashSet<Graph> set = new HashSet<Graph>();
 	Graph[] Graps = new Graph[1000];
 	int now = 0;
-	int numsnow = 0;
-	int[] nums = new int[100];
+
+	// int numsnow = 0;
+	// int[] nums = new int[100];
 
 	void gend(boolean skip) {
 		Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
@@ -52,15 +53,24 @@ public class CutGenerator {
 		if (g.n < 4) {
 			return;
 		}
-		nums[g.n] = 1;
-		return;
+		// nums[g.n] = 1;
+		if (!skip) {
+			for (int i = 0; i < now; i++) {
+				if (g.equals(Graps[i])) {
+					return;
+				}
+			}
+		}
+		if (g.hash1 == 0)
+			g.hash();
+		//System.out.println(g.hash1 + " " + g.hash2);
+		Graps[now] = g;
+		now++; // boolean added = set.add(g); // if (added) {
+		pw.println("[" + now + "] " + pts[0] + " " + pts[1] + " " + pts[2]
+				+ " " + pts[3]);
+		pw.flush();
 		/*
-		 * if (!skip) { for (int i = 0; i < now; i++) { if (g.equals(Graps[i]))
-		 * { return; } } } if (g.hash == null) g.hash = g.hash(); Graps[now] =
-		 * g; now++; // boolean added = set.add(g); // if (added) {
-		 * pw.println("[" + now + "] " + pts[0] + " " + pts[1] + " " + pts[2] +
-		 * " " + pts[3]); pw.flush(); /* if(now == 10) { throw new
-		 * IllegalStateException("Too many cuts"); }
+		 * if(now == 10) { throw new IllegalStateException("Too many cuts"); }
 		 */
 		// }
 	}
@@ -70,10 +80,10 @@ public class CutGenerator {
 			cnt++;
 			if (cnt < Fstart)
 				return;
-			if (cnt == Fend) {
-				pw.println(Arrays.toString(nums));
-				pw.flush();
-			}
+			/*
+			 * if (cnt == Fend) { pw.println(Arrays.toString(nums)); pw.flush();
+			 * }
+			 */
 			if (cnt > Fend) {
 				return;
 			}
@@ -216,9 +226,9 @@ public class CutGenerator {
 		CutGenerator cg = new CutGenerator();
 		try {
 			cg.pw = new PrintWriter("cuts.txt");
-			//cg.getFstart();
-			//cg.gen(0, 0);
-			 cg.merge();
+			cg.getFstart();
+			cg.gen(0, 0);
+			// cg.merge();
 			cg.prEnd();
 		} finally {
 			cg.pw.close();

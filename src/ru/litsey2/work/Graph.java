@@ -23,7 +23,8 @@ public class Graph {
 	int n;
 	int m;
 
-	String hash;
+	long hash1 = 0;
+	long hash2;
 
 	public Graph(Collection<Segment4d> segments) {
 		this.segments = new TreeSet<Segment4d>();
@@ -64,7 +65,7 @@ public class Graph {
 		Arrays.sort(deg);
 	}
 
-	public String hash() {
+	public void hash() {
 		int[] rep = new int[n];
 		for (int i = 0; i < n; i++) {
 			rep[i] = i;
@@ -111,22 +112,28 @@ public class Graph {
 			 */
 		} while ((rep = Permutator.nextPermutation(rep, bad)) != null);
 
-		String s = "";
-		for (int i = 0; i < min.length; i++) {
-			s += min[i];
+//		String s = "";
+//		for (int i = 0; i < min.length; i++) {
+//			s += min[i];
+//		}
+		this.hash1 = to10(Arrays.copyOfRange(min, 0, Math.min(63, min.length)));
+		if (min.length > 64) {
+			this.hash2 = to10(Arrays.copyOfRange(min, 64,
+					Math.min(127, min.length)));
+		} else {
+			this.hash2 = 0;
 		}
-		return s;
 	}
 
 	public long to10(int[] a) {
 		long ans = 0;
-		for (int i = 0; i < 64; i++) {
-			if(a.length > i){
+		for (int i = 0; i < Math.min(64, a.length); i++) {
+			if (a.length <= i) {
 				break;
 			}
-			if (toBool(a[a.length - i])) {
-				ans += Math.pow(2, i);
-			}
+			long x = toBool(a[i]) ? 1 : 0;
+			ans = ans << 1;
+			ans = ans | x;
 		}
 		return ans;
 	}
@@ -184,10 +191,10 @@ public class Graph {
 			}
 		}
 
-		if (this.hash == null)
-			this.hash = hash();
+		if (this.hash1 == 0)
+			this.hash();
 
-		if (strEquals(this.hash, g.hash)) {
+		if(this.hash1 == g.hash1 && this.hash2 == g.hash2){
 			return true;
 		} else {
 			return false;
