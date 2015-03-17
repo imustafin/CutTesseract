@@ -110,6 +110,14 @@ public class Graph {
 		}
 	}
 
+	public int myhash(){
+		int a = 0;
+		for(int i = 0; i < this.n; i++){
+			a *= 10 * this.deg[i];
+		}
+		return a;
+	}
+	
 	public long to10(boolean[] a) {
 		long ans = 0;
 		for (int i = 0; i < Math.min(64, a.length); i++) {
@@ -139,7 +147,6 @@ public class Graph {
 	}
 
 	public boolean equals(Graph g) {
-		// if(g) throw new IllegalStateException("Bug");
 		if (n != g.n || m != g.m) {
 			return false;
 		}
