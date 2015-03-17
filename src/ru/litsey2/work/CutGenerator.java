@@ -37,7 +37,7 @@ public class CutGenerator {
 	Graph[] Graps = new Graph[1000];
 	int now = 0;
 
-	int[][] array = new int[18][18];
+	//int[][] array = new int[18][18];
 	
 	void gend() {
 		Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
@@ -53,17 +53,16 @@ public class CutGenerator {
 			return;
 		}
 		
-		int a3 = 0;
-		int a4 = 0;
-		for(int i = 0; i < g.n; i++){
-			if(g.deg[i] == 3){
-				a3++;
-			}else{
-				a4++;
-			}
-		}
-		array[a4][a3]++;
-		//array[a3][a4]++;
+//		int a3 = 0;
+//		int a4 = 0;
+//		for(int i = 0; i < g.n; i++){
+//			if(g.deg[i] == 3){
+//				a3++;
+//			}else{
+//				a4++;
+//			}
+//		}
+//		array[a4][a3]++;
 		
 		/*for (int i = 0; i < now; i++) {
 			if (g.equals(Graps[i])) {
@@ -115,12 +114,12 @@ public class CutGenerator {
 	}
 
 	public void prEnd() {
-		for(int i = 0; i < 18; i++){
-			for(int j = 0; j < 18; j++){
-				pw.print(array[i][j] + "	");
-			}
-			pw.println("");
-		}
+//		for(int i = 0; i < 18; i++){
+//			for(int j = 0; j < 18; j++){
+//				pw.print(array[i][j] + "	");
+//			}
+//			pw.println("");
+//		}
 		pw.println("[" + this.Fend + "][END]");
 	}
 
@@ -157,11 +156,11 @@ public class CutGenerator {
 		CutGenerator cg = new CutGenerator();
 		try {
 			cg.pw = new PrintWriter("cuts.txt");
-			//cg.getFstart();
-			//cg.gen(0, 0);
-			cg.merge();
-			cg.prEnd();
-			//cg.pr10();
+			cg.getFstart();
+			cg.gen(0, 0);
+			//cg.merge();
+			//cg.prEnd();
+			cg.pr10();
 		} finally {
 			cg.pw.close();
 		}
