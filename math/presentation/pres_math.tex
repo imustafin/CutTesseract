@@ -134,4 +134,54 @@
 
 Далее при помощи параметрического уравнения находим точку пересечения. Надо дописать.
 \end{frame}
+\begin{frame}
+	\frametitle{Поворот сечения}
+	\\
+
+	\begin{columns}
+		\column{0.5\textwidth}
+	\begin{block}{Матрицы поворота в четырехмерном пространстве.}
+		{\footnotesize
+			$$
+			M_{xy}(\alpha)=
+			\left(
+			\begin{array}{cccc}
+				\cos \alpha & -\sin \alpha & 0 & 0 \\
+				\sin \alpha & \cos \alpha & 0 & 0 \\
+				0 & 0 & 1 & 0 \\
+				0 & 0 & 0 & 1
+			\end{array}\right)
+			$$
+			\\
+			
+			\newline
+			$$
+			M_{yz}(\alpha)=
+			\left(
+			\begin{array}{cccc}
+				1 & 0 & 0 & 0 \\
+				0 & \cos \alpha & -\sin \alpha & 0 \\
+				0 & \sin \alpha & \cos \alpha & 0 \\
+				0 & 0 & 0 & 1
+			\end{array}\right)
+			$$	
+			\\ 
+
+			$$
+			M_{zw}(\alpha)=
+			\left(
+			\begin{array}{cccc}
+				1 & 0 & 0 & 0 \\
+				0 & 1 & 0 & 0 \\
+				0 & 0 & \cos \alpha & -\sin \alpha \\
+				0 & 0 & \sin \alpha & \cos \alpha
+			\end{array}\right)
+			$$
+		}
+
+\end{block}
+\column{0.5\textwidth}
+PIC HERE
+\end{columns}
+\end{frame}
 \end{document}
