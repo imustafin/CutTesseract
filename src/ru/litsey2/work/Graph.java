@@ -109,14 +109,6 @@ public class Graph {
 			this.hash2 = 0;
 		}
 	}
-
-	public int myhash(){
-		int a = 0;
-		for(int i = 0; i < this.n; i++){
-			a *= 10 * this.deg[i];
-		}
-		return a;
-	}
 	
 	public long to10(boolean[] a) {
 		long ans = 0;
