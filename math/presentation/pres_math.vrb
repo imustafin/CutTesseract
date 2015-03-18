@@ -1,0 +1,18 @@
+\frametitle {Тессеракт. Общее определение}
+
+\begin{columns}
+\column{0.5\textwidth}
+\framebox{\includegraphics[scale=0.3]{./tesseract_fig1.png}}
+\column{0.5\textwidth}
+\T2A\CYRR \T2A\cyra \T2A\cyrs \T2A\cyrs \T2A\cyrm \T2A\cyra \T2A\cyrt \T2A\cyrr \T2A\cyri \T2A\cyrv \T2A\cyra \T2A\cyre \T2A\cyrm \T2A\cyra \T2A\cyrya  \T2A\cyrn \T2A\cyra \T2A\cyrm \T2A\cyri  \T2A\cyrm \T2A\cyro \T2A\cyrd \T2A\cyre \T2A\cyrl \T2A\cyrsftsn  \T2A\cyri \T2A\cyrm \T2A\cyre \T2A\cyre \T2A\cyrt  \T2A\cyrk \T2A\cyro \T2A\cyro \T2A\cyrr \T2A\cyrd \T2A\cyri \T2A\cyrn \T2A\cyra \T2A\cyrt \T2A\cyrery  $(x_1,x_2,x_3,x_4) \in R^4$, \T2A\cyrt \T2A\cyra \T2A\cyrk \T2A\cyri \T2A\cyrh , \T2A\cyrch \T2A\cyrt \T2A\cyro  $x_1 \in [ -1,1 ]$. \\
+\T2A\CYRO \T2A\cyrg \T2A\cyrr \T2A\cyra \T2A\cyrg \T2A\cyri \T2A\cyrch \T2A\cyri \T2A\cyrv \T2A\cyra \T2A\cyre \T2A\cyrt \T2A\cyrs \T2A\cyrya  8 \T2A\cyrg \T2A\cyri \T2A\cyrp \T2A\cyre \T2A\cyrr \T2A\cyrp \T2A\cyrl \T2A\cyro \T2A\cyrs \T2A\cyrk \T2A\cyro \T2A\cyrs \T2A\cyrt \T2A\cyrya \T2A\cyrm \T2A\cyri 
+\T2A\CYRI \T2A\cyrm \T2A\cyre \T2A\cyre \T2A\cyrt  8 \T2A\cyrt \T2A\cyrr \T2A\cyre \T2A\cyrh \T2A\cyrm \T2A\cyre \T2A\cyrr \T2A\cyrn \T2A\cyrery \T2A\cyrh  \T2A\cyrg \T2A\cyrr \T2A\cyra \T2A\cyrn \T2A\cyre \T2A\cyrishrt , 24 \T2A\cyrd \T2A\cyrv \T2A\cyru \T2A\cyrm \T2A\cyre \T2A\cyrr \T2A\cyrn \T2A\cyrery \T2A\cyrh , 32 \T2A\cyrr \T2A\cyre \T2A\cyrb \T2A\cyrr \T2A\cyra  \T2A\cyri  16 \T2A\cyrv \T2A\cyre \T2A\cyrr \T2A\cyrsh \T2A\cyri \T2A\cyrn .
+\clearpage
+\end{columns}
+
+%\begin{columns}
+% \column{0.5\textwidth}
+%  \T2A\CYRS \T2A\cyro \T2A\cyrd \T2A\cyre \T2A\cyrr \T2A\cyrzh \T2A\cyri \T2A\cyrm \T2A\cyro \T2A\cyre  \T2A\cyrl \T2A\cyre \T2A\cyrv \T2A\cyro \T2A\cyrg \T2A\cyro  \T2A\cyrs \T2A\cyrt \T2A\cyro \T2A\cyrl \T2A\cyrb \T2A\cyrc \T2A\cyra 
+%  \column{0.5\textwidth}
+%  \T2A\CYRS \T2A\cyro \T2A\cyrd \T2A\cyre \T2A\cyrr \T2A\cyrzh \T2A\cyri \T2A\cyrm \T2A\cyro \T2A\cyre  \T2A\cyrp \T2A\cyrr \T2A\cyra \T2A\cyrv \T2A\cyro \T2A\cyrg \T2A\cyro  \T2A\cyrs \T2A\cyrt \T2A\cyro \T2A\cyrl \T2A\cyrb \T2A\cyrc \T2A\cyra 
+%\end{columns}
