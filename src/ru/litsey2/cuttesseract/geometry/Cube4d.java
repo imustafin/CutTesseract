@@ -65,7 +65,7 @@ public class Cube4d {
 				if (sameness == 3) {
 					getHasEdge()[i][j] = true;
 					getHasEdge()[j][i] = true;
-					getSegments().add(new Segment4d(a, b, edgeColor));
+					segments.add(new Segment4d(a, b, edgeColor));
 				} else {
 					getHasEdge()[i][j] = false;
 					getHasEdge()[j][i] = false;
