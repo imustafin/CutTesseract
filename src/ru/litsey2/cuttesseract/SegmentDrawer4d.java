@@ -1,14 +1,18 @@
 package ru.litsey2.cuttesseract;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.awt.geom.Line2D;
 import java.util.Set;
 
 import javax.swing.JPanel;
@@ -34,6 +38,11 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 	double imageScale = 150;
 
 	/**
+	 * Line width
+	 */
+	static final float LINE_WIDTH = 3;
+
+	/**
 	 * Mouse wheel scroll multiplier
 	 */
 	static final double SLOW_SCROLL_SPEED = 1;
@@ -56,37 +65,45 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 	int originY = (int) imageScale;
 
 	/**
-	 * The <code>X</code> coordinate of the ending of the <i>move origin</i> motion
+	 * The <code>X</code> coordinate of the ending of the <i>move origin</i>
+	 * motion
 	 */
 	int moveX1 = 0;
 	/**
-	 * The <code>Y</code> coordinate of the ending of the <i>move origin</i> motion
+	 * The <code>Y</code> coordinate of the ending of the <i>move origin</i>
+	 * motion
 	 */
 	int moveY1 = 0;
 	/**
-	 * The <code>X</code> coordinate of the beginning of the <i>move origin</i> motion
+	 * The <code>X</code> coordinate of the beginning of the <i>move origin</i>
+	 * motion
 	 */
 	int moveX0 = 0;
 	/**
-	 * The <code>Y</code> coordinate of the beginning of the <i>move origin</i> motion
+	 * The <code>Y</code> coordinate of the beginning of the <i>move origin</i>
+	 * motion
 	 */
 	int moveY0 = 0;
 
 	/**
-	 * The <code>X</code> coordinate of the beginning of the <i>middle mouse button rotation</i>
+	 * The <code>X</code> coordinate of the beginning of the <i>middle mouse
+	 * button rotation</i>
 	 */
 	int middleRotationX0 = 0;
 	/**
-	 * The <code>Y</code> coordinate of the beginning of the <i>middle mouse button rotation</i>
+	 * The <code>Y</code> coordinate of the beginning of the <i>middle mouse
+	 * button rotation</i>
 	 */
 	int middleRotationY0 = 0;
 
 	/**
-	 * The <code>X</code> coordinate of the beginning of the <i>right mouse button rotation</i>
+	 * The <code>X</code> coordinate of the beginning of the <i>right mouse
+	 * button rotation</i>
 	 */
 	int rightRotationX0 = 0;
 	/**
-	 * The <code>Y</code> coordinate of the beginning of the <i>right mouse button rotation</i>
+	 * The <code>Y</code> coordinate of the beginning of the <i>right mouse
+	 * button rotation</i>
 	 */
 	int rightRotationY0 = 0;
 
@@ -127,43 +144,53 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 
 	/**
 	 * Returns on-screen <code>X</code> coordinate
-	 * @param x absolute <code>X</code> coordinate
+	 * 
+	 * @param x
+	 *            absolute <code>X</code> coordinate
 	 * @return on-screen <code>X</code> coordinate
 	 */
-	int xc(double x) {
+	double xc(double x) {
 		return (int) (originX + x * imageScale);
 	}
 
 	/**
 	 * Returns on-screen <code>Y</code> coordinate
-	 * @param y absolute <code>Y</code> coordinate
+	 * 
+	 * @param y
+	 *            absolute <code>Y</code> coordinate
 	 * @return on-screen <code>Y</code> coordinate
 	 */
-	int yc(double y) {
+	double yc(double y) {
 		return (int) (originY - y * imageScale);
 	}
 
 	/**
 	 * Draws the specified 2d segment on the specified <code>Graphics</code>
-	 * @param s segment to draw
-	 * @param g <code>Graphics</code> to draw on
+	 * 
+	 * @param s
+	 *            segment to draw
+	 * @param g
+	 *            <code>Graphics</code> to draw on
 	 */
-	void drawSegment2d(Segment2d s, Graphics g) {
+	void drawSegment2d(Segment2d s, Graphics2D g) {
 		Color oldColor = g.getColor();
+		Stroke oldStroke = g.getStroke();
+
 		g.setColor(s.color);
+		g.setStroke(new BasicStroke(LINE_WIDTH));
 
 		Point2d a = s.first;
 		Point2d b = s.second;
 
-		int x1 = xc(a.x);
-		int y1 = yc(a.y);
-		int x2 = xc(b.x);
-		int y2 = yc(b.y);
+		double x1 = xc(a.x);
+		double y1 = yc(a.y);
+		double x2 = xc(b.x);
+		double y2 = yc(b.y);
 
-		g.drawLine(x1, y1, x2, y2);
+		g.draw(new Line2D.Double(x1, y1, x2, y2));
 
 		g.setColor(oldColor);
-
+		g.setStroke(oldStroke);
 	}
 
 	/**
@@ -177,13 +204,15 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
+		Graphics2D g2 = (Graphics2D) g;
+
 		Set<Segment2d> segments = pointRotator.getSegments2d();
 
 		for (Segment2d s : segments) {
 			if (s.color == Colors.CUBE_COLOR && !drawCube) {
 				continue;
 			}
-			drawSegment2d(s, g);
+			drawSegment2d(s, g2);
 		}
 	}
 
@@ -203,7 +232,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 			// repaint();
 		}
 		if (SwingUtilities.isRightMouseButton(e)) {
-			double deltaX = (e.getX() - rightRotationX0) * ROTATION_SPEED;
+			double deltaX = -(e.getX() - rightRotationX0) * ROTATION_SPEED;
 			double deltaY = (e.getY() - rightRotationY0) * ROTATION_SPEED;
 			rightRotationX0 = e.getX();
 			rightRotationY0 = e.getY();

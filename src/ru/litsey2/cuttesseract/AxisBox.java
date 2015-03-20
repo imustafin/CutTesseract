@@ -1,8 +1,10 @@
 package ru.litsey2.cuttesseract;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
@@ -118,7 +120,7 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 		this.drawLine = drawLine;
 		this.pointPicker = pointPicker;
 
-		setBackground(Colors.BACKGROUND_COLOR);
+		setBackground(Colors.AXIS_BOX_BG_COLOR);
 
 		this.colorX = colorX;
 		this.colorY = colorY;
@@ -184,6 +186,10 @@ abstract class AxisBox extends JPanel implements MouseInputListener {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
+		Graphics2D g2 = (Graphics2D) g;
+		
+		g2.setStroke(new BasicStroke(2));
+		
 		Color oldColor = g.getColor();
 
 		g.setColor(colorX);

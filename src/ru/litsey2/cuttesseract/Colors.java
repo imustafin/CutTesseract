@@ -23,7 +23,7 @@ public class Colors {
 	/**
 	 * The color of the W-axis
 	 */
-	public static final Color W_COLOR = Color.ORANGE;
+	public static final Color W_COLOR = Color.MAGENTA;
 	/**
 	 * The color of the cube
 	 */
@@ -31,7 +31,7 @@ public class Colors {
 	/**
 	 * The color of the resulting cut
 	 */
-	public static final Color CUT_COLOR = Color.MAGENTA;
+	public static final Color CUT_COLOR = Color.BLACK;
 	/**
 	 * The color of the normal of the cut plane
 	 */
@@ -40,5 +40,11 @@ public class Colors {
 	/**
 	 * The background color
 	 */
-	public static final Color BACKGROUND_COLOR = Color.BLACK;
+	public static final Color BACKGROUND_COLOR = Color.ORANGE;
+	
+	public static final Color PANEL_A_COLOR = Color.RED;
+	public static final Color PANEL_B_COLOR = Color.BLUE;
+	
+	public static final Color AXIS_BOX_BG_COLOR = Color.BLACK;
+	
 }

@@ -47,7 +47,7 @@ public abstract class PointVectorSelectorPanel extends JPanel {
 
 		SpringLayout layout = new SpringLayout();
 
-		PointPicker pSelector = new PointPicker(Color.LIGHT_GRAY, false) {
+		PointPicker pSelector = new PointPicker(Colors.PANEL_A_COLOR, false) {
 
 			private static final long serialVersionUID = 1L;
 
@@ -60,7 +60,7 @@ public abstract class PointVectorSelectorPanel extends JPanel {
 
 		point = pSelector.getPoint4d();
 
-		PointPicker vSelector = new PointPicker(Color.CYAN, true) {
+		PointPicker vSelector = new PointPicker(Colors.PANEL_B_COLOR, true) {
 
 			private static final long serialVersionUID = 1L;
 

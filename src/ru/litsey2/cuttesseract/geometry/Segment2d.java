@@ -25,22 +25,22 @@ public class Segment2d implements Comparable<Segment2d> {
 	 * point should not be less than the first point if it is not so then they
 	 * are swapped.
 	 * 
-	 * @param a
+	 * @param p
 	 *            first point
-	 * @param b
+	 * @param q
 	 *            second point
 	 * @param color
 	 *            color of segment
 	 * 
 	 * @see Point4d#compareTo(Point4d)
 	 */
-	public Segment2d(Point2d a, Point2d b, Color color) {
-		if (a.compareTo(b) <= 0) {
-			this.first = a;
-			this.second = b;
+	public Segment2d(Point2d p, Point2d q, Color color) {
+		if (p.compareTo(q) <= 0) {
+			this.first = p;
+			this.second = q;
 		} else {
-			this.first = b;
-			this.second = a;
+			this.first = q;
+			this.second = p;
 		}
 		this.color = color;
 	}
@@ -60,14 +60,15 @@ public class Segment2d implements Comparable<Segment2d> {
 	public Segment2d(Point2d a, Point2d b) {
 		this(a, b, Color.BLACK);
 	}
-	
+
 	/**
 	 * Compares this segment to the other segment.
 	 * <p>
 	 * Segments are first compared by the <code>first</code> point then by the
 	 * <code>second</code> point then by the color {@link Color#getRGB()}
 	 * 
-	 * @param z the segment to compare
+	 * @param z
+	 *            the segment to compare
 	 */
 	@Override
 	public int compareTo(Segment2d z) {
