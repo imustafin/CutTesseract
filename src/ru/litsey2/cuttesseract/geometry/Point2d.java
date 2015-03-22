@@ -11,6 +11,11 @@ public class Point2d implements Comparable<Point2d> {
 	 */
 	public final double y;
 
+	@Override
+	public String toString() {
+		return "(" + x + ", " + y + ")";
+	}
+
 	/**
 	 * Constructs point by the specified <code>x</code> and <code>y</code>
 	 * coordinates
