@@ -6,7 +6,6 @@ import javax.swing.SwingUtilities;
  * A main class, creates a {@link MainFrame}
  * 
  * @author Ilgiz Mustafin
- * @version 0.3
  */
 public class CubeCut4d {
 

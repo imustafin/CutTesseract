@@ -3,18 +3,13 @@ package ru.litsey2.cuttesseract;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.TreeSet;
 
 import ru.litsey2.cuttesseract.geometry.Cube4d;
 import ru.litsey2.cuttesseract.geometry.Formulas;
 import ru.litsey2.cuttesseract.geometry.Geometry;
-import ru.litsey2.cuttesseract.geometry.Point2d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment2d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
-import ru.litsey2.cuttesseract.geometry.Vector2d;
 import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 /**
@@ -66,7 +61,7 @@ public class PointRotator {
 		segments2d = new ArrayList<Segment2d>();
 		addCoordVectors();
 		addAll(cube.getSegments());
-		recalc();
+		recalc(true, null);
 	}
 
 	/**
@@ -91,9 +86,9 @@ public class PointRotator {
 		}
 		addCoordVectors();
 		if (oldVectors != null) {
-			recalcVectors(oldVectors);
+			recalc(false, oldVectors);
 		}
-		recalc();
+		recalc(true, null);
 	}
 
 	/**
@@ -221,7 +216,7 @@ public class PointRotator {
 	 */
 	void add(Segment4d e) {
 		segments4d.add(e);
-		recalc();
+		recalc(true, null);
 	}
 
 	/**
@@ -233,36 +228,17 @@ public class PointRotator {
 	 */
 	void addAll(Collection<? extends Segment4d> c) {
 		segments4d.addAll(c);
-		recalc();
+		recalc(true, null);
 	}
 
-	void recalcVectors(Vector4d[] coordVectors) {
+	void recalc(boolean byAngles, Vector4d[] coordVectors) {
 		segments2d.clear();
 		ArrayList<Segment4d> nSegments4d = new ArrayList<Segment4d>();
 		for (Segment4d s : segments4d) {
-			Point4d a4 = getRotatedByVectors(s.a, coordVectors);
-			Point4d b4 = getRotatedByVectors(s.b, coordVectors);
-			nSegments4d.add(new Segment4d(a4, b4, s.color));
-		}
-		segments4d = nSegments4d;
-		drawOrderSort(segments4d);
-		for (Segment4d s : segments4d) {
-			segments2d.add(s.projection2d());
-		}
-		for (int i = 0; i < angles.length; i++) {
-			angles[i] = 0;
-		}
-	}
-
-	/**
-	 * Recalculates {@link #segments2d} and {@link #segments4d}
-	 */
-	void recalc() {
-		segments2d.clear();
-		ArrayList<Segment4d> nSegments4d = new ArrayList<Segment4d>();
-		for (Segment4d s : segments4d) {
-			Point4d a4 = getRotatedByAngles(s.a);
-			Point4d b4 = getRotatedByAngles(s.b);
+			Point4d a4 = byAngles ? getRotatedByAngles(s.a)
+					: getRotatedByVectors(s.a, coordVectors);
+			Point4d b4 = byAngles ? getRotatedByAngles(s.b)
+					: getRotatedByVectors(s.b, coordVectors);
 			nSegments4d.add(new Segment4d(a4, b4, s.color));
 		}
 		segments4d = nSegments4d;
@@ -279,9 +255,9 @@ public class PointRotator {
 	 * 
 	 * @return a copy of {@link #segments2d}
 	 */
-	public Set<Segment2d> getSegments2d() {
+	public ArrayList<Segment2d> getSegments2d() {
 
-		return new TreeSet<Segment2d>(segments2d);
+		return new ArrayList<Segment2d>(segments2d);
 	}
 
 	/**
@@ -306,7 +282,7 @@ public class PointRotator {
 		angles[2] += r2;
 		angles[3] += r3;
 		angles[4] += r4;
-		recalc();
+		recalc(true, null);
 	}
 
 	/**
@@ -348,14 +324,17 @@ public class PointRotator {
 		}
 	}
 
-	void drawOrderSort(ArrayList<Segment4d> edges) {
-		int iterations = 50;
+	public static void drawOrderSort(ArrayList<Segment4d> edges) {
 
+		
 		Collections.shuffle(edges);
 		
-		for (int x = 0; x < iterations; x++) {
+		boolean swapped = true;
+
+		while (swapped) {
+			swapped = false;
 			for (int i = 0; i < edges.size(); i++) {
-				for (int j = 0; j < edges.size(); j++) {
+				for (int j = i + 1; j < edges.size(); j++) {
 					if (i == j) {
 						continue;
 					}
@@ -364,24 +343,12 @@ public class PointRotator {
 
 					int cmp = Formulas.intersection2dComparator.compare(a, b);
 
-					cmp *= -1;
-					
-					if (cmp == 0) {
-						continue;
-					}
-
-					if (cmp < 0) {
-						if (i > j) {
-							Collections.swap(edges, i, j);
-						}
-					} else {
-						if (i < j) {
-							Collections.swap(edges, i, j);
-						}
+					if (cmp > 0) {
+						swapped = true;
+						Collections.swap(edges, i, j);
 					}
 				}
 			}
 		}
-
 	}
 }

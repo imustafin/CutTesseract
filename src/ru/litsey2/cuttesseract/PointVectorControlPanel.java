@@ -2,7 +2,6 @@ package ru.litsey2.cuttesseract;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.Set;
 
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;

@@ -13,18 +13,13 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.Line2D;
-import java.util.Set;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import ru.litsey2.cuttesseract.geometry.Geometry;
 import ru.litsey2.cuttesseract.geometry.Point2d;
-import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment2d;
-import ru.litsey2.cuttesseract.geometry.Segment4d;
-import ru.litsey2.cuttesseract.geometry.Vector2d;
-import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 /**
  * A <code>JPanel</code> which can draw 4d segments on itself
@@ -211,7 +206,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 
 		Graphics2D g2 = (Graphics2D) g;
 
-		Set<Segment2d> segments = pointRotator.getSegments2d();
+		ArrayList<Segment2d> segments = pointRotator.getSegments2d();
 
 		for (Segment2d s : segments) {
 			if (s.color == Colors.CUBE_COLOR && !drawCube) {

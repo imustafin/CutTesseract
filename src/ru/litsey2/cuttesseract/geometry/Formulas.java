@@ -281,7 +281,7 @@ public class Formulas {
 			Vector2d ai = new Vector2d(a2.first, intersection);
 
 			// BI vector. Unused
-			Vector2d bi = new Vector2d(a2.second, intersection);
+//			Vector2d bi = new Vector2d(a2.second, intersection);
 
 			
 			// r1 = AI / AB
@@ -303,7 +303,7 @@ public class Formulas {
 			// CI vector
 			Vector2d ci = new Vector2d(b2.first, intersection);
 			// DI vector
-			Vector2d di = new Vector2d(b2.second, intersection);
+//			Vector2d di = new Vector2d(b2.second, intersection);
 
 			// r2 = CI / AB
 			double r2 = ci.length() / b2.length();
@@ -323,7 +323,7 @@ public class Formulas {
 			o2 = o2.getAdded(cd4);
 
 			// Compare by Z coordinate
-			return Geometry.compareEps(o2.z, o1.z);
+			return Geometry.compareEps(o1.z, o2.z);
 
 		}
 	};
