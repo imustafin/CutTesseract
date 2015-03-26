@@ -1,6 +1,7 @@
 package ru.litsey2.cuttesseract;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.util.Set;
 
 import javax.swing.JPanel;
@@ -39,9 +40,9 @@ public class PointVectorControlPanel extends JPanel {
 			void pointVectorChanged() {
 				Plane4d plane = new Plane4d(point, vector);
 				Cube4d cube = new Cube4d(1, Colors.CUBE_COLOR);
-				Set<Segment4d> set = Geometry.makeSection(plane, cube);
-				set.addAll(cube.getSegments());
-				segmentDrawer.pointRotator.setNewSection(set, plane.getNormal(), cube, true);
+				ArrayList<Segment4d> list = Geometry.makeSection(plane, cube);
+				list.addAll(cube.getSegments());
+				segmentDrawer.pointRotator.setNewSection(list, plane.getNormal(), cube, true);
 //				segmentDrawer.pointRotator.rotateNormalToUs();
 				segmentDrawer.repaint();
 			}

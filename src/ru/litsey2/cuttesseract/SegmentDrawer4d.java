@@ -18,8 +18,13 @@ import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import ru.litsey2.cuttesseract.geometry.Geometry;
 import ru.litsey2.cuttesseract.geometry.Point2d;
+import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment2d;
+import ru.litsey2.cuttesseract.geometry.Segment4d;
+import ru.litsey2.cuttesseract.geometry.Vector2d;
+import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 /**
  * A <code>JPanel</code> which can draw 4d segments on itself
@@ -298,5 +303,7 @@ class SegmentDrawer4d extends JPanel implements MouseMotionListener,
 	@Override
 	public void mouseClicked(MouseEvent e) {
 	}
+
+	
 
 }

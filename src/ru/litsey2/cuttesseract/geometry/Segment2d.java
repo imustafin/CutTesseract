@@ -141,4 +141,10 @@ public class Segment2d implements Comparable<Segment2d> {
 		return new Point2d(x, y);
 	}
 
+	public double length() {
+		double dx = second.x - first.x;
+		double dy = second.y - first.y;
+		return Math.sqrt(dx * dx + dy * dy);
+	}
+
 }

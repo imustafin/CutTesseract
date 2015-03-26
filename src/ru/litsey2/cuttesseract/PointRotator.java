@@ -1,6 +1,9 @@
 package ru.litsey2.cuttesseract;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -10,6 +13,7 @@ import ru.litsey2.cuttesseract.geometry.Point2d;
 import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment2d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
+import ru.litsey2.cuttesseract.geometry.Vector2d;
 import ru.litsey2.cuttesseract.geometry.Vector4d;
 
 /**
@@ -23,12 +27,12 @@ public class PointRotator {
 	/**
 	 * Rotated 4d segments
 	 */
-	Set<Segment4d> segments4d;
+	ArrayList<Segment4d> segments4d;
 	/**
 	 * A projection of <code>segments4d</code> to 2d. Contains segments which
 	 * are ready to be drawn on the screen
 	 */
-	Set<Segment2d> segments2d;
+	ArrayList<Segment2d> segments2d;
 
 	/**
 	 * Angles to rotate all point by
@@ -57,8 +61,8 @@ public class PointRotator {
 	 * Constructs a PointRotator with only axis segments in it
 	 */
 	public PointRotator(Cube4d cube) {
-		segments4d = new TreeSet<Segment4d>();
-		segments2d = new TreeSet<Segment2d>();
+		segments4d = new ArrayList<Segment4d>();
+		segments2d = new ArrayList<Segment2d>();
 		addCoordVectors();
 		addAll(cube.getSegments());
 		recalc();
@@ -72,7 +76,7 @@ public class PointRotator {
 	 * @param planeNormal
 	 *            new planeNormal, it shouldn't be in the segments
 	 */
-	void setNewSection(Set<Segment4d> segments, Vector4d planeNormal,
+	void setNewSection(ArrayList<Segment4d> segments, Vector4d planeNormal,
 			Cube4d cube, boolean rotateToUs) {
 
 		Vector4d[] oldVectors = getCoordVectors();
@@ -89,23 +93,6 @@ public class PointRotator {
 			recalcVectors(oldVectors);
 		}
 		recalc();
-	}
-
-	void recalcVectors(Vector4d[] coordVectors) {
-		segments2d.clear();
-		Set<Segment4d> nSegments4d = new TreeSet<Segment4d>();
-		for (Segment4d s : segments4d) {
-			Point4d a4 = getRotatedByVectors(s.a, coordVectors);
-			Point4d b4 = getRotatedByVectors(s.b, coordVectors);
-			nSegments4d.add(new Segment4d(a4, b4, s.color));
-			Point2d a2 = new Point2d(a4.x, a4.y);
-			Point2d b2 = new Point2d(b4.x, b4.y);
-			segments2d.add(new Segment2d(a2, b2, s.color));
-		}
-		segments4d = nSegments4d;
-		for (int i = 0; i < angles.length; i++) {
-			angles[i] = 0;
-		}
 	}
 
 	/**
@@ -248,21 +235,40 @@ public class PointRotator {
 		recalc();
 	}
 
+	void recalcVectors(Vector4d[] coordVectors) {
+		segments2d.clear();
+		ArrayList<Segment4d> nSegments4d = new ArrayList<Segment4d>();
+		for (Segment4d s : segments4d) {
+			Point4d a4 = getRotatedByVectors(s.a, coordVectors);
+			Point4d b4 = getRotatedByVectors(s.b, coordVectors);
+			nSegments4d.add(new Segment4d(a4, b4, s.color));
+		}
+		segments4d = nSegments4d;
+		drawOrderSort(segments4d);
+		for (Segment4d s : segments4d) {
+			segments2d.add(s.projection2d());
+		}
+		for (int i = 0; i < angles.length; i++) {
+			angles[i] = 0;
+		}
+	}
+
 	/**
 	 * Recalculates {@link #segments2d} and {@link #segments4d}
 	 */
 	void recalc() {
 		segments2d.clear();
-		Set<Segment4d> nSegments4d = new TreeSet<Segment4d>();
+		ArrayList<Segment4d> nSegments4d = new ArrayList<Segment4d>();
 		for (Segment4d s : segments4d) {
 			Point4d a4 = getRotatedByAngles(s.a);
 			Point4d b4 = getRotatedByAngles(s.b);
 			nSegments4d.add(new Segment4d(a4, b4, s.color));
-			Point2d a2 = new Point2d(a4.x, a4.y);
-			Point2d b2 = new Point2d(b4.x, b4.y);
-			segments2d.add(new Segment2d(a2, b2, s.color));
 		}
 		segments4d = nSegments4d;
+		drawOrderSort(segments4d);
+		for (Segment4d s : segments4d) {
+			segments2d.add(s.projection2d());
+		}
 		for (int i = 0; i < angles.length; i++) {
 			angles[i] = 0;
 		}
@@ -341,4 +347,100 @@ public class PointRotator {
 		}
 	}
 
+	Comparator<Segment4d> intersection2dComparator = new Comparator<Segment4d>() {
+
+		@Override
+		public int compare(Segment4d s1, Segment4d s2) {
+			Segment2d a2 = s1.projection2d();
+			Segment2d b2 = s2.projection2d();
+
+			Point2d intersection = a2.intersectionPoint(b2);
+
+			if (intersection == null) {
+				// no intersection point, order doesn't matter
+				return 0;
+			}
+
+			Vector2d ai = new Vector2d(a2.first, intersection);
+			Vector2d bi = new Vector2d(a2.second, intersection);
+
+			double r1 = ai.length() / a2.length();
+
+			Vector4d ab4 = new Vector4d(s1);
+			double s1Len = ab4.length();
+
+			ab4 = ab4.getNormalized().getMultiplied(r1 * s1Len);
+
+			Point4d o1 = s1.a;
+
+			o1 = o1.getAdded(ab4);
+
+			Vector2d ci = new Vector2d(b2.first, intersection);
+			Vector2d di = new Vector2d(b2.second, intersection);
+
+			double r2 = ci.length() / b2.length();
+
+			Vector4d cd4 = new Vector4d(s2);
+			double s2Len = cd4.length();
+
+			cd4 = cd4.getNormalized().getMultiplied(r2 * s2Len);
+
+			Point4d o2 = s2.a;
+
+			o2 = o2.getAdded(cd4);
+
+			return Geometry.compareEps(o2.z, o1.z);
+
+		}
+	};
+
+	Comparator<Segment4d> middleZComparator = new Comparator<Segment4d>() {
+
+		@Override
+		public int compare(Segment4d o1, Segment4d o2) {
+			Point4d a = o1.a;
+			Point4d b = o1.b;
+
+			double z1 = (a.z + b.z) / 2;
+
+			Point4d c = o2.a;
+			Point4d d = o2.b;
+
+			double z2 = (c.z + d.z) / 2;
+			return Geometry.compareEps(z2, z1);
+		}
+	};
+
+	void drawOrderSort(ArrayList<Segment4d> edges) {
+		int iterations = 1;
+
+		for (int x = 0; x < iterations; x++) {
+			for (int i = 0; i < edges.size(); i++) {
+				for (int j = 0; j < edges.size(); j++) {
+					if(i == j) {
+						continue;
+					}
+					Segment4d a = edges.get(i);
+					Segment4d b = edges.get(j);
+
+					int cmp = intersection2dComparator.compare(a, b);
+
+					if (cmp == 0) {
+						continue;
+					}
+
+					if(cmp < 0) {
+						if(i > j) {
+							Collections.swap(edges, i, j);
+						}
+					} else {
+						if(i < j) {
+							Collections.swap(edges, i, j);
+						}
+					}
+				}
+			}
+		}
+
+	}
 }

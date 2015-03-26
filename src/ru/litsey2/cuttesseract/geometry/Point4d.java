@@ -147,5 +147,13 @@ public class Point4d implements Comparable<Point4d> {
 		double res = p.a * x + p.b * y + p.c * z + p.d * w + p.e;
 		return res;
 	}
+	
+	Point2d projection2d() {
+		return new Point2d(x, y);
+	}
+	
+	public Point4d getAdded(Point4d o) {
+		return new Point4d(x + o.x, y + o.y, z + o.z, w + o.w);
+	}
 
 }

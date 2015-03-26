@@ -137,4 +137,8 @@ public class Segment4d implements Comparable<Segment4d> {
 		return ans;
 	}
 
+	public Segment2d projection2d() {
+		return new Segment2d(a.projection2d(), b.projection2d(), color);
+	}
+
 }

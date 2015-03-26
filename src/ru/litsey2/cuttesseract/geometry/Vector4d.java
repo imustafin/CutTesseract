@@ -59,4 +59,7 @@ public class Vector4d extends Point4d {
 		return ans;
 	}
 	
+	public Vector4d getMultiplied(double k) {
+		return  new Vector4d(k * x, k * y, k * z, k * w);
+	}
 }

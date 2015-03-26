@@ -10,4 +10,8 @@ public class Vector2d  extends Point2d {
 		super(q.x - p.x, q.y - p.y);
 	}
 	
+	public double length() {
+		return Math.sqrt(x * x + y * y);
+	}
+	
 }

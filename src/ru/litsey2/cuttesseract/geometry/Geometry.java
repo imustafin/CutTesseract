@@ -49,7 +49,7 @@ public class Geometry {
 	 *            section cube
 	 * @return set of 4d segments
 	 */
-	public static Set<Segment4d> makeSection(Plane4d plane, Cube4d cube) {
+	public static ArrayList<Segment4d> makeSection(Plane4d plane, Cube4d cube) {
 		Set<Point4d> cutPoints = new TreeSet<Point4d>();
 		for (int i = 0; i < 16; i++) {
 			for (int j = i + 1; j < 16; j++) {
@@ -139,8 +139,11 @@ public class Geometry {
 				}
 			}
 		}
+		
+		ArrayList<Segment4d> list = new ArrayList<Segment4d>();
+		list.addAll(cutEdges);
 
-		return cutEdges;
+		return list;
 	}
 
 }
