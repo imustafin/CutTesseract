@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Arch Linux) (preloaded format=pdflatex 2015.3.9)  18 MAR 2015 14:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Arch Linux) (preloaded format=latex 2015.3.9)  26 MAR 2015 12:22
 entering extended mode
  restricted \write18 enabled.
+ Source specials enabled.
  %&-line parsing enabled.
 **pres_inf.tex
 (./pres_inf.tex
@@ -28,7 +29,7 @@ Package: beamerbasedecode 2010/05/01 (rcs-revision efa082c6111d)
 )
 (/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
 )
 \headheight=\dimen102
 \headdp=\dimen103
@@ -122,18 +123,10 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/usr/share/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: dvips.def on input line 91.
 
-(/usr/share/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-(/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-(/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
-\Gread@gobject=\count105
+(/usr/share/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen127
 \Gin@req@width=\dimen128
@@ -175,10 +168,10 @@ Package: pgfsys 2013/11/30 v3.0.0 (rcs-revision 1.47)
 \pgf@yc=\dimen138
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count106
-\c@pgf@countb=\count107
-\c@pgf@countc=\count108
-\c@pgf@countd=\count109
+\c@pgf@counta=\count105
+\c@pgf@countb=\count106
+\c@pgf@countc=\count107
+\c@pgf@countd=\count108
 \t@pgf@toka=\toks20
 \t@pgf@tokb=\toks21
 \t@pgf@tokc=\toks22
@@ -186,20 +179,19 @@ Package: pgfsys 2013/11/30 v3.0.0 (rcs-revision 1.47)
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
-Driver file for pgf: pgfsys-pdftex.def
+Driver file for pgf: pgfsys-dvips.def
 
-(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2013/07/18  (rcs-revision 1.33)
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvips.def
+File: pgfsys-dvips.def 2013/07/16  (rcs-revision 1.23)
 
-(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
-)))
-(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-postscript.def
+File: pgfsys-common-postscript.def 2008/10/01  (rcs-revision 1.22)
+\pgf@objectcount=\count109
+))) (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
 \pgfsyssoftpath@smallbuffer@items=\count110
 \pgfsyssoftpath@bigbuffer@items=\count111
-)
-(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+) (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
 ))
 (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
@@ -208,9 +200,8 @@ Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 (/usr/share/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Driver file: dvips.def on input line 225.
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
 Package xcolor Info: Model `RGB' extended on input line 1353.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
@@ -328,7 +319,13 @@ Package: xxcolor 2003/10/24 ver 0.1
 )
 (/usr/share/texmf-dist/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
+(/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+))
 (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
@@ -358,7 +355,7 @@ Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
 Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
 )
@@ -435,18 +432,26 @@ Package hyperref Message: Stopped early.
 
 )
 
-Package hyperref Message: Driver (autodetected): hpdftex.
+Package hyperref Message: Driver (default): hdvips.
 
-(/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count124
-\c@bookmark@seq@number=\count125
+(/usr/share/texmf-dist/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2012/11/06 v6.83m Hyperref driver for dvips
+
+(/usr/share/texmf-dist/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2012/11/06 v6.83m Hyperref definitions for pdfmark specials
+\pdf@docset=\toks26
+\pdf@box=\box40
+\pdf@toks=\toks27
+\pdf@defaulttoks=\toks28
+\HyField@AnnotCount=\count124
+\Fld@listcount=\count125
+\c@bookmark@seq@number=\count126
 
 (/usr/share/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
-))
+)))
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaserequires.sty
 Package: beamerbaserequires 2010/05/01  (rcs-revision efa082c6111d)
 
@@ -461,7 +466,7 @@ Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks26
+\@emptytoks=\toks29
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
@@ -488,37 +493,37 @@ Package: beamerbasetwoscreens 2010/05/01  (rcs-revision efa082c6111d)
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseoverlay.sty
 Package: beamerbaseoverlay 2013/12/25  (rcs-revision f6bd5e3805da)
-\beamer@argscount=\count126
+\beamer@argscount=\count127
 \beamer@lastskipcover=\skip44
-\beamer@trivlistdepth=\count127
+\beamer@trivlistdepth=\count128
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasetitle.sty
 Package: beamerbasetitle 2010/09/21  (rcs-revision f0446ed0b6ae)
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasesection.sty
 Package: beamerbasesection 2013/06/07  (rcs-revision 60b9fe0f342f)
-\c@lecture=\count128
-\c@part=\count129
-\c@section=\count130
-\c@subsection=\count131
-\c@subsubsection=\count132
+\c@lecture=\count129
+\c@part=\count130
+\c@section=\count131
+\c@subsection=\count132
+\c@subsubsection=\count133
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseframe.sty
 Package: beamerbaseframe 2013/10/02  (rcs-revision cdc8e9a3aaac)
-\beamer@framebox=\box40
-\beamer@frametitlebox=\box41
-\beamer@zoombox=\box42
-\beamer@zoomcount=\count133
-\beamer@zoomframecount=\count134
+\beamer@framebox=\box41
+\beamer@frametitlebox=\box42
+\beamer@zoombox=\box43
+\beamer@zoomcount=\count134
+\beamer@zoomframecount=\count135
 \beamer@frametextheight=\dimen168
-\c@subsectionslide=\count135
+\c@subsectionslide=\count136
 \beamer@frametopskip=\skip45
 \beamer@framebottomskip=\skip46
 \beamer@frametopskipautobreak=\skip47
 \beamer@framebottomskipautobreak=\skip48
-\beamer@envbody=\toks27
+\beamer@envbody=\toks30
 \framewidth=\dimen169
-\c@framenumber=\count136
+\c@framenumber=\count137
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseverbatim.sty
 Package: beamerbaseverbatim 2012/08/30  (rcs-revision dfdb135076b3)
@@ -526,40 +531,40 @@ Package: beamerbaseverbatim 2012/08/30  (rcs-revision dfdb135076b3)
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseframesize.sty
 Package: beamerbaseframesize 2011/09/12  (rcs-revision 70f9d8411e54)
-\beamer@splitbox=\box43
-\beamer@autobreakcount=\count137
+\beamer@splitbox=\box44
+\beamer@autobreakcount=\count138
 \beamer@autobreaklastheight=\dimen170
-\beamer@frametitletoks=\toks28
-\beamer@framesubtitletoks=\toks29
+\beamer@frametitletoks=\toks31
+\beamer@framesubtitletoks=\toks32
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseframecomponents.sty
 Package: beamerbaseframecomponents 2013/10/18  (rcs-revision 5cf6c5555a45)
-\beamer@footins=\box44
+\beamer@footins=\box45
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasecolor.sty
 Package: beamerbasecolor 2010/06/06  (rcs-revision d1a9b48be06d)
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasenotes.sty
 Package: beamerbasenotes 2012/12/19  (rcs-revision 1686da3db3c9)
-\beamer@frameboxcopy=\box45
+\beamer@frameboxcopy=\box46
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasetoc.sty
 Package: beamerbasetoc 2013/05/23  (rcs-revision 0fdf5bc43be8)
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
 Package: beamerbasetemplates 2010/05/01  (rcs-revision efa082c6111d)
-\beamer@sbttoks=\toks30
+\beamer@sbttoks=\toks33
 
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.sty
 Package: beamerbaseauxtemplates 2013/09/04  (rcs-revision 4ac715c499d0)
 
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbaseboxes.sty
 Package: beamerbaseboxes 2012/05/13  (rcs-revision 56972908a390)
-\bmb@box=\box46
-\bmb@colorbox=\box47
-\bmb@boxshadow=\box48
-\bmb@boxshadowball=\box49
-\bmb@boxshadowballlarge=\box50
+\bmb@box=\box47
+\bmb@colorbox=\box48
+\bmb@boxshadow=\box49
+\bmb@boxshadowball=\box50
+\bmb@boxshadowballlarge=\box51
 \bmb@temp=\dimen171
 \bmb@dima=\dimen172
 \bmb@dimb=\dimen173
@@ -572,10 +577,10 @@ Package: beamerbaselocalstructure 2013/09/04  (rcs-revision 4ac715c499d0)
 
 (/usr/share/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
-\@enLab=\toks31
+\@enLab=\toks34
 )
-\c@figure=\count138
-\c@table=\count139
+\c@figure=\count139
+\c@table=\count140
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 )
@@ -596,7 +601,7 @@ Package: amstext 2000/06/29 v2.01
 
 (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks32
+\@emptytoks=\toks35
 \ex@=\dimen177
 ))
 (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -606,57 +611,57 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count140
+\inf@bad=\count141
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count141
-\leftroot@=\count142
+\uproot@=\count142
+\leftroot@=\count143
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count143
-\DOTSCASE@=\count144
+\classnum@=\count144
+\DOTSCASE@=\count145
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
-\Mathstrutbox@=\box51
-\strutbox@=\box52
+\Mathstrutbox@=\box52
+\strutbox@=\box53
 \big@size=\dimen179
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count145
-\c@MaxMatrixCols=\count146
+\macc@depth=\count146
+\c@MaxMatrixCols=\count147
 \dotsspace@=\muskip11
-\c@parentequation=\count147
-\dspbrk@lvl=\count148
-\tag@help=\toks33
-\row@=\count149
-\column@=\count150
-\maxfields@=\count151
-\andhelp@=\toks34
+\c@parentequation=\count148
+\dspbrk@lvl=\count149
+\tag@help=\toks36
+\row@=\count150
+\column@=\count151
+\maxfields@=\count152
+\andhelp@=\toks37
 \eqnshift@=\dimen180
 \alignsep@=\dimen181
 \tagshift@=\dimen182
 \tagwidth@=\dimen183
 \totwidth@=\dimen184
 \lineht@=\dimen185
-\@envbody=\toks35
+\@envbody=\toks38
 \multlinegap=\skip52
 \multlinetaggap=\skip53
-\mathdisplay@stack=\toks36
+\mathdisplay@stack=\toks39
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
 (/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2009/07/02 v2.20.1
-\thm@style=\toks37
-\thm@bodyfont=\toks38
-\thm@headfont=\toks39
-\thm@notefont=\toks40
-\thm@headpunct=\toks41
+\thm@style=\toks40
+\thm@bodyfont=\toks41
+\thm@headfont=\toks42
+\thm@notefont=\toks43
+\thm@headpunct=\toks44
 \thm@preskip=\skip54
 \thm@postskip=\skip55
 \thm@headsep=\skip56
-\dth@everypar=\toks42
+\dth@everypar=\toks45
 )
-\c@theorem=\count152
+\c@theorem=\count153
 )
 (/usr/share/texmf-dist/tex/latex/beamer/beamerbasethemes.sty
 Package: beamerbasethemes 2010/05/01  (rcs-revision efa082c6111d)
@@ -699,8 +704,8 @@ Package: beamercolorthemeorchid 2010/06/17  (rcs-revision d02a7cf4d8ae)
 Package: beamercolorthemewhale 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )) (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2014/04/30 v1.2b Input encoding file
-\inpenc@prehook=\toks43
-\inpenc@posthook=\toks44
+\inpenc@prehook=\toks46
+\inpenc@posthook=\toks47
 
 (/usr/share/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
@@ -1127,12 +1132,12 @@ File: t2acmss.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ))
 (/usr/share/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2013/05/23 v2.5a Micro-typographical refinements (RS)
-\MT@toks=\toks45
-\MT@count=\count153
+\MT@toks=\toks48
+\MT@count=\count154
 LaTeX Info: Redefining \textls on input line 766.
 \MT@outer@kern=\dimen188
 LaTeX Info: Redefining \textmicrotypecontext on input line 1285.
-\MT@listname@count=\count154
+\MT@listname@count=\count155
 
 (/usr/share/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -1154,7 +1159,7 @@ Language: russian 2014/06/02 1.3c Russian support from the babel system
 
 (/usr/share/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2014/03/24 3.9k Babel common definitions
-\babel@savecnt=\count155
+\babel@savecnt=\count156
 \U@D=\dimen189
 LaTeX Info: Redefining \textlatin on input line 1428.
 )
@@ -1192,9 +1197,9 @@ File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 LaTeX Font Info:    ... okay on input line 30.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: dvips
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: dvips
 * paper: custom
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -1225,34 +1230,6 @@ LaTeX Font Info:    ... okay on input line 30.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count156
-\scratchdimen=\dimen190
-\scratchbox=\box53
-\nofMPsegments=\count157
-\nofMParguments=\count158
-\everyMPshowfont=\toks46
-\MPscratchCnt=\count159
-\MPscratchDim=\dimen191
-\MPnumerator=\count160
-\makeMPintoPDFobject=\count161
-\everyMPtoPDFconversion=\toks47
-) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/share/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-)
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box54
 Package hyperref Info: Link coloring OFF on input line 30.
@@ -1263,7 +1240,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count162
+\c@section@level=\count157
 )
 LaTeX Info: Redefining \ref on input line 30.
 LaTeX Info: Redefining \pageref on input line 30.
@@ -1357,12 +1334,10 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 LaTeX Info: Redefining \includegraphics on input line 30.
 LaTeX Info: Redefining \microtypecontext on input line 30.
-Package microtype Info: Generating PDF output.
+Package microtype Info: Generating DVI output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: Automatic font expansion enabled (level 2),
-(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
-Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: No font expansion.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1377,13 +1352,22 @@ LaTeX Font Warning: Font shape `T2A/cmss/m/n' in size <4> not available
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<pics/tesseract_fig1.png, id=35, 439.6425pt x 475.7775pt>
-File: pics/tesseract_fig1.png Graphic file (type png)
+]
 
-<use pics/tesseract_fig1.png>
-Package pdftex.def Info: pics/tesseract_fig1.png used on input line 49.
-(pdftex.def)             Requested size: 131.89375pt x 142.73434pt.
+! LaTeX Error: Cannot determine size of graphic in pics/tesseract_fig1.png (no 
+BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.49 \end{frame}
+                
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: pics/tesseract_fig1.png Graphic file (type eps)
+<pics/tesseract_fig1.png>
 Package microtype Info: Loading generic settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1391,7 +1375,8 @@ Package microtype Info: Loading generic settings for font family
 LaTeX Font Info:    Try loading font information for U+msa on input line 49.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
+)
+(/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 49.
@@ -1416,75 +1401,109 @@ Package microtype Info: Loading generic settings for font family
  [2
 
 
- <./pics/tesseract_fig1.png>] <pics/make_tess.png, id=52, 723.70375pt x 205.768
-75pt>
-File: pics/make_tess.png Graphic file (type png)
+]
 
-<use pics/make_tess.png>
-Package pdftex.def Info: pics/make_tess.png used on input line 57.
-(pdftex.def)             Requested size: 289.47636pt x 82.30603pt.
- [3
+! LaTeX Error: Cannot determine size of graphic in pics/make_tess.png (no Bound
+ingBox).
 
- <./pics/make_tess.png>]
-<pics/gui_numbers.png, id=59, 679.53876pt x 730.73pt>
-File: pics/gui_numbers.png Graphic file (type png)
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.57 \end{frame}
+                
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<use pics/gui_numbers.png>
-Package pdftex.def Info: pics/gui_numbers.png used on input line 73.
-(pdftex.def)             Requested size: 169.88428pt x 182.68205pt.
+File: pics/make_tess.png Graphic file (type eps)
+<pics/make_tess.png> [3
 
-Overfull \hbox (23.03934pt too wide) in paragraph at lines 73--73
-[][]  
- []
+]
 
-[4
+! LaTeX Error: Cannot determine size of graphic in pics/gui_numbers.png (no Bou
+ndingBox).
 
- <./pics/gui_numbers.png>] <pics/a1.png, id=67, 1103.12125pt x 492.84125pt>
-File: pics/a1.png Graphic file (type png)
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 \end{frame}
+                
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<use pics/a1.png>
-Package pdftex.def Info: pics/a1.png used on input line 84.
-(pdftex.def)             Requested size: 286.80476pt x 128.1357pt.
- [5
+File: pics/gui_numbers.png Graphic file (type eps)
+<pics/gui_numbers.png> [4
 
- <./pics/a1.png>]
-<pics/cubecut3d.png, id=73, 1256.695pt x 611.28375pt>
-File: pics/cubecut3d.png Graphic file (type png)
- <use pics/cubecut3d.png>
-Package pdftex.def Info: pics/cubecut3d.png used on input line 95.
-(pdftex.def)             Requested size: 251.33455pt x 122.25458pt.
+]
 
-[6
+! LaTeX Error: Cannot determine size of graphic in pics/a1.png (no BoundingBox)
+.
 
- <./pics/cubecut3d.png>]
-<pics/transformation.png, id=79, 812.03375pt x 278.03876pt>
-File: pics/transformation.png Graphic file (type png)
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.84 \end{frame}
+                
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<use pics/transformation.png>
-Package pdftex.def Info: pics/transformation.png used on input line 104.
-(pdftex.def)             Requested size: 324.80774pt x 111.21352pt.
+File: pics/a1.png Graphic file (type eps)
+<pics/a1.png> [5
 
-Overfull \hbox (24.31786pt too wide) in paragraph at lines 104--104
- [] 
- []
+]
 
-[7
+! LaTeX Error: Cannot determine size of graphic in pics/cubecut3d.png (no Bound
+ingBox).
 
- <./pics/transformation.png>]
-<pics/cuttesseract.png, id=87, 679.53876pt x 724.7075pt>
-File: pics/cuttesseract.png Graphic file (type png)
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.95 \end{frame}
+                
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<use pics/cuttesseract.png>
-Package pdftex.def Info: pics/cuttesseract.png used on input line 119.
-(pdftex.def)             Requested size: 156.29062pt x 166.67921pt.
+File: pics/cubecut3d.png Graphic file (type eps)
+<pics/cubecut3d.png> [6
 
-Overfull \hbox (9.44568pt too wide) in paragraph at lines 119--119
- [] 
- []
+]
 
-[8
+! LaTeX Error: Cannot determine size of graphic in pics/transformation.png (no 
+BoundingBox).
 
- <./pics/cuttesseract.png>]
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.104 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: pics/transformation.png Graphic file (type eps)
+<pics/transformation.png> [7
+
+]
+
+! LaTeX Error: Cannot determine size of graphic in pics/cuttesseract.png (no Bo
+undingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: pics/cuttesseract.png Graphic file (type eps)
+<pics/cuttesseract.png> [8
+
+]
 \tf@nav=\write6
 \openout6 = `pres_inf.nav'.
 
@@ -1497,7 +1516,7 @@ Overfull \hbox (9.44568pt too wide) in paragraph at lines 119--119
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 121.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 121.
  (./pres_inf.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 121.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 121.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 121.
 Package rerunfilecheck Info: File `pres_inf.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -1509,29 +1528,12 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 121.
  ) 
 Here is how much of TeX's memory you used:
- 22533 strings out of 493108
- 398461 string characters out of 6140726
- 493069 words of memory out of 5000000
- 25472 multiletter control sequences out of 15000+600000
- 18767 words of font info for 60 fonts, out of 8000000 for 9000
+ 21966 strings out of 493109
+ 389704 string characters out of 6140752
+ 490086 words of memory out of 5000000
+ 24954 multiletter control sequences out of 15000+600000
+ 17903 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,16n,57p,408b,807s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmssi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mssi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr
-/share/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/share/texmf-di
-st/fonts/type1/public/cm-super/sfss0600.pfb></usr/share/texmf-dist/fonts/type1/
-public/cm-super/sfss0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super
-/sfss0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb><
-/usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/share/texm
-f-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/share/texmf-dist/fonts/ty
-pe1/public/cm-super/sfsx1440.pfb>
-Output written on pres_inf.pdf (8 pages, 290881 bytes).
-PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
- 15480 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 56i,16n,57p,29884b,803s stack positions out of 5000i,500n,10000p,200000b,80000s
 
+Output written on pres_inf.dvi (8 pages, 51920 bytes).
