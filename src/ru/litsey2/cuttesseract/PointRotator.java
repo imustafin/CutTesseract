@@ -324,15 +324,19 @@ public class PointRotator {
 		}
 	}
 
+	static final int MAX_ITERATIONS_HACK =  6;
+	
 	public static void drawOrderSort(ArrayList<Segment4d> edges) {
 
+		int iterations = 0;
 		
 		Collections.shuffle(edges);
 		
 		boolean swapped = true;
 
-		while (swapped) {
+		while (swapped && iterations < MAX_ITERATIONS_HACK) {
 			swapped = false;
+			iterations++;
 			for (int i = 0; i < edges.size(); i++) {
 				for (int j = i + 1; j < edges.size(); j++) {
 					if (i == j) {
@@ -349,6 +353,9 @@ public class PointRotator {
 					}
 				}
 			}
+		}
+		if(iterations >= MAX_ITERATIONS_HACK) {
+			System.err.println("Iteration hax!");
 		}
 	}
 }
