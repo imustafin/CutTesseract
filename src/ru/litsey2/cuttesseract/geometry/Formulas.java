@@ -1,5 +1,7 @@
 package ru.litsey2.cuttesseract.geometry;
 
+import java.util.Comparator;
+
 
 public class Formulas {
 
@@ -254,4 +256,76 @@ public class Formulas {
 		return ans.getNormalized();
 	}
 
+	public static Comparator<Segment4d> intersection2dComparator = new Comparator<Segment4d>() {
+
+		@Override
+		public int compare(Segment4d s1, Segment4d s2) {
+
+			// s1 = A'B'
+			// s2 = C'D'
+			
+			// a2 = AB. 2d projection
+			Segment2d a2 = s1.projection2d();
+			// b2 = CD. 2d projection
+			Segment2d b2 = s2.projection2d();
+
+			// Intersection point of (AB, CD)
+			Point2d intersection = a2.intersectionPoint(b2);
+
+			if (intersection == null) {
+				// no intersection point, order doesn't matter
+				return 0;
+			}
+
+			// AI vector
+			Vector2d ai = new Vector2d(a2.first, intersection);
+
+			// BI vector. Unused
+			Vector2d bi = new Vector2d(a2.second, intersection);
+
+			
+			// r1 = AI / AB
+			double r1 = ai.length() / a2.length();
+
+			// A'B' vector
+			Vector4d ab4 = new Vector4d(s1);
+			double s1Len = ab4.length();
+
+			// |A'B'| = r1 * |A'B'|
+			ab4 = ab4.getNormalized().getMultiplied(r1 * s1Len);
+
+			// o1 = A'
+			Point4d o1 = s1.a;
+
+			// o1 = A' + (A'B' vector)
+			o1 = o1.getAdded(ab4);
+
+			// CI vector
+			Vector2d ci = new Vector2d(b2.first, intersection);
+			// DI vector
+			Vector2d di = new Vector2d(b2.second, intersection);
+
+			// r2 = CI / AB
+			double r2 = ci.length() / b2.length();
+
+			// C'D' vector
+			Vector4d cd4 = new Vector4d(s2);
+			double s2Len = cd4.length();
+
+			// |C'D'| = r2 * |C'D'|
+			cd4 = cd4.getNormalized().getMultiplied(r2 * s2Len);
+
+			// o2 = C'
+			Point4d o2 = s2.a;
+
+			
+			// o2 = C' + (C'D' vector)
+			o2 = o2.getAdded(cd4);
+
+			// Compare by Z coordinate
+			return Geometry.compareEps(o2.z, o1.z);
+
+		}
+	};
+	
 }
