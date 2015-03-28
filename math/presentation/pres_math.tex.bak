@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1,T2A]{fontenc}
 \usepackage{microtype}
+\usepackage{xcolor}
 \beamertemplatenavigationsymbolsempty
 
 \usepackage[russian, english]{babel}
@@ -18,7 +19,7 @@
 
 \institute[ТТЛ №2] % (optional)
 {
-  { \normalsize Татаро - Турецкий Лицей №2} \\
+  { \normalsize МАОУ "Лицей-интернат №2"} \\
   Московского района города Казани
 }
 
@@ -64,11 +65,14 @@
 Наглядный процесс, как точка $A$ переходит постепенно в гиперкуб, приобретая новые размерности
 \end{frame}
 \begin{frame}
-	%THESIS
-	Раскрытие тезиса здесь.
-\end{frame}
-\begin{frame}
 	\frametitle{Лемма о размерности сечений}
+%	\setbeamercolor{block title}{use=structure,fg=white,bg=purple!75!black}
+%	\setbeamercolor{block body}{use=structure,fg=black,bg=white!20!white}
+
+%	\begin{block}{title 1}
+%		...
+%	\end{block}
+%\setbeamercolor{block title}{use=structure,fg=white,bg=blue!75!black}
 {\small
 	\begin{block}{Утверждение}
 		Сечение любого $4$-мерного геометрического объекта $3$ мерной гиперплоскостью есть геометрическое тело, имеющее размерность не более $3$. 
@@ -84,9 +88,9 @@
 \begin{frame}
 	\frametitle{Метод построения сечений тессеракта гиперплоскостью}
 	\begin{itemize}
-		\item Задать гиперплоскость сечения
-		\item Найти точки пересечения гиперплоскости и тессеракта
-		\item Повернуть получившееся сечения до вложимости его в трехмерное пространство
+		\item Задание гиперплоскость сечения
+		\item Нахождение точки пересечения гиперплоскости и тессеракта
+		\item Поворот получившегося сечения до вложимости его в трехмерное пространство
 		\item Вывод полученного сечения, анализ результатов
 	\end{itemize}
 	\framebox{\includegraphics[scale=0.26]{./a1.png}}
@@ -109,8 +113,6 @@
 	\right|=0
 	$$
 \end{flushleft}
-						
- Таким образом, мы объявили гиперплоскость сечения.
 
 \end{frame}
 \begin{frame}
@@ -123,7 +125,7 @@
 		e=-(x_2x_1+y_2y_1+z_2z_1+w_2w_1)
 		$$
 \end{block}
-Таким образом, мы задали гиперплоскость, используя точку и вектор.
+Таким образом, мы объявили гиперплоскость сечения.
 \end{frame}
 \begin{frame}
 	\frametitle{Нахождение точки пересечения гиперплоскости и тессеракта}
@@ -194,13 +196,88 @@
 
 \end{block}
 \column{0.5\textwidth}
-PIC HERE
+%MATRIX PICTURE HERE
 \end{columns}
 \end{frame}
 \begin{frame}
 	\frametitle{Лемма о выпуклости}
+	\setbeamercolor{block title alerted}{fg=white,bg=black}
+
+	\begin{alertblock}{О выпуклости тессеракта}
+		Рассматриваемый в нашей работе тессеракт выпуклый.
+	\end{alertblock}
+
 	\begin{block}{Лемма 1}
 		Сечением выпуклого тессеракта гиперплоскостью является выпуклое геометрическое тело.
 	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Лемма о количестве вершин}
+	\begin{block}{Лемма 2}
+		Сечениями тессеракта являются тела, имеющие не менее 4 и не более 18 вершин.
+	\end{block}
+	\begin{block}{Доказательство}
+	\mbox{Для любого выпуклого геометрического тела справедливо} \\
+	\mbox{следующее свойство, связывающее его вершины, ребра и грани.}\\\\
+	\mbox{Пусть далее $V$ - количество вершин, $E$ - количество ребер}\\
+	\mbox{$P$ - количество граней}\\
+		$$ V-E+P=2 $$ 
+		$$ V=E-P $$ 
+		$$ V=24+2-8=18 $$
+		
+	\end{block}
+\end{frame}
+\begin{frame}
+	\frametitle{Теорема о параллельности граней противоположных сечений}
+	\begin{block}{Теорема 1}
+		Грани сечения, полученные пересечением противоположных ячеек тессеракта гиперплоскостью, параллельны.
+	\end{block}
+	\begin{columns}
+		\column{0.5\textwidth}
+	\begin{equation*}
+
+		P_1 \left\{
+		\begin{array}{lc}
+			ax+by+cz+dw+e=0 \\
+			w=1
+		\end{array}\\
+		P_2 \left\{
+		\begin{array}{lc}
+			ax+by+cz+dw+e=0 \\
+			w=-1
+		\end{array}\\
+	a^2+b^2+c^2\ne0
+\end{equation*}
+\column{0.5\textwidth}
+$$
+\begin{align*}
+		\overrightarrow{M_1M_2}&=(-bk;ak;0;0) \\
+		\overrightarrow{M_1M_3}&=(-cn;0;an;0) \\
+		\overrightarrow{M_4M_5}&=(-bk;ak;0;0) \\
+		\overrightarrow{M_4M_6}&=(-cn;0;an;0)
+\end{align*}
+$$
+\end{columns}
+\end{frame}
+\begin{frame}
+	\frametitle{Лемма о степени вершин}
+	\begin{block}{Лемма 3}
+	Сечениями тессеракта являются тела, в вершинах которых сходятся 3 или 4 ребра.
+	\end{block}
+	\framebox{\includegraphics[scale=0.3]{./223.png}}
+\end{frame}
+\begin{frame}
+	\frametitle{Лемма о сечениях с пятью вершинами}
+	\begin{block}{Предположение 1}
+		Эмпирическим путем было установлено, что возможно не существует сечений тессеракта с пятью вершиными. \\
+		На данный момент имеется доказательство только для сечений, имеющий форму пирамиды.
+	\end{block}
+	\begin{columns}
+		\column{0.5\textwidth}
+	\framebox{\includegraphics[scale=0.08]{./4pyramid.png}}
+	\column{0.5\textwidth}
+	\framebox{\includegraphics[scale=1.5]{./bipyramid.jpg}}
+\end{columns}
 \end{frame}
 \end{document}
