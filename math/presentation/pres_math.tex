@@ -9,6 +9,7 @@
 \beamertemplatenavigationsymbolsempty
 
 \usepackage[russian, english]{babel}
+\usepackage{hyperref}
 %----TITLE INFO BEGIN-----
 \title[Исследование сечений тессеракта трехмерной гиперплоскостью с использованием методов компьютерного моделирования] % ( long titles)
 { \bfseries Исследование сечений тессеракта гиперплоскостью}
@@ -67,7 +68,8 @@
 Наглядный процесс как точка $A$ переходит постепенно в гиперкуб, приобретая новые размерности
 \end{frame}
 \begin{frame}
-	\frametitle{Лемма о размерности сечений}
+	\frametitle{\hyperlink{basis}{Лемма о размерности сечений}}
+	\hypertarget{basis_back}{}
 %	\setbeamercolor{block title}{use=structure,fg=white,bg=purple!75!black}
 %	\setbeamercolor{block body}{use=structure,fg=black,bg=white!20!white}
 
@@ -88,7 +90,8 @@
 	\end{columns}
 \end{frame}
 \begin{frame}
-	\frametitle{Лемма о выпуклости}
+	\frametitle{\hyperlink{vipuk}{Лемма о выпуклости}}
+	\hypertarget{vipuk_back}{}
 	\setbeamercolor{block title alerted}{fg=white,bg=black}
 
 	\begin{alertblock}{О выпуклости тессеракта}
@@ -223,26 +226,30 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Теорема о параллельности граней противоположных сечений}
+	\frametitle{\hyperlink{theorem1}{Теорема о параллельности граней противоположных сечений}}
+	\hypertarget{theorem1_back}{}
 	\begin{block}{Теорема 1}
 		Грани сечения, полученные пересечением противоположных ячеек тессеракта гиперплоскостью, параллельны.
 	\end{block}
 \end{frame}
 \begin{frame}
-	\frametitle{Лемма о четности суммы степеней вершин сечения}
+	\frametitle{\hyperlink{evenodd}{Лемма о четности суммы степеней вершин сечения}}
+	\hypertarget{evenodd_back}{}
 	\begin{block}{Лемма 3}
 		Не существует сечений, сумма степеней вершин которых нечетна.
 	\end{block}
 \end{frame}
 \begin{frame}
-	\frametitle{Лемма о степени вершин}
+	\frametitle{\hyperlink{stepen}{Лемма о степени вершин}}
+	\hypertarget{stepen_back}{}
 	\begin{block}{Лемма 4}
 		Трехмерные сечения тессеракта состоят из вершин только со степенями 3 и 4.
 	\end{block}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Теорема о количестве вершин}
+	\frametitle{\hyperlink{theorem2}{Теорема о количестве вершин}}
+	\hypertarget{theorem2_back}{}
 	\begin{block}{Теорема 2}
 		Трехмерные сечения тессеракта имеют не менее 4 и не более 12 вершин, но не 5.
 	\end{block}
@@ -261,22 +268,33 @@
 \end{frame}
 \begin{frame}
 	\frametitle{Размерность сечения}
+	\hypertarget{basis}{}
 	\begin{block}{Сечение}
 		Сечение - это множество точек, принадлежащих, как тессеракту, так и гиперплоскости сечения.
 	\end{block}
 	Из этого следует вывод о том, что сечение не может иметь размерность более 3, так как размерность секущей гиперплоскости - 3. 
+
+	{\raggedleft\vfill\itshape\Longstack[l]
+	\hyperlink{basis_back}{Назад} \\
+	}\par
 	
 \end{frame}
 \begin{frame}
 	\frametitle{Доказательсто выпуклости сечения}
+	\hypertarget{vipuk}{}
 	\begin{block}{}
 		\framebox{\includegraphics[scale=0.4]{./vipuk.png}}
 	\end{block}
+
+	{\raggedleft\vfill\itshape\Longstack[l]
+	\hyperlink{vipuk_back}{Назад} \\
+	}\par
 
 		
 \end{frame}
 \begin{frame}
 	\frametitle{Доказательство теоремы 1}
+	\hypertarget{theorem1}{}
 	\begin{equation*}
 
 		P_1 \left\{
@@ -291,23 +309,38 @@
 		\end{array}\\
 	a^2+b^2+c^2\ne0
 \end{equation*}
+
+	{\raggedleft\vfill\itshape\Longstack[l]
+	\hyperlink{theorem1_back}{Назад} \\
+	}\par
 	
 \end{frame}
 \begin{frame}
 	\frametitle{Доказательство четности суммы степеней вершин сечения}
+	\hypertarget{evenodd}{}
 	\begin{block}{Лемма о рукопожатиях}
 		Любой конечный неориентированный граф имеет чётное число вершин нечётных степеней.
 	\end{block}
+
+	{\raggedleft\vfill\itshape\Longstack[l]
+	\hyperlink{evenodd_back}{Назад} \\
+	}\par
 \end{frame}
 \begin{frame}
 	\frametitle{Доказательство Леммы о степени вершин}
+	\hypertarget{stepen}{}
 	Данная лемма является следствием Теоремы 1 о параллельности. \\
 	Так как тессеракт состоит из 8 ячеек, пары которых параллельны, то при сечении данного тессеракта гиперплоскостью образуются 4 пары параллельных двумерных пдлоскостей. \\
 	Как следствие, одновременно пересекаться в одной точке могут лишь 4 из них. То есть максимальная степень вершины сечения тессеракта - 4. \\
 	Как известно, для получения точки требуется пересечь как минимум три плоскости. Как следствие, минимальная степень вершины сечения будет 3.
+
+	{\raggedleft\vfill\itshape\Longstack[l]
+	\hyperlink{stepen_back}{Назад} \\
+	}\par
 \end{frame}
 \begin{frame}
 	\frametitle{Доказательство Теоремы 2 о количестве вершин}
+	\hypertarget{theorem2}{}
 	Как ивестно, для получения трехмерного геометрического тела требуется минимум 4 вершины. \\
 	По теореме Эйлера для многогранников: 
 	\begin{equation*}
@@ -366,14 +399,24 @@
 \begin{frame}
 	\begin{columns}
 		\column{0.5\textwidth}
-		{\large $33334$}
 		\framebox{\includegraphics[scale=0.1]{./4pyramid}}
+		\begin{block}{}
+			{\large $33334$}
+		\end{block}
 
 		\column{0.5\textwidth}
-		{\large $33444$}
 		\framebox{\includegraphics[scale=1.94]{./bipyramid.png}}
+		\begin{block}{}
+			{\large $33444$}
+		\end{block}
 	\end{columns}
+	\\
+\hfill \break
 	Они не являются сечениями гиперкуба, так как у них более 4 граней и нет ни одной пары параллельных.
+
+	{\raggedleft\vfill\itshape\Longstack[l]
+		\hyperlink{theorem2_back}{Назад} \\
+	}\par
 \end{frame}
 \end{document}
 
