@@ -175,7 +175,7 @@
 	$
 \end{block} \\
 
-В случае, если две вершины находятся в разных полуплоскостях находим точку пересечения при помощи параметрического уравнения.
+В случае, если две вершины находятся в разных полуплоскостях находим точку пересечения ребра и гиперплоскости при помощи параметрического уравнения.
 \end{frame}
 \begin{frame}
 	\frametitle{Поворот сечения}	\\
@@ -193,7 +193,7 @@
 				0 & 0 & 1 & 0 \\
 				0 & 0 & 0 & 1
 			\end{array}\right)
-			$$			\\
+			$$			а\\
 			
 			\newline
 			$$
@@ -324,7 +324,31 @@
 			ax+by+cz+dw+e=0 \\
 			w=-1
 		\end{array}\\
-	a^2+b^2+c^2\ne0
+	a^2+b^2+c^2\ne0 \\
+	\mbox{Возьмем }M_1(x_1;y_1;z_1;1), \mbox{ такую, что } M_1 \in P_1 \\
+	\mbox{Пусть }ax+by=0 \\
+	\mbox{Тогда }x=-bk; y=ak; \\
+	\mbox{Тогда }M_2(x_1-bk;y_1+ak;z_1;1) \in P_1 \\
+	\mbox{Аналогично найдем точку M_3, взяв }ax+cz=0 \\
+	\mbox{Тогда }x=-cn; z=an; \\
+	\mbox{Из этого следует, что }M_3(x_1-cn;y_1;z_1+an;1) \in P_1 \\
+	\overrightarrow M_1M_2=(-bk;ak;0;0) \overrightarrow M_1M_3=(-cn;0;an;0) \\
+
+	\mbox{Возьмем }M_4(x_2;y_2;z_2;-1), \mbox{ такую, что } M_2 \in P_2 \\
+	\mbox{Пусть }ax+by=0 \\
+	\mbox{Тогда }x=-bk; y=ak; \\
+	\mbox{Тогда }M_5(x_2-bk;y_2+ak;z_2;-1) \in P_2 \\
+	\mbox{Аналогично найдем точку M_6, взяв }ax+cz=0 \\
+	\mbox{Тогда }x=-cn; z=an; \\
+	\mbox{Из этого следует, что }M_6(x_2-cn;y_2;z_2+an;-1) \in P_2 \\
+	\overrightarrow M_4M_5=(-bk;ak;0;0) \overrightarrow M_4M_6=(-cn;0;an;0) \\
+
+	\overrightarrow M_1M_2=(-bk;ak;0;0) \\
+	\overrightarrow M_1M_3=(-cn;0;an;0) \\
+	\overrightarrow M_4M_5=(-bk;ak;0;0) \\
+	\overrightarrow M_4M_6=(-cn;0;an;0) \\
+	\mbox{Как видим, пары неколлинеарных векторов в двух плоскостях равны, а значит и плоскости, задаваемые ими, параллельны.}
+
 \end{equation*}
 
 	{\raggedleft\vfill\itshape\Longstack[l]
@@ -414,6 +438,7 @@
 }
 \end{frame}
 \begin{frame}
+	\frametitle{Доказательство Теоремы 2 о количестве вершин}
 	\begin{columns}
 		\column{0.5\textwidth}
 		\framebox{\includegraphics[scale=0.1]{./4pyramid}}
