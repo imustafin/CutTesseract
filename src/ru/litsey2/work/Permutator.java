@@ -13,17 +13,15 @@ public class Permutator {
 		if(bad != -1){
 			int min = 100000000;
 			int min_index = bad;
-			for(int i = bad + 1; i < c.length - 1; i++){
+			for(int i = bad + 1; i < c.length; i++){
 				if(c[i] > c[bad] && c[i] < min){
 					min = c[i];
 					min_index = i;
 				}
 			}
 			if(min_index != bad){
-				int tmp = c[bad];
-				c[bad] = c[min_index];
-				c[min_index] = tmp;
-				Arrays.sort(c, bad + 1, c.length - 1);
+				swap(c, bad, min_index);
+				Arrays.sort(c, bad + 1, c.length);
 				return c;
 			}
 		}

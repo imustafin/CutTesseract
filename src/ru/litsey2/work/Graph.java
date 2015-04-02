@@ -97,22 +97,23 @@ public class Graph {
 			}
 		} while ((rep = Permutator.nextPermutation(rep, bad)) != null);
 
-//		String s = "";
-//		for (int i = 0; i < min.length; i++) {
-//			s += min[i];
-//		}
+		// String s = "";
+		// for (int i = 0; i < min.length; i++) {
+		// s += min[i] + " ";
+		// }
+		// System.out.println(s);
 		this.hash1 = to10(Arrays.copyOfRange(min, 0, Math.min(63, min.length)));
 		if (min.length > 64) {
 			this.hash2 = to10(Arrays.copyOfRange(min, 64,
-					Math.min(127, min.length)));
+					Math.min(128, min.length)));
 		} else {
 			this.hash2 = 0;
 		}
 	}
-	
+
 	public long to10(boolean[] a) {
 		long ans = 0;
-		for (int i = 0; i < Math.min(64, a.length); i++) {
+		for (int i = 0; i < Math.min(63, a.length); i++) {
 			if (a.length <= i) {
 				break;
 			}
@@ -122,7 +123,7 @@ public class Graph {
 		}
 		return ans;
 	}
-	
+
 	public String printGraph() {
 		String s = "[" + this.n + "][" + this.m + "]\n" + "(";
 		for (int i = 0; i < this.n - 1; i++) {
@@ -151,24 +152,34 @@ public class Graph {
 		if (this.hash1 == 0)
 			this.hash();
 
-		if(this.hash1 == g.hash1 && this.hash2 == g.hash2){
+		if (this.hash1 == g.hash1 && this.hash2 == g.hash2) {
 			return true;
 		} else {
 			return false;
 		}
-		/*
-		 * boolean k;
-		 * 
-		 * if (this.hash.equals(g.hash)) { k = true; } else { k = false; }
-		 * 
-		 * int[] rep = new int[n]; for (int i = 0; i < n; i++) { rep[i] = i; }
-		 * int bad = -1; do { bad = -1; boolean ok = true; for (int i = 0; i < n
-		 * && ok; i++) { for (int j = 0; j < n && ok; j++) { if
-		 * (g.e[rep[i]][rep[j]] != e[i][j]) { ok = false; bad = i; } } } if (ok)
-		 * { if (!k) { System.out.println("WTF"); } return true; } } while ((rep
-		 * = Permutator.nextPermutation(rep, bad)) != null);
-		 * 
-		 * if (k) { System.out.println("WTF 2"); } return false;
-		 */
+
+		
+/*
+		int[] rep = new int[n];
+		for (int i = 0; i < n; i++) {
+			rep[i] = i;
+		}
+		int bad = -1;
+		do {
+			bad = -1;
+			boolean ok = true;
+			for (int i = 0; i < n && ok; i++) {
+				for (int j = 0; j < n && ok; j++) {
+					if (g.e[rep[i]][rep[j]] != e[i][j]) {
+						ok = false;
+						bad = i;
+					}
+				}
+			}
+			if (ok) {
+				return true;
+			}
+		} while ((rep = Permutator.nextPermutation(rep, bad)) != null);
+		return false;*/
 	}
 }

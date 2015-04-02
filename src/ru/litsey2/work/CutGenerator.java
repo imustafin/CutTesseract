@@ -37,7 +37,7 @@ public class CutGenerator {
 	Graph[] Graps = new Graph[1000];
 	int now = 0;
 
-	//int[][] array = new int[18][18];
+	int[][] array = new int[18][18];
 	
 	void gend() {
 		Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
@@ -63,8 +63,10 @@ public class CutGenerator {
 //			}
 //		}
 //		array[a4][a3]++;
+		//if(a4 == 4 && a3 == 4){
+		//array[a3][a4]++;
 		
-		/*for (int i = 0; i < now; i++) {
+		for (int i = 0; i < now; i++) {
 			if (g.equals(Graps[i])) {
 				return;
 			}
@@ -74,10 +76,15 @@ public class CutGenerator {
 		//System.out.println(g.hash1 + " " + g.hash2);
 		Graps[now] = g;
 		now++;
-		pw.println("[" + now + "] " + pts[0] + " " + pts[1] + " " + pts[2]
-				+ " " + pts[3]);
-		pw.flush();*/
+		String s = "[" + now + "] " + pts[0] + " " + pts[1] + " " + pts[2]
+				+ " " + pts[3];
+		pw.println(s);
+		System.err.println(s);
+		//pw.println(g.printGraph());
+		//pw.println(g.hash1 + " " + g.hash2);
+		pw.flush();
 	}
+	//}
 
 	void gen(int num, int st) {
 		if (num == 4) {
@@ -125,7 +132,9 @@ public class CutGenerator {
 
 	public void merge() throws FileNotFoundException {
 		Scanner scanner = new Scanner(new File("merge.txt"));
-		for (int i = 0; i < 705; i++) {
+		int i = -1;
+		while(scanner.hasNext()){
+			i++;
 			scanner.next();
 			Point4d p = null;
 			for (int j = 0; j < 4; j++) {
@@ -156,11 +165,11 @@ public class CutGenerator {
 		CutGenerator cg = new CutGenerator();
 		try {
 			cg.pw = new PrintWriter("cuts.txt");
-			cg.getFstart();
-			cg.gen(0, 0);
-			//cg.merge();
-			//cg.prEnd();
-			cg.pr10();
+			//cg.getFstart();
+			//cg.gen(0, 0);
+			cg.merge();
+			cg.prEnd();
+			//cg.pr10();
 		} finally {
 			cg.pw.close();
 		}
