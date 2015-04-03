@@ -1,6 +1,7 @@
 package ru.litsey2.work;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Permutator {
 
@@ -10,7 +11,8 @@ public class Permutator {
 	 */
 	public static int[] nextPermutation(final int[] c, final int bad) {
 		//optimization
-		if(bad != -1){
+		int first = getFirst(c);
+		if(bad != -1 && first != -1){
 			int min = 100000000;
 			int min_index = bad;
 			for(int i = bad + 1; i < c.length; i++){
@@ -24,9 +26,11 @@ public class Permutator {
 				Arrays.sort(c, bad + 1, c.length);
 				return c;
 			}
+			//TODO: skip smth like 54312
 		}
+		
 		// 1. finds the largest k, that c[k] < c[k+1]
-		int first = getFirst(c);
+		first = getFirst(c);
 		if (first == -1)
 			return null; // no greater permutation
 		// 2. find last index toSwap, that c[k] < c[toSwap]

@@ -83,7 +83,7 @@ public class Graph {
 				for (int j = i + 1; j < n && ok; j++) {
 					if (e[rep[i]][rep[j]] && !min[now] && !good) {
 						ok = false;
-						bad = i;
+						bad = j;
 					}
 					if (!e[rep[i]][rep[j]] && min[now]) {
 						good = true;
