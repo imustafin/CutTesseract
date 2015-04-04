@@ -96,12 +96,6 @@ public class Graph {
 				min = localmin;
 			}
 		} while ((rep = Permutator.nextPermutation(rep, bad)) != null);
-
-		// String s = "";
-		// for (int i = 0; i < min.length; i++) {
-		// s += min[i] + " ";
-		// }
-		// System.out.println(s);
 		this.hash1 = to10(Arrays.copyOfRange(min, 0, Math.min(63, min.length)));
 		if (min.length > 64) {
 			this.hash2 = to10(Arrays.copyOfRange(min, 64,
@@ -157,8 +151,6 @@ public class Graph {
 		} else {
 			return false;
 		}
-
-		
 /*
 		int[] rep = new int[n];
 		for (int i = 0; i < n; i++) {

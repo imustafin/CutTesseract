@@ -33,12 +33,12 @@ public class CutGenerator {
 	long cnt = 0;
 	double startTime = System.currentTimeMillis() / 1000L;
 
-	//HashSet<Graph> set = new HashSet<Graph>();
+	// HashSet<Graph> set = new HashSet<Graph>();
 	Graph[] Graps = new Graph[1000];
 	int now = 0;
 
 	int[][] array = new int[18][18];
-	
+
 	void gend() {
 		Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
 		if (Double.isNaN(plane.getNormal().getW())
@@ -52,20 +52,20 @@ public class CutGenerator {
 		if (g.n < 4) {
 			return;
 		}
-		
-//		int a3 = 0;
-//		int a4 = 0;
-//		for(int i = 0; i < g.n; i++){
-//			if(g.deg[i] == 3){
-//				a3++;
-//			}else{
-//				a4++;
-//			}
-//		}
-//		array[a4][a3]++;
-		//if(a4 == 4 && a3 == 4){
-		//array[a3][a4]++;
-		
+
+		// int a3 = 0;
+		// int a4 = 0;
+		// for(int i = 0; i < g.n; i++){
+		// if(g.deg[i] == 3){
+		// a3++;
+		// }else{
+		// a4++;
+		// }
+		// }
+		// array[a4][a3]++;
+		// if(a4 == 4 && a3 == 4){
+		// array[a3][a4]++;
+
 		for (int i = 0; i < now; i++) {
 			if (g.equals(Graps[i])) {
 				return;
@@ -73,18 +73,19 @@ public class CutGenerator {
 		}
 		if (g.hash1 == 0)
 			g.hash();
-		//System.out.println(g.hash1 + " " + g.hash2);
+		// System.out.println(g.hash1 + " " + g.hash2);
 		Graps[now] = g;
 		now++;
 		String s = "[" + now + "] " + pts[0] + " " + pts[1] + " " + pts[2]
 				+ " " + pts[3];
 		pw.println(s);
-		System.err.println(s);
-		//pw.println(g.printGraph());
-		//pw.println(g.hash1 + " " + g.hash2);
+		// System.err.println(s);
+		// pw.println(g.printGraph());
+		// pw.println(g.hash1 + " " + g.hash2);
 		pw.flush();
 	}
-	//}
+
+	// }
 
 	void gen(int num, int st) {
 		if (num == 4) {
@@ -96,8 +97,15 @@ public class CutGenerator {
 			}
 			if (cnt % 1000 == 0) {
 				System.out.println(cnt / 1000 + "."
-						+ String.format("%03d", cnt % 1000) + " | ["
-						+ (double) cnt
+						+ String.format("%03d", cnt % 1000) + " | "
+						+ Math.round(100 * (cnt - Fstart) / (Fend - Fstart)) + "% | ("
+						+ (cnt - Fstart) / 1000 + "."
+						+ String.format("%03d", cnt % 1000) + "/"
+						+ (Fend - Fstart) / 1000 + "."
+						+ String.format("%03d", (Fend - Fstart) % 1000)
+						+ ") | {" + now + "} | "
+						+ (System.currentTimeMillis() / 1000L - startTime)
+						+ " sec | [" + (double) (cnt - Fstart)
 						/ (System.currentTimeMillis() / 1000L - startTime)
 						+ "]");
 			}
@@ -121,19 +129,19 @@ public class CutGenerator {
 	}
 
 	public void prEnd() {
-//		for(int i = 0; i < 18; i++){
-//			for(int j = 0; j < 18; j++){
-//				pw.print(array[i][j] + "	");
-//			}
-//			pw.println("");
-//		}
+		// for(int i = 0; i < 18; i++){
+		// for(int j = 0; j < 18; j++){
+		// pw.print(array[i][j] + "	");
+		// }
+		// pw.println("");
+		// }
 		pw.println("[" + this.Fend + "][END]");
 	}
 
 	public void merge() throws FileNotFoundException {
 		Scanner scanner = new Scanner(new File("merge.txt"));
 		int i = -1;
-		while(scanner.hasNext()){
+		while (scanner.hasNext()) {
 			i++;
 			scanner.next();
 			Point4d p = null;
@@ -148,7 +156,7 @@ public class CutGenerator {
 		scanner.close();
 	}
 
-	public void pr10(){
+	public void pr10() {
 		try {
 			PrintWriter a = new PrintWriter("ready.txt");
 			a.print("10");
@@ -157,19 +165,19 @@ public class CutGenerator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public static void main(String[] args) throws FileNotFoundException {
 
 		CutGenerator cg = new CutGenerator();
 		try {
 			cg.pw = new PrintWriter("cuts.txt");
-			//cg.getFstart();
-			//cg.gen(0, 0);
-			cg.merge();
-			cg.prEnd();
-			//cg.pr10();
+			cg.getFstart();
+			cg.gen(0, 0);
+			// cg.merge();
+			// cg.prEnd();
+			// cg.pr10();
 		} finally {
 			cg.pw.close();
 		}

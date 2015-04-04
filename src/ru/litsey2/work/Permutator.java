@@ -26,7 +26,7 @@ public class Permutator {
 				Arrays.sort(c, bad + 1, c.length);
 				return c;
 			}
-			//TODO: skip smth like 54312
+			// skips smth like 54312
 			reverse_sort(c, bad+1, c.length);
 		}
 		
