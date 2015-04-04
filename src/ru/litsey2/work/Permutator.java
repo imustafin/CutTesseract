@@ -27,6 +27,7 @@ public class Permutator {
 				return c;
 			}
 			//TODO: skip smth like 54312
+			reverse_sort(c, bad+1, c.length);
 		}
 		
 		// 1. finds the largest k, that c[k] < c[k+1]
@@ -46,10 +47,19 @@ public class Permutator {
 		return c;
 	}
 
+	private static int[] reverse_sort(int[] c, int from, int to){ //	[)
+		Arrays.sort(c, from, to);
+		to--;
+		while (from < to)
+			swap(c, from++, to--);
+		return c;
+	}
+	
 	/**
 	 * finds the largest k, that c[k] < c[k+1] if no such k exists (there is not
 	 * greater permutation), return -1
 	 */
+	
 	private static int getFirst(final int[] c) {
 		for (int i = c.length - 2; i >= 0; --i)
 			if (c[i] < c[i + 1])
