@@ -13,7 +13,7 @@ import javax.swing.text.StyleContext.SmallAttributeSet;
 import ru.litsey2.cuttesseract.geometry.Point4d;
 import ru.litsey2.cuttesseract.geometry.Segment4d;
 
-public class Graph {
+public class Graph implements Comparable<Graph> {
 
 	boolean[][] e;
 	Set<Segment4d> segments;
@@ -66,6 +66,9 @@ public class Graph {
 	}
 
 	public void hash() {
+		if (this.hash1 != 0)
+			return;
+
 		int[] rep = new int[n];
 		for (int i = 0; i < n; i++) {
 			rep[i] = i;
@@ -118,15 +121,21 @@ public class Graph {
 		return ans;
 	}
 
-	public String printGraph() {
-		String s = "[" + this.n + "][" + this.m + "]\n" + "(";
+	@Override
+	public String toString() {
+		String s = "[" + this.n + "][" + this.m + "]\n [" + this.hash2 + ""
+				+ this.hash1 + "]\n(";
 		for (int i = 0; i < this.n - 1; i++) {
 			s += this.deg[i] + ", ";
 		}
 		s += this.deg[n - 1] + ")\n";
 		for (int i = 0; i < this.n; i++) {
 			for (int j = 0; j < this.n; j++) {
-				s += this.e[i][j] + " ";
+				if(this.e[i][j]){
+					s += "1 ";
+				}else{
+					s += "0 ";
+				}
 			}
 			s += "\n";
 		}
@@ -143,35 +152,27 @@ public class Graph {
 			}
 		}
 
-		if (this.hash1 == 0)
-			this.hash();
-
-		if (this.hash1 == g.hash1 && this.hash2 == g.hash2) {
+		if (this.compareTo(g) == 0) {
 			return true;
-		} else {
-			return false;
 		}
-/*
-		int[] rep = new int[n];
-		for (int i = 0; i < n; i++) {
-			rep[i] = i;
+		return false;
+		/*
+		 * int[] rep = new int[n]; for (int i = 0; i < n; i++) { rep[i] = i; }
+		 * int bad = -1; do { bad = -1; boolean ok = true; for (int i = 0; i < n
+		 * && ok; i++) { for (int j = 0; j < n && ok; j++) { if
+		 * (g.e[rep[i]][rep[j]] != e[i][j]) { ok = false; bad = i; } } } if (ok)
+		 * { return true; } } while ((rep = Permutator.nextPermutation(rep,
+		 * bad)) != null); return false;
+		 */
+	}
+
+	@Override
+	public int compareTo(Graph g) {
+		this.hash();
+		g.hash();
+		if (this.hash2 == g.hash2) {
+			return Long.compare(this.hash1, g.hash1);
 		}
-		int bad = -1;
-		do {
-			bad = -1;
-			boolean ok = true;
-			for (int i = 0; i < n && ok; i++) {
-				for (int j = 0; j < n && ok; j++) {
-					if (g.e[rep[i]][rep[j]] != e[i][j]) {
-						ok = false;
-						bad = i;
-					}
-				}
-			}
-			if (ok) {
-				return true;
-			}
-		} while ((rep = Permutator.nextPermutation(rep, bad)) != null);
-		return false;*/
+		return Long.compare(this.hash2, g.hash2);
 	}
 }

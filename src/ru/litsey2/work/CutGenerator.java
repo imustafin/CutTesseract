@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeSet;
 
 import ru.litsey2.cuttesseract.Colors;
 import ru.litsey2.cuttesseract.geometry.Cube4d;
@@ -33,11 +34,11 @@ public class CutGenerator {
 	long cnt = 0;
 	double startTime = System.currentTimeMillis() / 1000L;
 
-	// HashSet<Graph> set = new HashSet<Graph>();
-	Graph[] Graps = new Graph[1000];
+	static TreeSet<Graph> set = new TreeSet<Graph>();
+	//Graph[] Graps = new Graph[1000];
 	int now = 0;
 
-	int[][] array = new int[18][18];
+	//int[][] array = new int[18][18];
 
 	void gend() {
 		Plane4d plane = new Plane4d(pts[0], pts[1], pts[2], pts[3]);
@@ -66,22 +67,24 @@ public class CutGenerator {
 		// if(a4 == 4 && a3 == 4){
 		// array[a3][a4]++;
 
-		for (int i = 0; i < now; i++) {
-			if (g.equals(Graps[i])) {
-				return;
-			}
+		g.hash();
+		if(!set.add(g)){
+			return;
 		}
-		if (g.hash1 == 0)
-			g.hash();
-		// System.out.println(g.hash1 + " " + g.hash2);
-		Graps[now] = g;
+//		for (int i = 0; i < now; i++) {
+//			if (g.equals(Graps[i])) {
+//				return;
+//			}
+//		}
+//		g.hash();
+//		Graps[now] = g;
 		now++;
 		String s = "[" + now + "] " + pts[0] + " " + pts[1] + " " + pts[2]
 				+ " " + pts[3];
 		pw.println(s);
-		// System.err.println(s);
-		// pw.println(g.printGraph());
-		// pw.println(g.hash1 + " " + g.hash2);
+		System.err.println(s);
+		//pw.println(g.toString());
+		//pw.println(g.hash1 + " " + g.hash2);
 		pw.flush();
 	}
 
@@ -173,10 +176,10 @@ public class CutGenerator {
 		CutGenerator cg = new CutGenerator();
 		try {
 			cg.pw = new PrintWriter("cuts.txt");
-			cg.getFstart();
-			cg.gen(0, 0);
-			// cg.merge();
-			// cg.prEnd();
+			//cg.getFstart();
+			//cg.gen(0, 0);
+			cg.merge();
+			cg.prEnd();
 			// cg.pr10();
 		} finally {
 			cg.pw.close();
