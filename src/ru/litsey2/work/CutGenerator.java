@@ -82,7 +82,7 @@ public class CutGenerator {
 		String s = "[" + now + "] " + pts[0] + " " + pts[1] + " " + pts[2]
 				+ " " + pts[3];
 		pw.println(s);
-		System.err.println(s);
+		//System.err.println(s);
 		//pw.println(g.toString());
 		//pw.println(g.hash1 + " " + g.hash2);
 		pw.flush();
@@ -173,17 +173,35 @@ public class CutGenerator {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		CutGenerator cg = new CutGenerator();
-		try {
-			cg.pw = new PrintWriter("cuts.txt");
-			//cg.getFstart();
-			//cg.gen(0, 0);
-			cg.merge();
-			cg.prEnd();
-			// cg.pr10();
-		} finally {
-			cg.pw.close();
-		}
-		System.out.println("[END]");
+		Thread a = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				CutGenerator cg = new CutGenerator();
+				try {	
+					try {
+						cg.pw = new PrintWriter("cuts.txt");
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					try {
+						cg.getFstart();
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					cg.gen(0, 0);
+					//cg.merge();
+					//cg.prEnd();
+					cg.pr10();
+				} finally {
+					cg.pw.close();
+				}
+				System.out.println("[END]");
+			}
+		});
+		a.run();
 	}
 }
