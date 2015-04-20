@@ -1,0 +1,141 @@
+\documentclass[10pt,pdf,hyperref={unicode}]{beamer}
+\usetheme{Frankfurt}
+\usepackage{graphicx}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage{microtype}
+\beamertemplatenavigationsymbolsempty
+
+\usepackage[russian, english]{babel}
+%----TITLE INFO BEGIN-----
+\title[Математическая модель проекции тессеракта и его сечений гиперплоскостью] % ( long titles)
+{ \bfseries Исследование сечений тессеракта гиперплоскостью}
+\subtitle{используя методы компьютерного моделирования.}
+
+\author[Мустафин И., Нугманов А., Максимов Г.]
+{ \bfseries Мустафин Ильгиз, Нугманов Артур, Максимов Григорий}
+
+\institute[ТТЛ №2] % (optional)
+{
+  \vspace{0.2cm}
+  {\bfseries Научный руководитель -- Давлетбаев Марсель Фанилевич} \\
+  \vspace{0.2cm}
+
+  { \normalsize МАОУ "Лицей-интернат №2"} \\
+  Московского района города Казани
+}
+
+\date[2015-03-26] % (optional)
+{Конференция имени Лобачевского 2015}
+\subject{Математика}
+%-----TITLE INFO END-----
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Тессеракт. Общее определение}
+\begin{columns}
+\column{0.5\textwidth}
+\framebox{\includegraphics[scale=0.3]{pics/tesseract_fig1.png}}
+\column{0.5\textwidth}
+{
+	\begin{itemize}
+		\item Тессеракт -- куб в четырёхмерном пространстве.
+		\item Рассматриваемая нами модель имеет координаты
+			$(x_1,x_2,x_3,x_4) \in \mathbb{R}^4$, такие, что $x_i \in [ -1,1 ]$.
+	\end{itemize}
+}
+\clearpage
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Наглядный процесс формирования отображения тессеракта на трехмерную плоскость}
+\begin{center}
+	\framebox{\includegraphics[scale=0.4]{pics/make_tess.png}} \\
+\end{center}
+Наглядный процесс, как точка $A$ переходит постепенно в гиперкуб, приобретая новые размерности
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Графический пользовательский интерфейс}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\framebox{\includegraphics[scale=0.25]{pics/gui_numbers.png}}
+		\column{0.5\textwidth}
+			\begin{enumerate}
+				\item Панель отображения
+				\item Кнопка переключения отображения тессеракта
+				\item Квадратные области графического ввода координат
+				\item Панели ввода координат
+			\end{enumerate}				
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Метод построения сечений тессеракта гиперплоскостью}
+	\begin{itemize}
+		\item Задание гиперплоскость сечения
+		\item Нахождение точки пересечения гиперплоскости и тессеракта
+		\item Поворот получившегося сечения до вложимости его в трехмерное пространство
+		\item Вывод полученного сечения, анализ результатов
+	\end{itemize}
+\center{\framebox{\includegraphics[scale=0.26]{pics/a1.png}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{История разработки: {\bf CubeCut3d}}
+	Сначала мы написали программу, которая 
+	строит сечение обычного трёхмерного куба двумерной плоскостью.
+	Плоскость задавалась координатами трёх точек, которые задают плоскость сечения.
+	Были реализованы механизмы поворота, масштабирования фигуры.	
+	Не использовались никакие сторонние библиотеки для отображения графики,
+	всё было написано с нуля. 
+	\center{\framebox{\includegraphics[scale=0.20]{pics/cubecut3d.png}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{История разработки: {\bf DrawTesseract}}
+	Для перехода в четырёхмерное пространство нам нужно 
+	было научиться строить изображения проекции тессеракта на двумерную плоскость.
+	Так, основываясь на кодe первой версии, был написан код программы, которая строит
+	проекцию гиперкуба и позволяет поворачивать изображение как в трёхмерном, так и 
+	в четырёхмерном пространстве.
+	\center{\framebox{\includegraphics[scale=0.40]{pics/transformation.png}}} 
+\end{frame}
+
+\begin{frame}
+\frametitle{История разработки: {\bf CutTesseract}}
+	\begin{columns}
+	\column{0.5\textwidth}
+		Ипользуя принципы ООП (объектно-ориентированного программирования),
+		было не сложно перейти от рассмотрения трёхмерного к четырёхмерному
+		пространству. Плоскость всё ещё можно было задавать точками,
+		только теперь нужно четыре четырёхмерные точки. Однако 
+		задавать плоскость вектором нормали и точкой на плоскости 
+		оказалось удобнее с точки зрения ввода данных.	Так 
+		и появились Квадратные области графического ввода координат.
+	\column{0.5\textwidth}
+		\center{\framebox{\includegraphics[scale=0.23]{pics/gui.png}}}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{История разработки: {\bf CutTesseract}}
+	\begin{columns}
+	\column{0.5\textwidth}
+		\center{\framebox{\includegraphics[scale=0.5]{pics/order.png}}}
+	\column{0.5\textwidth}
+		Вследствие того, что изображение с тонкими линиями было
+		трудно читаемо, нами было принято решение об увеличении толщины линий.
+		Это создало дополнительную задачу для нас: теперь уже был важен
+		порядок рисования линий в связи с тем, что проекции отрезков
+		могут пересекаться и нужно было узнать, какой из отрезков ближе к 
+		плоскости экрана в точке пересечения трёхмерных отрезков.
+	\end{columns}
+\end{frame}
+
+\end{document}
