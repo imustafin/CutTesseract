@@ -327,6 +327,8 @@ public class PointRotator {
 	static final int MAX_ITERATIONS_HACK =  6;
 	
 	public static void drawOrderSort(ArrayList<Segment4d> edges) {
+	
+		//TODO: we really need to use TopSort instead of random shuffle
 
 		int iterations = 0;
 		
@@ -353,9 +355,6 @@ public class PointRotator {
 					}
 				}
 			}
-		}
-		if(iterations >= MAX_ITERATIONS_HACK) {
-			System.err.println("Iteration hax!");
 		}
 	}
 }
